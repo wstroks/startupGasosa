@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item android:id="@+id/ic_home"
+        android:icon="@drawable/ic_local_gas_station_black_24dp"
+        android:title="Gasolina"
+
+        />
+    <item android:id="@+id/ic_disel"
+        android:icon="@drawable/ic_local_gas_station_black_24dp"
+        android:title="Diesel"
+
+        />
+    <item android:id="@+id/ic_alcool"
+        android:icon="@drawable/ic_local_gas_station_black_24dp"
+        android:title="Álcool"
+
+        />
+
+
+    <item android:id="@+id/ic_publicacao"
+        android:icon="@drawable/ic_local_gas_station_black_24dp"
+        android:title="Gás(Gnv)"
+
+        />
+
+    <item android:id="@+id/ic_sobre"
+        android:icon="@drawable/ic_dehaze_black_24dp"
+        android:title="Menu"
+
+        />
+</menu>

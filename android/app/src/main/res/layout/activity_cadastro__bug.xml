@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".acitivity.cadastro_BugActivity">
+
+    <EditText
+        android:id="@+id/textBug"
+        android:layout_width="0dp"
+        android:layout_height="259dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/cinza_medio"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/escreve_o_relato"
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bugEnviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:text="" />
+
+    <Button
+        android:id="@+id/bugEnviar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/background_botaosobre"
+        android:drawableLeft="@drawable/ic_send_black_24dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:paddingLeft="30dp"
+        android:paddingRight="40dp"
+        android:text="Enviar"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBug" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="Seu feedback é fundamental para melhoria do “Gasosa!”"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textBug"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+</android.support.constraint.ConstraintLayout>

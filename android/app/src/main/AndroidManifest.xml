@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gasosa.uefs">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.PERMISSION_GRANTED" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".acitivity.ContribuirGeralActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi"/>
+        <activity
+            android:name=".acitivity.contribuirActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity
+            android:name=".acitivity.BuscarActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity android:name=".acitivity.dieselTabActivity" />
+        <activity
+            android:name=".acitivity.PromocoesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".acitivity.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".acitivity.gastoIreiActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity
+            android:name=".acitivity.media_kmActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity
+            android:name=".acitivity.alcoolGasolinaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity
+            android:name=".acitivity.cadastro_PostoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity
+            android:name=".acitivity.cadastro_BugActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity
+            android:name=".acitivity.appActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
+        <activity
+            android:name=".acitivity.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".acitivity.MainActivity"
+            android:screenOrientation="portrait" />
+
+
+
+        <activity
+            android:name=".acitivity.CadastroActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".notificacao.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--
+     Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_action_name" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <receiver
+            android:name=".update.onUpgradeReceiver"
+            android:exported="true"
+            android:enabled="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

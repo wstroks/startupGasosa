@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/buscar"
+        android:icon="@drawable/ic_pesquisa_preto_24dp"
+
+        android:title="Buscar"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/notifica"
+        android:icon="@drawable/ic_notifications_black_24dp"
+
+        android:title="Editar"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu_compartilhar"
+        android:title="Compartilhar App"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/menu_sair"
+        android:title="Sair"
+        app:showAsAction="never" />
+
+
+
+
+
+</menu>

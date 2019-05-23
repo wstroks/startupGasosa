@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SobreFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/buttonBug2"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_botaosobre"
+            android:drawableLeft="@drawable/ic_bug_report_black_24dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="40dp"
+            android:text="Sugestões, Bugs e Comentários"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sobre_tim" />
+
+        <Button
+            android:id="@+id/sobre_tim"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_botaosobre"
+            android:drawableLeft="@drawable/ic_record_voice_over_black_24dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="40dp"
+            android:text="Sobre o Aplicativo"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/buttonBug2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonCadastrarPosto" />
+
+        <Button
+            android:id="@+id/ireiGastar"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_botaosobre"
+            android:drawableLeft="@drawable/ic_attach_money_black_24dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="40dp"
+            android:text="Quanto irei gastar?"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCadastrarPosto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mediaKMPercorrido" />
+
+        <Button
+            android:id="@+id/mediaKMPercorrido"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_botaosobre"
+            android:drawableLeft="@drawable/ic_directions_car_black_24dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="40dp"
+            android:text="Média Por Km Percorrido"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/ireiGastar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alcoolGasolinaSobre" />
+
+        <Button
+            android:id="@+id/buttonCadastrarPosto"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_botaosobre"
+            android:drawableLeft="@drawable/ic_add_box_black_24dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="40dp"
+            android:text="Cadastrar Posto "
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/sobre_tim"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ireiGastar" />
+
+        <Button
+            android:id="@+id/alcoolGasolinaSobre"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_botaosobre"
+            android:drawableLeft="@drawable/ic_thumbs_up_down_black_24dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="40dp"
+            android:text="Álcool x Gasolina"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/mediaKMPercorrido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.110000014"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

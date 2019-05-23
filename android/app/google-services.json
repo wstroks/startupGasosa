@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "310796828943",
+    "firebase_url": "https://gasolina-8cc75.firebaseio.com",
+    "project_id": "gasolina-8cc75",
+    "storage_bucket": "gasolina-8cc75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310796828943:android:69f203ff50047740",
+        "android_client_info": {
+          "package_name": "com.gasosa.uefs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310796828943-ibfbcbbp4gqknd9d8mql1huthnjvdn70.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb__ojnaKMr97fq4FT_54Stg4Slmxte6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310796828943-ibfbcbbp4gqknd9d8mql1huthnjvdn70.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

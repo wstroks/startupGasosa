@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#A94CFF</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="cinza_medio">#DBDBDB</color>
+    <color name="preto">#000000</color>
+    <color name="card_bg_color">#C9C5C5</color>
+    <color name="title_text_color">#258db6</color>
+    <color name="content_text_color">#999da4</color>
+</resources>
