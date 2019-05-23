@@ -69,7 +69,7 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
         myViewHolder.alcool.setText("R$ "+posto.getDieselAd().toString());
         myViewHolder.bairro.setText(posto.getBairro());
         myViewHolder.data.setText(posto.getData());
-
+        if(posto.getLogo()!=null){
         if(posto.getLogo().equals("ipiranga")){
              Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
            // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ipiranga));
@@ -98,7 +98,7 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
            // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.menor));
 
             // myViewHolder.circleImageView.setImageURI(load.("");
-        }
+        }}
 
         myViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -107,6 +107,8 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
         }else{
             myViewHolder.dieselBuscar.setTextSize(18);
         myViewHolder.dieselBuscar.setText("R$ "+posto.getDiesel().toString());}
+
+        if(posto.getLogo()!=null){
         if(posto.getLogo().equals("ipiranga")){
              Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
            // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ipiranga));
@@ -135,7 +137,7 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
            // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.menor));
 
             // myViewHolder.circleImageView.setImageURI(load.("");
-        }
+        }}
 
         myViewHolder.bairro.setText(posto.getBairro());
         myViewHolder.data.setText(posto.getData());
