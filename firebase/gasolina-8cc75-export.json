@@ -1,0 +1,792 @@
+{
+  "Postos" : {
+    "AdrielliPosto" : {
+      "alcool" : 3.328,
+      "bairro" : "Av. Eduardo Fróes da Mota, S/N - Sobradinho, Feira de Santana - BA, 44023-010",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.52,
+      "dieselAd" : 3.62,
+      "gasolina" : 4.339,
+      "gasolinaAd" : 4.89,
+      "latitude" : "-12.2357858",
+      "link" : "https://www.google.com.br/maps/place/Rede+Lubrijau+-+Adrielli/@-12.2357858,-38.9761144,17z/data=!4m5!3m4!1s0x714381a77e10c01:0x10d94232e763bd1e!8m2!3d-12.2318117!4d-38.9718724",
+      "logintude" : "-38.9761144",
+      "logo" : "petro",
+      "nome" : "Posto Adrielli",
+      "nome_filtro" : "POSTO ADRIELLI"
+    },
+    "PostoAliança" : {
+      "alcool" : 3.36,
+      "bairro" : "R. Landulfo Alves, 949 - Jardim Cruzeiro, Feira de Santana - BA, 44024-462",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.579,
+      "dieselAd" : 3.649,
+      "gasolina" : 4.369,
+      "gasolinaAd" : 4.369,
+      "latitude" : "-12.2358726",
+      "link" : "https://www.google.com/maps/place/Posto+Alian%C3%A7a/@-12.2358726,-38.9785599,17z/data=!3m1!4b1!4m5!3m4!1s0x714381b4417d5cb:0xa8abcdc82f270734!8m2!3d-12.2358726!4d-38.9763712",
+      "logintude" : "-38.9785599",
+      "logo" : "perfil",
+      "nome" : "Posto Aliança",
+      "nome_filtro" : "POSTO ALIANÇA"
+    },
+    "PostoCooperativa" : {
+      "alcool" : 3.39,
+      "bairro" : "R. Euclídes da Cunha - Jardim Cruzeiro, Feira de Santana - BA, 44024-444",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.54,
+      "dieselAd" : 3.64,
+      "gasolina" : 4.43,
+      "gasolinaAd" : 4.48,
+      "latitude" : "-12.2374244",
+      "link" : "https://www.google.com.br/maps/place/Posto+Cooperativa/@-12.2374244,-38.979368,19.25z/data=!4m12!1m6!3m5!1s0x714381a77e10c01:0x10d94232e763bd1e!2sRede+Lubrijau+-+Adrielli!8m2!3d-12.2318117!4d-38.9718724!3m4!1s0x7143803754e4cfb:0xe5c38ecd5b578abd!8m2!3d-12.237748!4d-38.979802",
+      "logintude" : "-38.979368",
+      "logo" : "ipiranga",
+      "nome" : "Posto Cooperativa",
+      "nome_filtro" : "POSTO COOPERATIVA"
+    },
+    "PostoEldorado" : {
+      "alcool" : 3.358,
+      "bairro" : "Centro, Feira de Santana - BA, 40301-110",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.39,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.369,
+      "gasolinaAd" : 0,
+      "latitude" : "-12.2586678",
+      "link" : "https://www.google.com.br/maps/place/Eldorado/@-12.2586678,-38.9640139,17z/data=!4m12!1m6!3m5!1s0x714379463daedbd:0x18923e97a9fa2268!2sEldorado!8m2!3d-12.2589311!4d-38.9640043!3m4!1s0x714379463daedbd:0x18923e97a9fa2268!8m2!3d-12.2589311!4d-38.9640043",
+      "logintude" : "-38.9640139",
+      "logo" : "perfil",
+      "nome" : "Posto Eldorado",
+      "nome_filtro" : "POSTO ELDORADO"
+    },
+    "PostoJacipe" : {
+      "alcool" : 3.36,
+      "bairro" : "R. Landulfo Alves, 2 - Sobradinho, Feira de Santana - BA, 44021-405",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 4.619,
+      "gasolina" : 4.369,
+      "gasolinaAd" : 4.369,
+      "latitude" : "-12.2425992",
+      "link" : "https://www.google.com.br/maps/place/Posto+Jacuipe/@-12.2425992,-38.9719413,19z/data=!4m12!1m6!3m5!1s0x714381a77e10c01:0x10d94232e763bd1e!2sRede+Lubrijau+-+Adrielli!8m2!3d-12.2318117!4d-38.9718724!3m4!1s0x714381e1fa76925:0x26a33a4484498fe7!8m2!3d-12.2425462!4d-38.9710727",
+      "logintude" : "-38.9719413",
+      "logo" : "perfil",
+      "nome" : "Posto Jacuipe",
+      "nome_filtro" : "POSTO JACUIPE"
+    },
+    "posto2001" : {
+      "alcool" : 3.359,
+      "bairro" : "Av. Pres. Dutra, 128 - Centro, Feira de Santana - BA, 44001-544",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.449,
+      "dieselAd" : 3.549,
+      "gasolina" : 4.369,
+      "gasolinaAd" : 4.369,
+      "latitude" : "-12.2591927",
+      "link" : "https://www.google.com.br/maps/place/Posto+2001/@-12.2591927,-38.9650573,18z/data=!4m5!3m4!1s0x0:0xea2a262bfcb5bc0a!8m2!3d-12.2594741!4d-38.9637708",
+      "logintude" : "-38.9650573",
+      "logo" : "perfil",
+      "nome" : "Posto 2001",
+      "nome_filtro" : "POSTO 2001"
+    },
+    "postoAmazonas" : {
+      "alcool" : 3.37,
+      "bairro" : "Rua Visconde do Rio Branco, 825 - Tanque da Nacao, Feira de Santana - BA, 44026-000",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.45,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.53,
+      "gasolinaAd" : 4.53,
+      "latitude" : "-12.2494276",
+      "link" : "https://www.google.com.br/maps/place/Posto+Amazonas/@-12.2494276,-38.9634647,18.75z/data=!4m8!1m2!2m1!1sposto+radial+feira+de+santana!3m4!1s0x714378b86bad0c1:0xb6c3dc6576640a!8m2!3d-12.2492158!4d-38.9636128",
+      "logintude" : "-38.9634647",
+      "logo" : "perfil",
+      "nome" : "Posto Amazonas",
+      "nome_filtro" : "POSTO AMAZONAS"
+    },
+    "postoAndressa" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. João Durval Carneiro, 3797 - Olhos D'agua, Feira de Santana - BA, 44090-008",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.44,
+      "dieselAd" : 3.59,
+      "gasolina" : 4.37,
+      "gasolinaAd" : 4.42,
+      "latitude" : "-12.2376",
+      "link" : "https://www.google.com.br/maps/place/Posto+Andressa/@-12.2376,-38.9466159,18.75z/data=!4m12!1m6!3m5!1s0x714382c0ea30d15:0xfad80d9a426ad17c!2sRede+de+Postos+Menor+Pre%C3%A7o!8m2!3d-12.2413384!4d-38.9503064!3m4!1s0x7143832ab5a7d93:0xe666d9f5690b54e3!8m2!3d-12.2373607!4d-38.9459264",
+      "logintude" : "-38.9466159",
+      "logo" : "ipiranga",
+      "nome" : "Posto Andressa",
+      "nome_filtro" : "POSTO ANDRESSA"
+    },
+    "postoAstec" : {
+      "alcool" : 3.358,
+      "bairro" : "Av. Eduardo Fróes da Mota, 1197 - Santa Monica, Feira de Santana - BA, 44100-000",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.59,
+      "dieselAd" : 3.64,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.69,
+      "latitude" : "-12.26302",
+      "link" : "https://goo.gl/maps/1WWFUPTj5FyTHuuG8",
+      "logintude" : "-38.932536",
+      "logo" : "shell",
+      "nome" : "Posto Astec",
+      "nome_filtro" : "POSTO ASTEC"
+    },
+    "postoBahia" : {
+      "alcool" : 3.329,
+      "bairro" : "Av. Transnordestina, 2060 - Campo Limpo, Feira de Santana - BA, 44032-411",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.39,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.33,
+      "gasolinaAd" : 4.33,
+      "latitude" : "-12.2220468",
+      "link" : "https://www.google.com.br/maps/place/Menor+pre%C3%A7o/@-12.2220468,-38.9652416,17z/data=!4m5!3m4!1s0x7143841ee34ccb3:0x5a64d37e83d33e1c!8m2!3d-12.2207289!4d-38.9660054",
+      "logintude" : "-38.9652416",
+      "logo" : "menor",
+      "nome" : "Posto Bahia",
+      "nome_filtro" : "POSTO BAHIA"
+    },
+    "postoBrx" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. Sampaio, 788 - Centro, Feira de Santana - BA, 44001-472",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.48,
+      "dieselAd" : 3.53,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.65,
+      "latitude" : "-12.2574047",
+      "link" : "https://goo.gl/maps/Hrqcxy2juqjxK3wE6",
+      "logintude" : "-38.9579132",
+      "logo" : "petro",
+      "nome" : "Posto Brx",
+      "nome_filtro" : "POSTO BRX"
+    },
+    "postoCajueiro" : {
+      "alcool" : 3.49,
+      "bairro" : "Av. Pres. Dutra, 3300 - Santa Monica, Feira de Santana - BA, 44050-500",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.59,
+      "dieselAd" : 3.65,
+      "gasolina" : 4.53,
+      "gasolinaAd" : 4.65,
+      "latitude" : "-12.2705183",
+      "link" : "https://www.google.com.br/maps/place/Posto+Cajueiro/@-12.2705183,-38.9375279,17z/data=!4m12!1m6!3m5!1s0x714379ad05d23f9:0x9de8c904aef180cf!2sPosto+Cajueiro!8m2!3d-12.2702302!4d-38.9378176!3m4!1s0x714379ad05d23f9:0x9de8c904aef180cf!8m2!3d-12.2702302!4d-38.9378176",
+      "logintude" : "-38.9375279",
+      "logo" : "petro",
+      "nome" : "Posto Cajueiro",
+      "nome_filtro" : "POSTO CAJUEIRO"
+    },
+    "postoConte" : {
+      "alcool" : 3.36,
+      "bairro" : "Av. Eduardo Fróes da Mota, 1680 - Sim, Feira de Santana - BA, 44030-730",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.54,
+      "dieselAd" : 3.59,
+      "gasolina" : 4.59,
+      "gasolinaAd" : 4.89,
+      "latitude" : "-12.2534709",
+      "link" : "https://www.google.com.br/maps/place/Posto+Conterraneo+Derivados+de+Petroleo/@-12.2534709,-38.9341408,17z/data=!4m5!3m4!1s0x71448208f040d3b:0xd8623a2de0da3ed5!8m2!3d-12.2534762!4d-38.9319521",
+      "logintude" : "-38.9341408",
+      "logo" : "shell",
+      "nome" : "Posto Conterraneo I",
+      "nome_filtro" : "POSTO CONTERRANEO"
+    },
+    "postoContorno" : {
+      "alcool" : 3.328,
+      "bairro" : "Av. Eduardo Fróes da Mota, 1951 - Parque Getúlio Vargas, Feira de Santana - BA, 44076-822",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.33,
+      "gasolinaAd" : 4.33,
+      "latitude" : "-12.2528943",
+      "link" : "https://www.google.com.br/maps/place/Posto+Menor+Pre%C3%A7o/@-12.2528943,-38.9341944,17z/data=!4m5!3m4!1s0x7143762e4eb5959:0xf7498c683ded22d4!8m2!3d-12.2510591!4d-38.933678",
+      "logintude" : "-38.9341944",
+      "logo" : "menor",
+      "nome" : "Posto Menor Preço ",
+      "nome_filtro" : "POSTO MENOR PREÇO"
+    },
+    "postoContornoTropical" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. Eduardo Fróes da Mota, 6185 - Cidade Nova, Feira de Santana - BA, 44053-005",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.54,
+      "dieselAd" : 3.64,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.66,
+      "latitude" : "-12.2322337",
+      "link" : "https://www.google.com.br/maps/place/Posto+Contorno+Ltda/@-12.2322337,-38.9583141,17z/data=!4m12!1m6!3m5!1s0x714383a2dcd4327:0xc7ca8cd8bce4e2ae!2sPosto+Tropical!8m2!3d-12.232239!4d-38.9561254!3m4!1s0x0:0x5128909d2bac73b0!8m2!3d-12.2307354!4d-38.958225",
+      "logintude" : "-38.9583141",
+      "logo" : "petro",
+      "nome" : "Posto Contorno",
+      "nome_filtro" : "POSTO CONTORNO"
+    },
+    "postoGetulio" : {
+      "alcool" : 3.36,
+      "bairro" : "Av. Getúlio Vargas, 1839 - Ponto Central, Feira de Santana - BA, 44075-425",
+      "data" : "Atualizado:16/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.53,
+      "gasolinaAd" : 4.53,
+      "latitude" : "-12.2559569",
+      "link" : "https://goo.gl/maps/EP29Nx8r3oE4W3gD9",
+      "logintude" : "-38.9472459",
+      "logo" : "menor",
+      "nome" : "Posto Getúlio Vargas",
+      "nome_filtro" : "POSTO GETULIO VARGAS"
+    },
+    "postoIdeal" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. Visc. do Rio Branco, 1012 - Centro, Feira de Santana - BA, 44050-012",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.54,
+      "dieselAd" : 3.59,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.66,
+      "latitude" : "-12.2466097",
+      "link" : "https://www.google.com.br/maps/place/Posto+Petrobras/@-12.2466097,-38.9633945,18.75z/data=!4m8!1m2!2m1!1sposto+radial+feira+de+santana!3m4!1s0x714378a526e119d:0x335a3586d53741a!8m2!3d-12.2461601!4d-38.96359",
+      "logintude" : "-38.9633945",
+      "logo" : "petro",
+      "nome" : "Posto Ideal",
+      "nome_filtro" : "POSTO IDEAL"
+    },
+    "postoKali" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. Pres. Dutra, 1320 - Capuchinhos, Feira de Santana - BA, 44052-000",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.59,
+      "dieselAd" : 0,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.86,
+      "latitude" : "-12.2600485",
+      "link" : "https://www.google.com.br/maps/place/Posto+Shell+-+Posto+Kalilandia+Ltda/@-12.2601078,-38.9531071,17z/data=!4m5!3m4!1s0x0:0xb444f6a2e86072f!8m2!3d-12.2597919!4d-38.9530275",
+      "logintude" : "-38.9537461",
+      "logo" : "shell",
+      "nome" : "Posto Shell-Kalilandia",
+      "nome_filtro" : "POSTO KALILANDIA"
+    },
+    "postoKalilanciaLagoa" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. José Falcão da Silva, SN - Queimadinha, Feira de Santana - BA, 44026-100",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.49,
+      "dieselAd" : 0,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.86,
+      "latitude" : "-12.2406186",
+      "link" : "https://www.google.com.br/maps/place/POSTO+KALILANDIA+LTDA/@-12.2406186,-38.9637681,17.5z/data=!4m8!1m2!2m1!1sposto+radial+feira+de+santana!3m4!1s0x0:0x37d00b9f57916975!8m2!3d-12.2407565!4d-38.9639508",
+      "logintude" : "-38.9637681",
+      "logo" : "shell",
+      "nome" : "Posto Kalilandia LTDA",
+      "nome_filtro" : "POSTO KALILANDIA"
+    },
+    "postoMariaQ" : {
+      "alcool" : 3.36,
+      "bairro" : "Av. Maria Quitéria, 3200 - Queimadinha, Feira de Santana - BA, 44050-398",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.53,
+      "gasolinaAd" : 4.53,
+      "latitude" : "-12.2399582",
+      "link" : "https://goo.gl/maps/tNsftzSdWPj5ZhZy9",
+      "logintude" : "-38.9540546",
+      "logo" : "menor",
+      "nome" : "Posto Maria Quiteria",
+      "nome_filtro" : "POSTO MARIA QUITERIA"
+    },
+    "postoMenorShop" : {
+      "alcool" : 3.36,
+      "bairro" : "61, R. Araraquara, 1 - Cel. Jose Pinto, Feira de Santana - BA, 44090-008",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.49,
+      "dieselAd" : 0,
+      "gasolina" : 4.53,
+      "gasolinaAd" : 4.53,
+      "latitude" : "-12.2408081",
+      "link" : "https://www.google.com.br/maps/place/Menor+Pre%C3%A7o/@-12.2408081,-38.9485748,18z/data=!4m12!1m6!3m5!1s0x714382c0ea30d15:0xfad80d9a426ad17c!2sRede+de+Postos+Menor+Pre%C3%A7o!8m2!3d-12.2413384!4d-38.9503064!3m4!1s0x0:0xfc5e8caf7fc572b1!8m2!3d-12.2411464!4d-38.9463947",
+      "logintude" : "-38.9485748",
+      "logo" : "menor",
+      "nome" : "Posto Menor Preço",
+      "nome_filtro" : "POSTO MENOR PREÇO"
+    },
+    "postoModelo" : {
+      "alcool" : 3.459,
+      "bairro" : "Av. Getúlio Vargas, 18 - Centro, Feira de Santana - BA, 40301-110",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 3.629,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.66,
+      "latitude" : "-12.2549247",
+      "link" : "https://www.google.com.br/maps/place/Posto+Modelo/@-12.2549247,-38.9659587,17z/data=!3m1!4b1!4m5!3m4!1s0x71437925bb95813:0x9cd907c08324b072!8m2!3d-12.25493!4d-38.96377",
+      "logintude" : "-38.9659587",
+      "logo" : "petro",
+      "nome" : "Posto Modelo",
+      "nome_filtro" : "POSTO MODELO"
+    },
+    "postoMonaco" : {
+      "alcool" : 3.399,
+      "bairro" : "R. dos Tupinambás, 4000 - São JOÃO, Feira de Santana - BA, 44051-224",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.599,
+      "dieselAd" : 3.649,
+      "gasolina" : 4.569,
+      "gasolinaAd" : 4.749,
+      "latitude" : "-12.2335657",
+      "link" : "https://www.google.com.br/maps/place/POSTO+MONACO/@-12.2335657,-38.95069,17z/data=!3m1!4b1!4m5!3m4!1s0x71439ccc1401d21:0x7e32723c92f34c4e!8m2!3d-12.233571!4d-38.9485013",
+      "logintude" : "-38.95069",
+      "logo" : "shell",
+      "nome" : "Posto Monaco",
+      "nome_filtro" : "POSTO MONACO"
+    },
+    "postoNosso" : {
+      "alcool" : 3.39,
+      "bairro" : "R. Voluntários da Pátria, 402 - Baraúnas, Feira de Santana - BA, 44010-018",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.56,
+      "dieselAd" : 3.59,
+      "gasolina" : 4.46,
+      "gasolinaAd" : 4.46,
+      "latitude" : "-12.2461599",
+      "link" : "https://www.google.com.br/maps/place/Rede+Nosso+Posto/@-12.2461599,-38.9673535,16.71z/data=!4m5!3m4!1s0x0:0x6037a0e380ceccd4!8m2!3d-12.2463823!4d-38.9676221",
+      "logintude" : "-38.9673535",
+      "logo" : "petro",
+      "nome" : "Posto Trevo",
+      "nome_filtro" : "POSTO TREVO"
+    },
+    "postoOavi" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. Maria Quitéria, 3259 - Queimadinha, Feira de Santana - BA, 44001-008",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 3.64,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.66,
+      "latitude" : "-12.2393185",
+      "link" : "https://www.google.com.br/maps/place/Posto+Petrobras/@-12.2393185,-38.9535583,19z/data=!4m12!1m6!3m5!1s0x714382ee303f2b9:0xf7e8f340c4b35e66!2sPosto+Petrobras!8m2!3d-12.239402!4d-38.95358!3m4!1s0x714382ee303f2b9:0xf7e8f340c4b35e66!8m2!3d-12.239402!4d-38.95358",
+      "logintude" : "-38.9535583",
+      "logo" : "petro",
+      "nome" : "Posto Petrobras",
+      "nome_filtro" : "POSTO PETROBRAS"
+    },
+    "postoPresidente" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. Maria Quitéria, 1199 - Serraria Brasil, Feira de Santana - BA, 44003-000",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.54,
+      "dieselAd" : 3.64,
+      "gasolina" : 4.56,
+      "gasolinaAd" : 4.66,
+      "latitude" : "-12.2603083",
+      "link" : "https://www.google.com.br/maps/place/Posto+Presidente/@-12.2603083,-38.9536114,19z/data=!4m12!1m6!3m5!1s0x0:0xb444f6a2e86072f!2sPosto+Shell+-+Posto+Kalilandia+Ltda!8m2!3d-12.2597919!4d-38.9530275!3m4!1s0x714379ad05d23f9:0xcce183a163af2690!8m2!3d-12.2604897!4d-38.9536719",
+      "logintude" : "-38.9536114",
+      "logo" : "petro",
+      "nome" : "Posto Presidente",
+      "nome_filtro" : "POSTO PRESIDENTE"
+    },
+    "postoRadial" : {
+      "alcool" : 3.32,
+      "bairro" : "BR-116, 1 - Parque Ipe, Feira de Santana - BA, 44054-008",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.39,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.33,
+      "gasolinaAd" : 0,
+      "latitude" : "-12.2144698",
+      "link" : "https://www.google.com.br/maps/place/Auto+Posto+Radial/@-12.2144698,-38.9653286,17.5z/data=!4m8!1m2!2m1!1sposto+radial+feira+de+santana!3m4!1s0x0:0x5ac6800dc3be41fb!8m2!3d-12.2144931!4d-38.965251",
+      "logintude" : "-38.9653286",
+      "logo" : "shell",
+      "nome" : "Posto Radial",
+      "nome_filtro" : "POSTO RADIAL"
+    },
+    "postoSao" : {
+      "alcool" : 0,
+      "bairro" : "18, BR-116, s/n, Feira de Santana - BA, 44140-000",
+      "data" : "Atualizado:09/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 0,
+      "gasolina" : 0,
+      "gasolinaAd" : 0,
+      "latitude" : "-12.0846964",
+      "link" : "https://www.google.com.br/maps/place/Rede+Lubrijau+-+Posto+S.+Crist%C3%B3v%C3%A3o/@-12.0846964,-38.9688888,17z/data=!4m12!1m6!3m5!1s0x714155d1b33b30d:0xb9100a200d905158!2sRede+Lubrijau+-+Posto+S.+Crist%C3%B3v%C3%A3o!8m2!3d-12.0846964!4d-38.9688888!3m4!1s0x714155d1b33b30d:0xb9100a200d905158!8m2!3d-12.0846964!4d-38.9688888",
+      "logintude" : "-38.9688888",
+      "logo" : "shell",
+      "nome" : "Posto S. Cristóvão",
+      "nome_filtro" : "POSTO SAO CRISTOVAO"
+    },
+    "postoSaogon" : {
+      "alcool" : 0,
+      "bairro" : "Rodovia BR-116, KM 425, s/n - Distrito Maria Quitéria, Feira de Santana - BA, 44036-331",
+      "data" : "Atualizado:08/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 0,
+      "gasolina" : 0,
+      "gasolinaAd" : 0,
+      "latitude" : "-12.1768552",
+      "link" : "https://www.google.com.br/maps/place/Posto+S%C3%A3o+Gon%C3%A7alo+3/@-12.1768552,-38.9651031,17z/data=!4m12!1m6!3m5!1s0x71438c8404bbfd1:0x4e1f7af67e0dbf80!2zUG9zdG8gU8OjbyBHb27Dp2FsbyAz!8m2!3d-12.1768108!4d-38.9662061!3m4!1s0x71438c8404bbfd1:0x4e1f7af67e0dbf80!8m2!3d-12.1768108!4d-38.9662061",
+      "logintude" : "-38.9651031",
+      "logo" : "ipiranga",
+      "nome" : "Posto São Gonçalo 3",
+      "nome_filtro" : "POSTO SÃO GONÇALO"
+    },
+    "postoShalom" : {
+      "alcool" : 3.359,
+      "bairro" : "Av. Eduardo Fróes da Mota, 1500 - Lagoa Salgada, Feira de Santana - BA, 44082-000",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.42,
+      "dieselAd" : 3.52,
+      "gasolina" : 4.369,
+      "gasolinaAd" : 4.79,
+      "latitude" : "-12.2592397",
+      "link" : "https://www.google.com.br/maps/place/Posto+Shalom/@-12.2592397,-38.9338867,17z/data=!3m1!4b1!4m5!3m4!1s0x714376f662a42c3:0xdcdc0b523b5446fc!8m2!3d-12.259245!4d-38.931698",
+      "logintude" : "-38.9338867",
+      "logo" : "shell",
+      "nome" : "Posto Shalom",
+      "nome_filtro" : "POSTO SHALOM"
+    },
+    "postoTrevo" : {
+      "alcool" : 0,
+      "bairro" : "Av. Eduardo Fróes da Mota, 970 - Tomba, Feira de Santana - BA, 44090-156",
+      "data" : "Atualizado:06/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 0,
+      "gasolina" : 0,
+      "gasolinaAd" : 0,
+      "latitude" : "-12.2863696",
+      "link" : "https://goo.gl/maps/KQfG9eKnP8SJ1qJd8",
+      "logintude" : "-38.9637566",
+      "logo" : "petro",
+      "nome" : "Posto Trevo 7",
+      "nome_filtro" : "POSTO TREVO 7"
+    },
+    "postoTropical" : {
+      "alcool" : 3.32,
+      "bairro" : "Av. Eduardo Fróes da Mota, 5700 - Sobradinho, Feira de Santana - BA, 44050-656",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.539,
+      "dieselAd" : 3.619,
+      "gasolina" : 4.33,
+      "gasolinaAd" : 4.74,
+      "latitude" : "-12.2318129",
+      "link" : "https://www.google.com.br/maps/place/Posto+Tropical/@-12.2318129,-38.9561177,17z/data=!4m12!1m6!3m5!1s0x714383a2dcd4327:0xc7ca8cd8bce4e2ae!2sPosto+Tropical!8m2!3d-12.232239!4d-38.9561254!3m4!1s0x714383a2dcd4327:0xc7ca8cd8bce4e2ae!8m2!3d-12.232239!4d-38.9561254",
+      "logintude" : "-38.9561177",
+      "logo" : "shell",
+      "nome" : "Posto Tropical",
+      "nome_filtro" : "POSTO TROPICAL"
+    },
+    "redeMenor" : {
+      "alcool" : 3.36,
+      "bairro" : "R. Cel. José Pinto dos Santos, 1140 - São JOÃO, Feira de Santana - BA, 44051-400",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.53,
+      "gasolinaAd" : 4.53,
+      "latitude" : "-12.2410597",
+      "link" : "https://goo.gl/maps/RVyghFMvX7PGYm3Q6",
+      "logintude" : "-38.9504148",
+      "logo" : "menor",
+      "nome" : "Posto boulevard",
+      "nome_filtro" : "POSTO BOULEVARD"
+    },
+    "trevo10" : {
+      "alcool" : 3.39,
+      "bairro" : "Av. Pres. Dutra, 2325 - Capuchinhos, Feira de Santana - BA, 44060-000",
+      "data" : "Atualizando:20/05/2019",
+      "diesel" : 0,
+      "dieselAd" : 3.59,
+      "gasolina" : 4.46,
+      "gasolinaAd" : 4.46,
+      "latitude" : "-12.2653055",
+      "link" : "https://www.google.com.br/maps/place/Trevo+Derivados+de+Petroleo/@-12.2653055,-38.9450939,98m/data=!3m1!1e3!4m12!1m6!3m5!1s0x71437754714f2c3:0x7561a925487e4521!2sTrevo+Derivados+de+Petroleo!8m2!3d-12.2654277!4d-38.9451505!3m4!1s0x71437754714f2c3:0x7561a925487e4521!8m2!3d-12.2654277!4d-38.9451505",
+      "logintude" : "-38.9450939",
+      "logo" : "petro",
+      "nome" : "Posto Trevo 10",
+      "nome_filtro" : "POSTO TREVO 10"
+    },
+    "trevoCidade" : {
+      "alcool" : 3.32,
+      "bairro" : "820, Av. Frei Félix de Pacauba, 658 - Parque Ipe, Feira de Santana - BA, 44061-000",
+      "data" : "Atualizado:20/05/2019",
+      "diesel" : 3.43,
+      "dieselAd" : 0,
+      "gasolina" : 4.33,
+      "gasolinaAd" : 4.33,
+      "latitude" : "-12.223232",
+      "link" : "https://www.google.com.br/maps/place/Posto+Trevo/@-12.223232,-38.9648897,18.25z/data=!4m13!1m7!3m6!1s0x71438404dc77565:0x4423f322f4cbcd5b!2sAv.+Transnordestina,+2300+-+Parque+Ipe,+Feira+de+Santana+-+BA,+44054-008!3b1!8m2!3d-12.2228898!4d-38.9649621!3m4!1s0x71438404ee69f3d:0x7fac0e71232f36d2!8m2!3d-12.2232317!4d-38.9648896",
+      "logintude" : "-38.9648897",
+      "logo" : "petro",
+      "nome" : "Posto Trevo",
+      "nome_filtro" : "POSTO TREVO"
+    }
+  },
+  "bug" : {
+    "-LdgTKvB_ooXQEHP-V6s" : {
+      "texto" : "kkkkkkkkkkkk"
+    },
+    "-LdgTOo9rIuD8-jhvjIx" : {
+      "texto" : "uuuuu"
+    },
+    "-LdgTTW-tu3bgSDhtS7x" : {
+      "texto" : "gostaria yguhhh"
+    },
+    "-LdudUILRCX_sXHMKk1f" : {
+      "texto" : "Pontos positivos: não ocupa muito espaço no celular, layout fácil para manuseio.\nPontos para melhorar: acrescentar gasolina aditivada, acrescentar mais postos, ter um aviso sobre quando vai aumentar os preços."
+    },
+    "-LeC46GV_tFbzzwgdWbW" : {
+      "texto" : "top"
+    },
+    "-LeCrhJXX0xS2AedgZ7V" : {
+      "texto" : "o desenvolvedor é um xuxuzinho, como faço pra ter o wpp dele? "
+    },
+    "-LeO5ddNNqwt4wbgWZJP" : {
+      "texto" : "test12345678@c.us"
+    },
+    "-LeVvnQIlTYy96ktGzPl" : {
+      "texto" : "cumpa, coloca alarme de preco. tipo, abaixo de x reais dispara um alarme/notificacao pro usuario. e o usuario define o valor de x "
+    },
+    "-LeYoPN24TREWIs6AfTH" : {
+      "texto" : "Vcs devem compartilhar a alimentação do sistema, pois o usuário pode contribuir com as cotações diárias. Ou criar campo para alocar cotações. Se 2 ou 3 usuários relatarem o mesmo preço, já é um indicativo que a informação é verifica."
+    },
+    "-LeZ2lxeNVPc2hyDf939" : {
+      "texto" : "Olá, excelente APP, bastante diferenciado. Como sugestão poderiam incluir um filtro para o Diesel S10\n"
+    },
+    "-LemnpJX1u_lRbtrZkd3" : {
+      "texto" : "poderíamos melhorar as buscas adicionando uma ordenação por preço e distância. Também poderiamos adicionar um teto para as buscar, exemplo: só exibir registros até 5km de distância ou até 4,6 reais."
+    },
+    "-LeqyUc4_yHJd05c8j5T" : {
+      "texto" : "a atualização demora muito! tô caindo fora! tem que criar banco de dados para receber cotações dos usuários!"
+    },
+    "-LessBUjcjH1sxv0LxrL" : {
+      "texto" : "Os postos que estão aparecendo são de outra cidade\n"
+    },
+    "-LexIsgk2yFb_soISO2G" : {
+      "texto" : "devia ta a cidade nao tudo misturado"
+    },
+    "-Lf0XDxPAeORIFRBXq5s" : {
+      "texto" : "isso prova o cartel que temos em Feira de Santana-BA"
+    },
+    "-Lf5Zdcd1yS9A1exAGqo" : {
+      "texto" : "x"
+    },
+    "-LfClalJZKIQEe9nH7SW" : {
+      "texto" : "vcs só atualizaram até o dia 14 de maio?"
+    },
+    "-LfCwfA06LprnFQQofh8" : {
+      "texto" : "uma caixa para gente enviar foto de postas que esteja mais barato que não esteja no sistema do aplicativo comendo a BR que eu abasteço de 4:39"
+    },
+    "-LfI4WexFqwJ3UBMEzUY" : {
+      "texto" : "posto Bahia tá de 433\n"
+    },
+    "-LfIHZrHJfh3NKaYzowx" : {
+      "texto" : "Sugestão, pesquisa de postos por bairro"
+    },
+    "-LfLG90rXlUdR10mECys" : {
+      "texto" : "Comparativo álcool X gasolina só resulta em gasolina. "
+    },
+    "-LfSKHP-V_PWc9YPJHDr" : {
+      "texto" : "Não aparece os postos da minha cidade. "
+    }
+  },
+  "cadastroPosto" : {
+    "-Le-xxa-C7bZPknVxm9s" : {
+      "bairro" : "sobradinho",
+      "nome" : "naruto"
+    },
+    "-LeO5Y3k4NosntDvOtgw" : {
+      "bairro" : "test12345678@c.us",
+      "nome" : "test12345678@c.us"
+    },
+    "-LeO7_OsAwrpSr5lsrGH" : {
+      "bairro" : "centro",
+      "nome" : "brx"
+    },
+    "-LeQobrnVxax4JlAmG30" : {
+      "bairro" : "Av. Noide Cerqueira, Lagoa Salgada",
+      "nome" : "Posto São Gonçalo Nóide Cerqueira"
+    },
+    "-LeYnlcnm-S-a8M7OCt9" : {
+      "bairro" : "Pedra do Descanso",
+      "nome" : "Menor Preço"
+    },
+    "-LeYsI6afKAceLolVLkL" : {
+      "bairro" : "Tomba",
+      "nome" : "Posto Papa João XIII"
+    },
+    "-Le_10-t29gsfKX8VWVk" : {
+      "bairro" : "muchila",
+      "nome" : "posto muchila"
+    },
+    "-LekY8inXomXVGLtfkmP" : {
+      "bairro" : "messias",
+      "nome" : "posto pichilau"
+    },
+    "-LemdTZRhrUea2_I-Uvv" : {
+      "bairro" : "Tomba ",
+      "nome" : "Gás auto "
+    },
+    "-LesXUtlqNh5sLsaXPej" : {
+      "bairro" : "Av. Fraga Maia",
+      "nome" : "Posto Itatiaia"
+    },
+    "-LewN1m0IbCMmZJW2Lud" : {
+      "bairro" : "sobradinho ",
+      "nome" : "posto Jacuípe "
+    },
+    "-LexUK-wDOMJ9kRWo-aS" : {
+      "bairro" : "Jardim Cruzeiro",
+      "nome" : "Posto Adriele"
+    },
+    "-LexdL2-GOzDZKHHH1Lt" : {
+      "bairro" : "ba502",
+      "nome" : "posto pau de légua"
+    },
+    "-Lezl5kAF9NNzEEa4u9r" : {
+      "bairro" : "Noide Cerqueira",
+      "nome" : "Posto São Gonçalo"
+    },
+    "-Lf0PEffRHexQFTPVuxX" : {
+      "bairro" : "Josef Wagner ",
+      "nome" : "menor preço "
+    },
+    "-Lf2EDcGdFrQKP9kQzER" : {
+      "bairro" : "BR 324 ",
+      "nome" : "Posto São Luiz GNV"
+    },
+    "-Lf2RqRkoOW-iuuGNdqG" : {
+      "bairro" : "centro",
+      "nome" : "posto são luiz"
+    },
+    "-Lf5ZbH8IzTW64qXpqT-" : {
+      "bairro" : "x",
+      "nome" : "z"
+    },
+    "-LfFhl3RT1DH2RAkcIus" : {
+      "bairro" : "São Bernardo do campo SP",
+      "nome" : "Ipiranga"
+    },
+    "-LfHEHYR0BSkvIeHLGvd" : {
+      "bairro" : "Novo Horizonte",
+      "nome" : "Posto São Gonçalo 3"
+    },
+    "-LfHLD1B-V8tnfLKaI0x" : {
+      "bairro" : "Jacaré",
+      "nome" : "Posto Jacaré"
+    },
+    "-LfIdUZtrIloZVQkk_jX" : {
+      "bairro" : "Br 116",
+      "nome" : "s. Cristóvão "
+    },
+    "-LfSCghaAb54nHOM4-UV" : {
+      "bairro" : "tomba",
+      "nome" : "shell power"
+    },
+    "-LfSY60x109BoPGxua0v" : {
+      "bairro" : "João Paulo ",
+      "nome" : "ale"
+    },
+    "-LfTqo3y9GRRvyo37V4j" : {
+      "bairro" : "Conceição",
+      "nome" : "Posto Conceição"
+    }
+  },
+  "cadastroPrecosGas" : {
+    "-LfPjOyPbZ05fwUOSvc4" : {
+      "data" : "21-05-2019",
+      "gas" : 2.99,
+      "nome" : "Posto Astec",
+      "usuario" : "pagotto@gmail.com"
+    }
+  },
+  "cadastroPrecosGeral" : {
+    "-LfPzIF5Am8jcxNmWtDi" : {
+      "alcool" : 3.32,
+      "data" : "21-05-2019",
+      "diesel" : 3.39,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.33,
+      "gasolinaAd" : 0,
+      "nome" : "Posto Radial",
+      "usuario" : "pagotto@gmail.com"
+    },
+    "-LfSEmhGIuIYaEusGSIu" : {
+      "alcool" : 3.329,
+      "data" : "21-05-2019",
+      "diesel" : 3.39,
+      "dieselAd" : 3.49,
+      "gasolina" : 4.33,
+      "gasolinaAd" : 4.33,
+      "nome" : "Posto Bahia",
+      "usuario" : "wstroks@gmail.com"
+    }
+  },
+  "postosgas" : {
+    "postoAstec" : {
+      "bairro" : "Av. Eduardo Fróes da Mota, 1197 - Santa Monica, Feira de Santana - BA, 44100-000",
+      "data" : "Atualizado:20/05/2019",
+      "gas" : 2.99,
+      "latitude" : "-12.2872589",
+      "link" : "https://goo.gl/maps/1WWFUPTj5FyTHuuG8",
+      "logo" : "shell",
+      "longitude" : "-39.0269781",
+      "nome" : "Posto Astec"
+    },
+    "postoBrx" : {
+      "bairro" : "Av. Sampaio, 788 - Centro, Feira de Santana - BA, 44001-472",
+      "data" : "Atualizado:20/05/2019",
+      "gas" : 2.99,
+      "latitude" : "-12.2574047",
+      "link" : "https://goo.gl/maps/Hrqcxy2juqjxK3wE6",
+      "logo" : "petro",
+      "longitude" : "-38.9579132",
+      "nome" : "Posto Brx",
+      "nome_filtroe" : "POSTO BRX"
+    },
+    "postoGasau" : {
+      "bairro" : "Av. Deputado Colbert Martins da Silva, 103 - Tomba, Feira de Santana - BA, 44091-002",
+      "data" : "Atualizado:20/05/2019",
+      "gas" : 2.99,
+      "latitude" : "-12.2874407",
+      "link" : "https://www.google.com.br/maps/place/Posto+Gasauto/@-12.2874407,-38.9591257,17z/data=!3m1!4b1!4m5!3m4!1s0x7143c70bfa10c21:0xd1417eec09c48f25!8m2!3d-12.287446!4d-38.956937",
+      "logo" : "shell",
+      "longitude" : "-38.9591257",
+      "nome" : "Posto Gasauto"
+    },
+    "postoKali" : {
+      "bairro" : "Av. Pres. Dutra, 1320 - Capuchinhos, Feira de Santana - BA, 44052-000",
+      "data" : "Atualizado:20/05/2019",
+      "gas" : 2.99,
+      "latitude" : "-12.2600656",
+      "link" : "https://www.google.com.br/maps/place/Posto+Shell+-+Posto+Kalilandia+Ltda/@-12.2600656,-38.9531071,15z/data=!4m5!3m4!1s0x714379dcba9b0f7:0xb444f6a2e86072f!8m2!3d-12.2597918!4d-38.9530273",
+      "logo" : "shell",
+      "longitude" : "-38.9531071",
+      "nome" : "Posto Shell - Kalilandia"
+    },
+    "postoPetro" : {
+      "bairro" : "Av. Presidente Dutra, 2.325 - Centro  Feira de Santana - Bahia ",
+      "data" : "Atualizado:20/05/2019",
+      "gas" : 2.99,
+      "latitude" : "-12.2595279",
+      "link" : "https://www.google.com.br/maps/place/Posto+Petromasa/@-12.2595279,-38.9615498,17z/data=!4m8!1m2!2m1!1sAv.+Presidente+Dutra,+2.325+-+Centro%C2%A0+Feira+de+Santana+-+Bahia%C2%A0!3m4!1s0x0:0x7b0bdb44056c3d7c!8m2!3d-12.2595081!4d-38.9613437",
+      "logo" : "perfil",
+      "longitude" : "-38.9615498",
+      "nome" : "Posto Petromassa"
+    },
+    "postoPortal" : {
+      "bairro" : "Rodovia BR 324, s/n - Subaé, Feira de Santana - BA, 44079-002",
+      "data" : "Atualizado:20/05/2019",
+      "gas" : 2.99,
+      "latitude" : "-12.2786038",
+      "link" : "https://www.google.com.br/maps/place/Posto+SHELL+Portal+do+Sert%C3%A3o+%2BGNV+%2B/@-12.2786038,-38.9301976,17z/data=!3m1!4b1!4m5!3m4!1s0x71439cccf6a571d:0xb5efbd33353b6c2!8m2!3d-12.2786091!4d-38.9280089",
+      "logo" : "shell",
+      "longitude" : "-38.9301976",
+      "nome" : "Posto Portal do Sertão"
+    }
+  }
+}
