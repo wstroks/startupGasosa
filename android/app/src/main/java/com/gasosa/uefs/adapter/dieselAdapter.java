@@ -122,6 +122,19 @@ public class dieselAdapter extends RecyclerView.Adapter<dieselAdapter.MyViewHold
             }
         });
 
+        myViewHolder.addCompartilharDiesel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.setType("text/plain");
+                String Texto= "O preço do Diesel Comum(S500) no "+posto.getNome().toString()+" está R$"+posto.getDiesel().toString()+ " "+ posto.getData() ;
+                it.putExtra(Intent.EXTRA_SUBJECT,Texto);
+                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
+
+                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
+            }
+        });
+
     }
     private void getLocation(final Posto posto, final MyViewHolder my) {
 
@@ -186,6 +199,8 @@ public class dieselAdapter extends RecyclerView.Adapter<dieselAdapter.MyViewHold
         TextView distan;
         ImageView circleImageView;
         ImageButton adddiesel;
+        ImageButton addCompartilharDiesel;
+
 
 
     public MyViewHolder(@NonNull View itemView) {
@@ -198,6 +213,7 @@ public class dieselAdapter extends RecyclerView.Adapter<dieselAdapter.MyViewHold
         distan= itemView.findViewById(R.id.distanciaKMDi);
         circleImageView= itemView.findViewById(R.id.profile_diesel);
         adddiesel=itemView.findViewById(R.id.addDiesel);
+        addCompartilharDiesel = itemView.findViewById(R.id.addCompartilharDiesel);
 
 
     }

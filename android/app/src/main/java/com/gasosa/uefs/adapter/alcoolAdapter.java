@@ -125,6 +125,19 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
             }
         });
 
+        myViewHolder.addCompartilharAlcool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.setType("text/plain");
+                String Texto= "O preço do Álcool(Etanol) no "+posto.getNome().toString()+" está R$"+posto.getAlcool().toString()+ " "+ posto.getData() ;
+                it.putExtra(Intent.EXTRA_SUBJECT,Texto);
+                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
+
+                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
+            }
+        });
+
     }
     private void getLocation(final Posto posto, final MyViewHolder my) {
 
@@ -192,7 +205,7 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
         TextView distan;
         ImageView circleImageView;
         ImageButton addAlcool;
-
+        ImageButton addCompartilharAlcool;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -205,6 +218,7 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
             distan= itemView.findViewById(R.id.distanciaKMAlcoolBuscar);
             circleImageView= itemView.findViewById(R.id.profile_alcool);
             addAlcool=itemView.findViewById(R.id.addAlcool);
+            addCompartilharAlcool=itemView.findViewById(R.id.addCompartilharAlcool);
 
 
 

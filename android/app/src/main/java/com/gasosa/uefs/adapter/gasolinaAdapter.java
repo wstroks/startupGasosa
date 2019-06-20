@@ -181,6 +181,19 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
                 context.startActivity(intent);
             }
         });
+
+        myViewHolder.addCompartilhar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.setType("text/plain");
+                String Texto= "O preço da Gasolina no "+posto.getNome().toString()+" está R$"+posto.getGasolina().toString()+ " "+ posto.getData() ;
+                it.putExtra(Intent.EXTRA_SUBJECT,Texto);
+                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
+
+                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
+            }
+        });
     }
 
 
@@ -398,6 +411,7 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
         TextView distan;
         ImageView circleImageView;
         ImageButton addGasolina;
+        ImageButton addCompartilhar;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -410,6 +424,7 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
            distan= itemView.findViewById(R.id.distanciaKM);
             circleImageView= itemView.findViewById(R.id.profile_gasolina);
             addGasolina= itemView.findViewById(R.id.addgasolina);
+            addCompartilhar= itemView.findViewById(R.id.addCompartilhar);
         }
 
     }

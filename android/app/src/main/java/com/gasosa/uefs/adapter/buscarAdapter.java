@@ -19,11 +19,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gasosa.uefs.R;
 import com.gasosa.uefs.acitivity.BuscarActivity;
+import com.gasosa.uefs.acitivity.ContribuirGeralActivity;
 import com.gasosa.uefs.helper.Local;
 import com.gasosa.uefs.model.Posto;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -153,6 +155,39 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
             }
         });
 
+        myViewHolder.addBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(context, ContribuirGeralActivity.class);
+                intent.putExtra("nomeX",posto.getNome().toString());
+                intent.putExtra("gasolina",posto.getGasolina().toString());
+                intent.putExtra("gasolinaAd",posto.getGasolinaAd().toString());
+                intent.putExtra("diesel",posto.getDiesel().toString());
+                intent.putExtra("dieselAd",posto.getDieselAd().toString());
+                intent.putExtra("alcool",posto.getAlcool().toString());
+                context.startActivity(intent);
+            }
+        });
+
+        myViewHolder.AddCompartilharBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.setType("text/plain");
+                String Texto1= "O preço da Gasolina no "+posto.getNome().toString()+" está R$"+posto.getGasolina().toString()+ "\n" ;
+                String Texto2= "O preço da Gasolina Aditivado no "+posto.getNome().toString()+" está R$"+posto.getGasolinaAd().toString()+ "\n" ;
+                String Texto3= "O preço do Álcool(Etanol) no "+posto.getNome().toString()+" está R$"+posto.getAlcool().toString()+ "\n" ;
+                String Texto4= "O preço do Diesel Comum(S500) no "+posto.getNome().toString()+" está R$"+posto.getDiesel().toString()+ " \n" ;
+                String Texto5= "O preço do Diesel Aditividado(S10) no "+posto.getNome().toString()+" está R$"+posto.getDieselAd().toString()+ " "+ posto.getData() ;
+
+                String Texto= "O preço da gasolina no "+posto.getNome().toString()+" está R$"+posto.getDiesel().toString()+ " "+ posto.getData() ;
+                it.putExtra(Intent.EXTRA_SUBJECT,Texto1);
+                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto1+Texto2 + Texto3 + Texto4 +Texto5 + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
+
+                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
+            }
+        });
+
     }
 
     private void getLocation(final Posto posto, final buscarAdapter.MyViewHolder my) {
@@ -225,6 +260,8 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
         Button button;
         TextView distan;
         ImageView circleImageView;
+        ImageButton addBuscar;
+        ImageButton AddCompartilharBuscar;
 
 
 
@@ -241,6 +278,8 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
             button= itemView.findViewById(R.id.buttonLinkAlcoolBuscar);
             distan= itemView.findViewById(R.id.distanciaKMAlcoolBuscar);
             circleImageView= itemView.findViewById(R.id.profile_xx);
+            addBuscar= itemView.findViewById(R.id.addBuscar);
+            AddCompartilharBuscar= itemView.findViewById(R.id.addCompartilharBuscar);
 
 
 

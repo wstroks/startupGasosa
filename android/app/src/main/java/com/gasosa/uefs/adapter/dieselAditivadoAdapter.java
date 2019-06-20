@@ -125,6 +125,19 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
             }
         });
 
+        myViewHolder.addCompartilharDieselAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.setType("text/plain");
+                String Texto= "O preço do Diesel Aditividado(S10) no "+posto.getNome().toString()+" está R$"+posto.getDieselAd().toString()+ " "+ posto.getData() ;
+                it.putExtra(Intent.EXTRA_SUBJECT,Texto);
+                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
+
+                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
+            }
+        });
+
     }
     private void getLocation(final Posto posto, final MyViewHolder my) {
 
@@ -189,6 +202,7 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
         TextView distan;
         ImageView circleImageView;
         ImageButton addDieselAd;
+        ImageButton addCompartilharDieselAd;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -201,7 +215,7 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
             distan= itemView.findViewById(R.id.distanciaKMDiA);
             circleImageView= itemView.findViewById(R.id.profile_dieselAd);
             addDieselAd=itemView.findViewById(R.id.addDieselAd);
-
+            addCompartilharDieselAd= itemView.findViewById(R.id.addCompartilharDieselAd);
 
         }
     }

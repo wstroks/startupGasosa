@@ -124,6 +124,19 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
                 context.startActivity(intent);
             }
         });
+
+        myViewHolder.addCompartilharGas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.setType("text/plain");
+                String Texto= "O preço do Gás(GNV) no "+posto.getNome().toString()+" está R$"+posto.getGas().toString()+ " "+ posto.getData() ;
+                it.putExtra(Intent.EXTRA_SUBJECT,Texto);
+                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
+
+                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
+            }
+        });
     }
 
     private void getLocation(final PostoGas posto, final MyViewHolder my) {
@@ -193,6 +206,7 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
         TextView distan;
         ImageView circleImageView;
         ImageButton add;
+        ImageButton addCompartilharGas;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -205,6 +219,7 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
             distan= itemView.findViewById(R.id.distanciaKMGas);
             circleImageView= itemView.findViewById(R.id.profile_GAS);
             add= itemView.findViewById(R.id.addGas);
+            addCompartilharGas=itemView.findViewById(R.id.addCompartilharGas);
 
 
         }
