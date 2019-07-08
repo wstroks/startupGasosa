@@ -64,8 +64,9 @@ public class dieselAdapter extends RecyclerView.Adapter<dieselAdapter.MyViewHold
         getLocation(posto,myViewHolder);
         myViewHolder.nome.setText(posto.getNome());
         myViewHolder.alcool.setText("R$ "+posto.getDiesel().toString());
+        myViewHolder.distan.setText("Gps(off)");
         myViewHolder.bairro.setText(posto.getBairro());
-        myViewHolder.data.setText(posto.getData());
+        myViewHolder.data.setText("Atualizado:"+posto.getData());
         if(posto.getLogo()!=null){
         if(posto.getLogo().equals("ipiranga")){
              Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
@@ -148,7 +149,7 @@ public class dieselAdapter extends RecyclerView.Adapter<dieselAdapter.MyViewHold
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#
             System.out.println("ashduashduasdhausdha2222");
-            ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},REQUEST_LOCATION);
+            //ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},REQUEST_LOCATION);
         }else{
         cli= LocationServices.getFusedLocationProviderClient(context);
         cli.getLastLocation().addOnSuccessListener((Activity) context, new OnSuccessListener<Location>() {

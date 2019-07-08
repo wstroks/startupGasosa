@@ -71,6 +71,7 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
         final Posto posto = listaPosto.get(i);
         getLocation(posto,myViewHolder);
         myViewHolder.nome.setText(posto.getNome());
+        myViewHolder.distan.setText("Gps(off)");
 
 
         if(posto.getAlcool()==0){
@@ -142,7 +143,7 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
         }}
 
         myViewHolder.bairro.setText(posto.getBairro());
-        myViewHolder.data.setText(posto.getData());
+        myViewHolder.data.setText("Atualizado:"+posto.getData());
 
         myViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +203,7 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#
             System.out.println("ashduashduasdhausdha2222");
-            ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},REQUEST_LOCATION);
+            //ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},REQUEST_LOCATION);
         }
         else{
             cli= LocationServices.getFusedLocationProviderClient(context);

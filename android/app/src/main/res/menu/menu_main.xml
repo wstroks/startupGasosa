@@ -14,6 +14,12 @@
 
         android:title="Editar"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/config"
+        android:icon="@drawable/ic_list_black_24dp"
+
+        android:title="Configurações"
+        app:showAsAction="always"/>
 
     <item android:id="@+id/menu_compartilhar"
         android:title="Compartilhar App"

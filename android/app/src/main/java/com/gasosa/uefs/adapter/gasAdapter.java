@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,7 +12,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,26 +23,25 @@ import android.widget.TextView;
 import com.gasosa.uefs.R;
 import com.gasosa.uefs.acitivity.contribuirActivity;
 import com.gasosa.uefs.helper.Local;
-import com.gasosa.uefs.model.Posto;
 import com.gasosa.uefs.model.PostoGas;
+import com.gasosa.uefs.model.PostoGasDistancia;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
     private List<PostoGas> listaPosto;
+    private List<PostoGasDistancia> listaPostoD;
     private Context context;
     private GoogleApiClient googleApiClient;
     private LocationManager locationManager;
@@ -53,8 +50,9 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
     private static final int REQUEST_LOCATION = 1;
     private static final int REQUEST_CHECK_SETTINGS = 0;
     String distanciaFormatada;
-    public gasAdapter(List<PostoGas> l, Context c) {
+    public gasAdapter(List<PostoGas> l,  Context c) {
         this.listaPosto = l;
+
         this.context = c;
     }
     @NonNull
@@ -66,12 +64,23 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+
         final PostoGas posto = listaPosto.get(i);
         getLocation(posto,myViewHolder);
         myViewHolder.nome.setText(posto.getNome());
         myViewHolder.gas.setText("R$ "+posto.getGas().toString());
         myViewHolder.bairro.setText(posto.getBairro());
-        myViewHolder.data.setText(posto.getData());
+        DateFormat formatUS = new SimpleDateFormat("yyyy-mm-dd");
+        Date date = null;
+        try {
+            date = formatUS.parse(posto.getData().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        DateFormat formatBR = new SimpleDateFormat("dd-mm-yyyy");
+        String dateFormated = formatBR.format(date);
+        myViewHolder.data.setText("Atualizado:"+dateFormated);
+        myViewHolder.distan.setText("Gps(off)");
         if(posto.getLogo()!=null){
         if(posto.getLogo().equals("ipiranga")){
              Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
@@ -141,7 +150,7 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
 
     private void getLocation(final PostoGas posto, final MyViewHolder my) {
 
-        System.out.println("ashduashduasdhausdha");
+        //System.out.println("ashduashduasdhausdha");
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -150,7 +159,8 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#
-            System.out.println("ashduashduasdhausdha2222");
+            //System.out.println("ashduashduasdhausdha2222");
+           // my.distan.setText("Ative seu Gps");
             ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},REQUEST_LOCATION);
         }
         else{
@@ -165,7 +175,10 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
                         //double distance = SphericalUtil.computeDistanceBetween(posicaoInicial, posicaiFinal);
 
                         float distancia = Local.calcularDistancia(posicaoInicial, posicaiFinal);
+
                         String distanciaFormatada = Local.formatarDistancia(distancia);
+
+                        System.out.println("teste "+distancia + " " + distanciaFormatada);
                         my.distan.setText(distanciaFormatada);
                         //myViewHolder..setText(posto.getBairro()+"\n"+agora);
                     }
@@ -175,7 +188,9 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                   //  Log.d("MapDemoActivity", "Error trying to get last GPS location");
+                    my.distan.setText("Ative seu Gps");
                     e.printStackTrace();
+
 
                 }
             });}
@@ -211,7 +226,7 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nome = itemView.findViewById(R.id.TituloViewGas);
+            nome = itemView.findViewById(R.id.titulo_notificappp);
             gas = itemView.findViewById(R.id.gasolinaViewGas);
             data = itemView.findViewById(R.id.dataviewGas);
             bairro = itemView.findViewById(R.id.bairroViewGas);

@@ -66,7 +66,8 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
         myViewHolder.nome.setText(posto.getNome());
         myViewHolder.alcool.setText("R$ "+posto.getAlcool().toString());
         myViewHolder.bairro.setText(posto.getBairro());
-        myViewHolder.data.setText(posto.getData());
+        myViewHolder.distan.setText("Gps(off)");
+        myViewHolder.data.setText("Atualizado:"+posto.getData());
         //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
         // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
         if(posto.getLogo()!=null){
@@ -151,7 +152,7 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#
             System.out.println("ashduashduasdhausdha2222");
-            ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},REQUEST_LOCATION);
+           // ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},REQUEST_LOCATION);
         }
         else{
         cli= LocationServices.getFusedLocationProviderClient(context);

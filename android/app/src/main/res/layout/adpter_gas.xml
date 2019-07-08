@@ -51,7 +51,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/TituloViewGas"
+                android:id="@+id/titulo_notificappp"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
@@ -161,7 +161,7 @@
 
 
                 android:src="@drawable/ic_add_circle_roxo_24dp"
-                app:layout_constraintEnd_toEndOf="@+id/TituloViewGas"
+                app:layout_constraintEnd_toEndOf="@+id/titulo_notificappp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton

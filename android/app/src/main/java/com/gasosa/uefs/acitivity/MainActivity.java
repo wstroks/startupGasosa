@@ -1,10 +1,13 @@
 package com.gasosa.uefs.acitivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -31,6 +34,9 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth autenticacao;
     public Toolbar it;
+    private AlertDialog dialog;
+    public String[] filtro;
+    public String EscolhaFiltro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
        // toolbar.getMenu().getItem(0);
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_local_gas_station_black_24dp);
 
-        FirebaseMessaging.getInstance().subscribeToTopic("brasil");
+        FirebaseMessaging.getInstance().subscribeToTopic("teste");
         autenticacao= ConfiguracaoFirebase.getReferenciaAutenticacao();
         ConfiguraBottomNavigationView();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -113,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.ic_alcool:
                         toolbar= findViewById(R.id.toolbarPrincipal);
                         toolbar.setTitle("Álcool");
+
                         fragmentTransaction.replace(R.id.viewPager, new AlcoolFragment()).commit();
 
                         return true;
@@ -121,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.ic_publicacao:
                         toolbar= findViewById(R.id.toolbarPrincipal);
                         toolbar.setTitle("Gás(Gnv)");
-                        fragmentTransaction.replace(R.id.viewPager, new notificacaoFragment()).commit();
+                        fragmentTransaction.replace(R.id.viewPager, new notificacaoFragment(EscolhaFiltro)).commit();
                         return true;
                     case R.id.ic_sobre:
                         toolbar= findViewById(R.id.toolbarPrincipal);
@@ -161,10 +168,43 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }if(item.getItemId()==R.id.notifica){
             startActivity( new Intent(getApplicationContext(), PromocoesActivity.class));
+
             return true;
         }
         if(item.getItemId()==R.id.buscar){
             startActivity( new Intent(getApplicationContext(), BuscarActivity.class));
+            return true;
+        }
+        if(item.getItemId()==R.id.config){
+
+
+
+            filtro= new String[]{"Menor preço", "Menor distância","Por data de atualização dos preços"};
+            final AlertDialog.Builder dialogfiltro = new AlertDialog.Builder(this);
+            dialogfiltro.setTitle("Selecione uma das opções");
+            dialogfiltro.setSingleChoiceItems(filtro, -1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    EscolhaFiltro=filtro[i];
+                    System.out.println("asdasdasd xxxxx "+ EscolhaFiltro);
+
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.viewPager, new gasolinaTabFragment()).commit();
+
+                    dialogInterface.dismiss();
+                }
+            });
+            dialogfiltro.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            AlertDialog d= dialogfiltro.create();
+            d.show();
+
+
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -180,4 +220,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
+
 }

@@ -14,19 +14,33 @@ import android.util.Log;
 import com.gasosa.uefs.R;
 import com.gasosa.uefs.acitivity.MainActivity;
 import com.gasosa.uefs.acitivity.PromocoesActivity;
+import com.gasosa.uefs.model.Comentarios;
+import com.gasosa.uefs.model.Notificacao;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
+
     @Override
     public void onMessageReceived(RemoteMessage notificacao) {
+       // db= FirebaseDatabase.getInstance().getReference();
+       // nt = new Notificacao();
+
+        //DatabaseReference add = db.child("notificacao");
+
 
         if( notificacao.getNotification() != null ){
 
             String titulo = notificacao.getNotification().getTitle();
             String corpo = notificacao.getNotification().getBody();
 
+           // nt.setTitulo(titulo);
+            //nt.setCorpo(corpo);
+            //nt.setLink("");
+           // add.push().setValue(nt);
             enviarNotificacao(titulo, corpo);
 
             //Log.i("Notificacao", "recebida titulo: " + titulo + " corpo: " + corpo );
@@ -40,7 +54,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         //Configuraçõe para notificação
         String canal = getString(R.string.default_notification_channel_id);
         Uri uriSom = RingtoneManager.getDefaultUri( RingtoneManager.TYPE_NOTIFICATION );
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), PromocoesActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
         //Criar notificação

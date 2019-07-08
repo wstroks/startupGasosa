@@ -6,12 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".acitivity.PromocoesActivity">
 
-    <TextView
-        android:id="@+id/textView3"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_notifica-firebase"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="O “Gasosa!” fornece para você dono/gerente de postos, equipadoras e semelhantes de  anunciarem seus produtos na nossa ferramenta. Entre em contato com gasosa.aplicativo@gmail.com, para maiores informações."
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

@@ -124,8 +124,8 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
         myViewHolder.nome.setText(posto.getNome());
         myViewHolder.gasolina.setText("R$ " + posto.getGasolina().toString());
         myViewHolder.bairro.setText(posto.getBairro());
-
-        myViewHolder.data.setText(posto.getData());
+        myViewHolder.distan.setText("Gps(off)");
+        myViewHolder.data.setText("Atualizado:"+posto.getData());
         if(posto.getLogo()!=null){
         if(posto.getLogo().equals("ipiranga")){
             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
@@ -213,7 +213,7 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
             // for ActivityCompat#
             //System.out.println("ashduashduasdhausdha2222");
 
-            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_LOCATION);
+           // ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_LOCATION);
         } else {
             createLocationRequest();
 
@@ -267,15 +267,12 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
                     if (e instanceof ResolvableApiException) {
                         // Location settings are not satisfied, but this can be fixed
                         // by showing the user a dialog.
-                        try {
-                            // Show the dialog by calling startResolutionForResult(),
-                            // and check the result in onActivityResult().
-                            ResolvableApiException resolvable = (ResolvableApiException) e;
-                            resolvable.startResolutionForResult((Activity) context,
-                                    REQUEST_CHECK_SETTINGS);
-                        } catch (IntentSender.SendIntentException sendEx) {
-                            // Ignore the error.
-                        }
+                        // Show the dialog by calling startResolutionForResult(),
+                        // and check the result in onActivityResult().
+                        ResolvableApiException resolvable = (ResolvableApiException) e;
+                        e.printStackTrace();
+                            /*resolvable.startResolutionForResult((Activity) context,
+                                    REQUEST_CHECK_SETTINGS);*/
                     }
                 }
             });
@@ -397,7 +394,7 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        recuperarLocalizacaoUsuario();
+        //recuperarLocalizacaoUsuario();
     }
 
 
