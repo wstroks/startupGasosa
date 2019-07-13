@@ -1,6 +1,7 @@
 package com.gasosa.uefs.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +29,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressLint("ValidFragment")
 public class AlcoolFragment extends Fragment {
 
     private RecyclerView listarAlcool;
@@ -38,7 +40,10 @@ public class AlcoolFragment extends Fragment {
     private FirebaseDatabase database;
     private Button buttonLink;
     private Query query;
-    public AlcoolFragment() {
+    private String escolha;
+    @SuppressLint("ValidFragment")
+    public AlcoolFragment(String t) {
+        escolha =t;
         // Required empty public constructor
     }
 
@@ -52,8 +57,26 @@ public class AlcoolFragment extends Fragment {
         buttonLink=view.findViewById(R.id.buttonLinkAlcoolBuscar);
         database= ConfiguracaoFirebase.getDatabase();
         usuariosRef = ConfiguracaoFirebase.getFirebase();
-        query = usuariosRef.child("Postos").orderByChild("alcool").startAt(1);
+
 //query= usuariosRef.orderByKey("Postos").orderBy("population", Direction.DESCENDING);
+
+        if (escolha == "Menor preço") {
+            query = usuariosRef.child("Postos").orderByChild("alcool").startAt(1);
+
+
+            //gasAdapter.notifyDataSetChanged();
+        }
+        if (escolha =="Por data de atualização dos preços") {
+            query = usuariosRef.child("Postos").orderByChild("data").startAt("01-01-2019").endAt("31-12-2019");
+
+            //gasAdapter.notifyDataSetChanged();
+        }if(escolha =="Menor distância") {
+            query = usuariosRef.child("Postos").orderByChild("alcool");
+        }
+        if(escolha==null){
+            query = usuariosRef.child("Postos").orderByChild("alcool").startAt(2.0);
+            //gasAdapter.notifyDataSetChanged();
+        }
         usuariosRef.getDatabase();
         usuariosRef.keepSynced(true);
 
@@ -85,7 +108,11 @@ public class AlcoolFragment extends Fragment {
                 for ( DataSnapshot ds: dataSnapshot.getChildren() ){
                     alcool.add( ds.getValue(Posto.class) );
                 }
+
+                if(escolha=="Menor preço" || escolha==null){
+
                 Collections.reverse( alcool );
+                }
                 alcoolAdapter.notifyDataSetChanged();
             }
 

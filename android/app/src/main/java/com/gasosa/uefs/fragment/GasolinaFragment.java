@@ -1,5 +1,6 @@
 package com.gasosa.uefs.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import java.util.List;
 
 
 
+@SuppressLint("ValidFragment")
 public class GasolinaFragment extends Fragment {
     private RecyclerView listarGasolina;
     private List<Posto> gasolina = new ArrayList<>();
@@ -39,9 +41,10 @@ public class GasolinaFragment extends Fragment {
     private Button buttonLink;
     private Query query;
 
-
-    public GasolinaFragment() {
+   private String escolha;
+    public GasolinaFragment(String t) {
         // Required empty public constructor
+        escolha=t;
     }
 
 
@@ -57,7 +60,25 @@ public class GasolinaFragment extends Fragment {
         buttonLink=view.findViewById(R.id.buttonLinkAdit);
         database= ConfiguracaoFirebase.getDatabase();
         usuariosRef = ConfiguracaoFirebase.getFirebase();
-        query = usuariosRef.child("Postos").orderByChild("gasolinaAd").startAt(1);
+       // query = usuariosRef.child("Postos").orderByChild("gasolinaAd").startAt(1);
+
+        if (escolha == "Menor preço") {
+            query = usuariosRef.child("Postos").orderByChild("gasolinaAd").startAt(1);
+
+
+            //gasAdapter.notifyDataSetChanged();
+        }
+        if (escolha =="Por data de atualização dos preços") {
+            query = usuariosRef.child("Postos").orderByChild("data").startAt("01-01-2019").endAt("31-12-2019");
+
+            //gasAdapter.notifyDataSetChanged();
+        }if(escolha =="Menor distância") {
+            query = usuariosRef.child("Postos").orderByChild("gasolinaAd");
+        }
+        if(escolha==null){
+            query = usuariosRef.child("Postos").orderByChild("gasolinaAd").startAt(2.0);
+            //gasAdapter.notifyDataSetChanged();
+        }
 //query= usuariosRef.orderByKey("Postos").orderBy("population", Direction.DESCENDING);
         usuariosRef.getDatabase();
         usuariosRef.keepSynced(true);
@@ -91,8 +112,19 @@ public class GasolinaFragment extends Fragment {
 
                     gasolina.add( ds.getValue(Posto.class) );
                 }
+                if(escolha=="Menor preço" || escolha==null){
 
-                Collections.reverse( gasolina );
+                    Collections.reverse( gasolina );
+                }if(escolha=="Por data de atualização dos preços"){
+                    for(int i = 0;i<gasolina.size();i++){  //enquanto i for menor, não maior
+                        Posto p= gasolina.get(i);
+                        if(p.getGasolinaAd()==0.0){
+                            gasolina.remove(i);
+                        }
+
+                    }
+                }
+
                 gasolinaAdapter.notifyDataSetChanged();
             }
 

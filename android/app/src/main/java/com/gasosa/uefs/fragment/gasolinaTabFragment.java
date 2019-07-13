@@ -1,6 +1,7 @@
 package com.gasosa.uefs.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,11 +20,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressLint("ValidFragment")
 public class gasolinaTabFragment extends Fragment {
-
-
-    public gasolinaTabFragment() {
+    private  String escolha;
+    public gasolinaTabFragment(String t) {
         // Required empty public constructor
+        escolha=t;
     }
 
 
@@ -44,8 +46,8 @@ public class gasolinaTabFragment extends Fragment {
 
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new gasoFragment(), "Comum");
-        adapter.addFragment(new GasolinaFragment(), "Aditivado");
+        adapter.addFragment(new gasoFragment(escolha), "Comum");
+        adapter.addFragment(new GasolinaFragment(escolha), "Aditivado");
 
         viewPager.setAdapter(adapter);
 

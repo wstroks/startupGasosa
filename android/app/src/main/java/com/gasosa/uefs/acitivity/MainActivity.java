@@ -48,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
        // toolbar.getMenu().getItem(0);
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_local_gas_station_black_24dp);
 
-        FirebaseMessaging.getInstance().subscribeToTopic("teste");
+        //FirebaseMessaging.getInstance().subscribeToTopic("teste");
         autenticacao= ConfiguracaoFirebase.getReferenciaAutenticacao();
         ConfiguraBottomNavigationView();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.viewPager, new gasolinaTabFragment()).commit();
+        //fica esperto com esse comando
+        fragmentTransaction.replace(R.id.viewPager, new gasolinaTabFragment(null)).commit();
 
 
     }
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         Toolbar toolbar= findViewById(R.id.toolbarPrincipal);
                         toolbar.setTitle("Gasolina");
 
-                        fragmentTransaction.replace(R.id.viewPager, new gasolinaTabFragment()).commit();
+                        fragmentTransaction.replace(R.id.viewPager, new gasolinaTabFragment(EscolhaFiltro)).commit();
 
 
 
@@ -113,14 +114,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.ic_disel:
                         toolbar= findViewById(R.id.toolbarPrincipal);
                         toolbar.setTitle("Diesel");
-                        fragmentTransaction.replace(R.id.viewPager, new tabDiFragment()).commit();
+                        fragmentTransaction.replace(R.id.viewPager, new tabDiFragment(EscolhaFiltro)).commit();
 
                         return true;
                     case R.id.ic_alcool:
                         toolbar= findViewById(R.id.toolbarPrincipal);
                         toolbar.setTitle("Álcool");
 
-                        fragmentTransaction.replace(R.id.viewPager, new AlcoolFragment()).commit();
+                        fragmentTransaction.replace(R.id.viewPager, new AlcoolFragment(EscolhaFiltro)).commit();
 
                         return true;
 
@@ -179,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            filtro= new String[]{"Menor preço", "Menor distância","Por data de atualização dos preços"};
+            filtro= new String[]{"Menor preço", "Por data de atualização dos preços"};
             final AlertDialog.Builder dialogfiltro = new AlertDialog.Builder(this);
             dialogfiltro.setTitle("Selecione uma das opções");
             dialogfiltro.setSingleChoiceItems(filtro, -1, new DialogInterface.OnClickListener() {
@@ -190,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.viewPager, new gasolinaTabFragment()).commit();
+                    fragmentTransaction.replace(R.id.viewPager, new gasolinaTabFragment(EscolhaFiltro)).commit();
 
                     dialogInterface.dismiss();
                 }

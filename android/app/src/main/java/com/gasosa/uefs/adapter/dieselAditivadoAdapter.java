@@ -64,80 +64,87 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         final Posto posto = listaPosto.get(i);
+
         getLocation(posto,myViewHolder);
-        myViewHolder.nome.setText(posto.getNome());
-        myViewHolder.alcool.setText("R$ "+posto.getDieselAd().toString());
-        myViewHolder.bairro.setText(posto.getBairro());
-        myViewHolder.distan.setText("Gps(off)");
-        myViewHolder.data.setText("Atualizado:"+posto.getData());
-        if(posto.getLogo()!=null){
-        if(posto.getLogo().equals("ipiranga")){
-             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
-           // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ipiranga));
 
-            // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
-        }
-        if(posto.getLogo().equals("perfil")){
-             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/perfil.png?alt=media&token=954762d2-3401-472d-8404-a0cf3178c5e7").into(myViewHolder.circleImageView);
-           // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.perfil));
+            myViewHolder.nome.setText(posto.getNome());
+            if(posto.getDieselAd()==0){
 
-        }
-        if(posto.getLogo().equals("petro")){
-             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/petro.png?alt=media&token=3f182855-49ea-4a09-8b63-839fc973ebf6").into(myViewHolder.circleImageView);
-            //myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.petro));
+                myViewHolder.alcool.setText("Posto não trabalha com diesel Ad");
+            }else{
+            myViewHolder.alcool.setText("R$ " + posto.getDieselAd().toString());}
+            myViewHolder.bairro.setText(posto.getBairro());
+            myViewHolder.distan.setText("Gps(off)");
+            myViewHolder.data.setText("Atualizado:" + posto.getData());
+            if (posto.getLogo() != null) {
+                if (posto.getLogo().equals("ipiranga")) {
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
+                    // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ipiranga));
 
-            //  myViewHolder.circleImageView.setImageURI(Uri.parse(""));
-        }
-        if(posto.getLogo().equals("shell")){
-            Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/shell.png?alt=media&token=3eff6798-d51f-4113-b323-890c73120caa").into(myViewHolder.circleImageView);
-            //myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.shell));
+                    // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+                }
+                if (posto.getLogo().equals("perfil")) {
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/perfil.png?alt=media&token=954762d2-3401-472d-8404-a0cf3178c5e7").into(myViewHolder.circleImageView);
+                    // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.perfil));
 
-            // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
-        }
-        if(posto.getLogo().equals("menor")){
-            Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/menor.jpg?alt=media&token=00530df1-63c5-4a32-88d2-19a479108460").into(myViewHolder.circleImageView);
-           // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.menor));
+                }
+                if (posto.getLogo().equals("petro")) {
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/petro.png?alt=media&token=3f182855-49ea-4a09-8b63-839fc973ebf6").into(myViewHolder.circleImageView);
+                    //myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.petro));
 
-            // myViewHolder.circleImageView.setImageURI(load.("");
-        }}
+                    //  myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+                }
+                if (posto.getLogo().equals("shell")) {
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/shell.png?alt=media&token=3eff6798-d51f-4113-b323-890c73120caa").into(myViewHolder.circleImageView);
+                    //myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.shell));
 
-        myViewHolder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = posto.getLink();
+                    // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+                }
+                if (posto.getLogo().equals("menor")) {
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/menor.jpg?alt=media&token=00530df1-63c5-4a32-88d2-19a479108460").into(myViewHolder.circleImageView);
+                    // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.menor));
 
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-
-                context.startActivity(i);
+                    // myViewHolder.circleImageView.setImageURI(load.("");
+                }
             }
-        });
 
-        myViewHolder.addDieselAd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(context, ContribuirGeralActivity.class);
-                intent.putExtra("nomeX",posto.getNome().toString());
-                intent.putExtra("gasolina",posto.getGasolina().toString());
-                intent.putExtra("gasolinaAd",posto.getGasolinaAd().toString());
-                intent.putExtra("diesel",posto.getDiesel().toString());
-                intent.putExtra("dieselAd",posto.getDieselAd().toString());
-                intent.putExtra("alcool",posto.getAlcool().toString());
-                context.startActivity(intent);
-            }
-        });
+            myViewHolder.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String url = posto.getLink();
 
-        myViewHolder.addCompartilharDieselAd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Intent.ACTION_SEND);
-                it.setType("text/plain");
-                String Texto= "O preço do Diesel Aditividado(S10) no "+posto.getNome().toString()+" está R$"+posto.getDieselAd().toString()+ " "+ posto.getData() ;
-                it.putExtra(Intent.EXTRA_SUBJECT,Texto);
-                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 
-                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
-            }
-        });
+                    context.startActivity(i);
+                }
+            });
+
+            myViewHolder.addDieselAd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ContribuirGeralActivity.class);
+                    intent.putExtra("nomeX", posto.getNome().toString());
+                    intent.putExtra("gasolina", posto.getGasolina().toString());
+                    intent.putExtra("gasolinaAd", posto.getGasolinaAd().toString());
+                    intent.putExtra("diesel", posto.getDiesel().toString());
+                    intent.putExtra("dieselAd", posto.getDieselAd().toString());
+                    intent.putExtra("alcool", posto.getAlcool().toString());
+                    context.startActivity(intent);
+                }
+            });
+
+            myViewHolder.addCompartilharDieselAd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent it = new Intent(Intent.ACTION_SEND);
+                    it.setType("text/plain");
+                    String Texto = "O preço do Diesel Aditividado(S10) no " + posto.getNome().toString() + " está R$" + posto.getDieselAd().toString() + " " + posto.getData();
+                    it.putExtra(Intent.EXTRA_SUBJECT, Texto);
+                    it.putExtra(Intent.EXTRA_TEXT, "Compartilhe o Aplicativo Gasosa! \n\n" + "https://play.google.com/store/apps/details?id=com.gasosa.uefs" + "\n\n" + Texto + "\n\n" + " Você pode se dirigir ao posto clicando no link: " + posto.getLink());
+
+                    context.startActivity(Intent.createChooser(it, "Compartilhar preços de combustível!"));
+                }
+            });
 
     }
     private void getLocation(final Posto posto, final MyViewHolder my) {

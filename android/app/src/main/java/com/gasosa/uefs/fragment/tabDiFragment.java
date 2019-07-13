@@ -1,5 +1,6 @@
 package com.gasosa.uefs.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,12 +18,13 @@ import com.gasosa.uefs.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@SuppressLint("ValidFragment")
 public class tabDiFragment extends Fragment {
 
-
-    public tabDiFragment() {
+    private String escolha;
+    public tabDiFragment(String t) {
         // Required empty public constructor
+        escolha =t;
     }
 
 
@@ -51,8 +53,8 @@ public class tabDiFragment extends Fragment {
 
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new DiFragment(), "Comum");
-        adapter.addFragment(new dieselAditivadoFragment(), "Aditivado");
+        adapter.addFragment(new DiFragment(escolha), "Comum");
+        adapter.addFragment(new dieselAditivadoFragment(escolha), "Aditivado");
 
         viewPager.setAdapter(adapter);
 

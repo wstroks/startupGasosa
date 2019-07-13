@@ -1,6 +1,7 @@
 package com.gasosa.uefs.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +30,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressLint("ValidFragment")
 public class dieselAditivadoFragment extends Fragment {
     private RecyclerView listarDiesel;
     private List<Posto> diesel = new ArrayList<>();
@@ -38,9 +40,10 @@ public class dieselAditivadoFragment extends Fragment {
     private FirebaseDatabase database;
     private Button buttonLink;
     private Query query;
-
-    public dieselAditivadoFragment() {
+    private String escolha;
+    public dieselAditivadoFragment(String t) {
         // Required empty public constructor
+        escolha=t;
     }
 
 
@@ -53,8 +56,26 @@ public class dieselAditivadoFragment extends Fragment {
         buttonLink=view.findViewById(R.id.buttonLinkDiA);
         database= ConfiguracaoFirebase.getDatabase();
         usuariosRef = ConfiguracaoFirebase.getFirebase();
-        query = usuariosRef.child("Postos").orderByChild("dieselAd").startAt(1);
+       // query = usuariosRef.child("Postos").orderByChild("dieselAd").startAt(1);
 //query= usuariosRef.orderByKey("Postos").orderBy("population", Direction.DESCENDING);
+
+        if (escolha == "Menor preço") {
+            query = usuariosRef.child("Postos").orderByChild("dieselAd").startAt(1);
+
+
+            //gasAdapter.notifyDataSetChanged();
+        }
+        if (escolha =="Por data de atualização dos preços") {
+            query = usuariosRef.child("Postos").orderByChild("data").startAt("01-01-2019").endAt("31-12-2019");
+
+            //gasAdapter.notifyDataSetChanged();
+        }if(escolha =="Menor distância") {
+            query = usuariosRef.child("Postos").orderByChild("dieselAd");
+        }
+        if(escolha==null){
+            query = usuariosRef.child("Postos").orderByChild("dieselAd").startAt(2.0);
+            //gasAdapter.notifyDataSetChanged();
+        }
         usuariosRef.getDatabase();
         usuariosRef.keepSynced(true);
 
@@ -83,7 +104,21 @@ public class dieselAditivadoFragment extends Fragment {
                 for ( DataSnapshot ds: dataSnapshot.getChildren() ){
                     diesel.add( ds.getValue(Posto.class) );
                 }
-                Collections.reverse( diesel );
+
+                if(escolha=="Menor preço" || escolha==null){
+
+                    Collections.reverse( diesel);
+                }
+                if(escolha=="Por data de atualização dos preços"){
+                    for(int i = 0;i<diesel.size();i++){  //enquanto i for menor, não maior
+                       Posto p= diesel.get(i);
+                       if(p.getDieselAd()==0.0){
+                           diesel.remove(i);
+                       }
+
+                    }
+                }
+
                 dieselAdapter.notifyDataSetChanged();
             }
 
