@@ -43,7 +43,7 @@ public class PromocoesActivity extends AppCompatActivity {
         postoNotificao.clear();
         database= ConfiguracaoFirebase.getDatabase();
         postosRef = ConfiguracaoFirebase.getFirebase();
-        query = postosRef.child("notificacao").orderByChild("data");
+        query = postosRef.child("notificacao").orderByChild("data").startAt("01/01/2019").endAt("31/12/2019");
 //query= usuariosRef.orderByKey("Postos").orderBy("population", Direction.DESCENDING);
         postosRef.getDatabase();
         postosRef.keepSynced(true);

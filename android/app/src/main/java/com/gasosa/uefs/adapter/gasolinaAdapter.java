@@ -124,7 +124,7 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
         myViewHolder.nome.setText(posto.getNome());
         myViewHolder.gasolina.setText("R$ " + posto.getGasolina().toString());
         myViewHolder.bairro.setText(posto.getBairro());
-        myViewHolder.distan.setText("Gps(off)");
+        //myViewHolder.distan.setText("Gps(off)");
         myViewHolder.data.setText("Atualizado:"+posto.getData());
         if(posto.getLogo()!=null){
         if(posto.getLogo().equals("ipiranga")){
@@ -242,8 +242,8 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
             cli= LocationServices.getFusedLocationProviderClient(context);
             LocationRequest locationRequest = LocationRequest.create();
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-            locationRequest.setInterval(10000);
-            locationRequest.setFastestInterval(30000);
+            locationRequest.setInterval(0);
+            locationRequest.setFastestInterval(0);
             //  }
             task.addOnSuccessListener((Activity) context, new OnSuccessListener<LocationSettingsResponse>() {
                 @Override
@@ -291,6 +291,8 @@ public class gasolinaAdapter extends RecyclerView.Adapter<gasolinaAdapter.MyView
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     //Log.d("MapDemoActivity", "Error trying to get last GPS location");
+
+                    my.distan.setText("Gps(off)");
                     e.printStackTrace();
                 }
             });

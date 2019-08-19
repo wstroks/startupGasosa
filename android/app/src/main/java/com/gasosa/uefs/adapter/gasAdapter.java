@@ -36,12 +36,18 @@ import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
     private List<PostoGas> listaPosto;
     private List<PostoGasDistancia> listaPostoD;
+    private List<PostoGasDistancia> listaDistancia;
+
     private Context context;
     private GoogleApiClient googleApiClient;
     private LocationManager locationManager;
@@ -49,10 +55,16 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
     private FusedLocationProviderClient cli;
     private static final int REQUEST_LOCATION = 1;
     private static final int REQUEST_CHECK_SETTINGS = 0;
-    String distanciaFormatada;
-    public gasAdapter(List<PostoGas> l,  Context c) {
-        this.listaPosto = l;
+    private int numero2;
+    public String distanciax;
+    private   final PostoGasDistancia ddd;
 
+    public gasAdapter(List<PostoGas> l,List<PostoGasDistancia> vai, int ji,  Context c) {
+        this.listaPosto = l;
+        this.numero2=ji;
+        this.listaPostoD=vai;
+        listaDistancia= new ArrayList<>();
+        ddd=new PostoGasDistancia();
         this.context = c;
     }
     @NonNull
@@ -65,90 +77,204 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
+
         final PostoGas posto = listaPosto.get(i);
-        getLocation(posto,myViewHolder);
-        myViewHolder.nome.setText(posto.getNome());
-        myViewHolder.gas.setText("R$ "+posto.getGas().toString());
-        myViewHolder.bairro.setText(posto.getBairro());
-        DateFormat formatUS = new SimpleDateFormat("yyyy-mm-dd");
-        Date date = null;
-        try {
-            date = formatUS.parse(posto.getData().toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        DateFormat formatBR = new SimpleDateFormat("dd-mm-yyyy");
-        String dateFormated = formatBR.format(date);
-        myViewHolder.data.setText("Atualizado:"+dateFormated);
-        myViewHolder.distan.setText("Gps(off)");
-        if(posto.getLogo()!=null){
-        if(posto.getLogo().equals("ipiranga")){
+        final PostoGasDistancia posto3=null;
+
+
+
+        getLocation(posto,myViewHolder,ddd);
+
+ if(numero2==1){
+System.out.println("size"+listaDistancia.size());
+     final PostoGasDistancia posto2 = listaDistancia.get(i);
+     myViewHolder.nome.setText(posto2.getNome());
+     myViewHolder.gas.setText("R$ " + posto2.getGas().toString());
+     myViewHolder.bairro.setText(posto2.getBairro());
+     DateFormat formatUS = new SimpleDateFormat("yyyy-mm-dd");
+     Date date = null;
+     try {
+         date = formatUS.parse(posto2.getData().toString());
+     } catch (ParseException e) {
+         e.printStackTrace();
+     }
+     DateFormat formatBR = new SimpleDateFormat("dd-mm-yyyy");
+     String dateFormated = formatBR.format(date);
+     myViewHolder.data.setText("Atualizado:" + dateFormated);
+
+     if (posto2.getLogo() != null) {
+         if (posto2.getLogo().equals("ipiranga")) {
              Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
-           // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ipiranga));
+             // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ipiranga));
 
-            // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
-        }
-        if(posto.getLogo().equals("perfil")){
+             // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+         }
+         if (posto2.getLogo().equals("perfil")) {
              Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/perfil.png?alt=media&token=954762d2-3401-472d-8404-a0cf3178c5e7").into(myViewHolder.circleImageView);
-            //myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.perfil));
+             //myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.perfil));
 
-        }
-        if(posto.getLogo().equals("petro")){
-            Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/petro.png?alt=media&token=3f182855-49ea-4a09-8b63-839fc973ebf6").into(myViewHolder.circleImageView);
-          //  myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.petro));
+         }
+         if (posto2.getLogo().equals("petro")) {
+             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/petro.png?alt=media&token=3f182855-49ea-4a09-8b63-839fc973ebf6").into(myViewHolder.circleImageView);
+             //  myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.petro));
 
-            //  myViewHolder.circleImageView.setImageURI(Uri.parse(""));
-        }
-        if(posto.getLogo().equals("shell")){
-            Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/shell.png?alt=media&token=3eff6798-d51f-4113-b323-890c73120caa").into(myViewHolder.circleImageView);
-           // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.shell));
+             //  myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+         }
+         if (posto2.getLogo().equals("shell")) {
+             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/shell.png?alt=media&token=3eff6798-d51f-4113-b323-890c73120caa").into(myViewHolder.circleImageView);
+             // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.shell));
 
-            // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
-        }
-        if(posto.getLogo().equals("menor")){
+             // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+         }
+         if (posto2.getLogo().equals("menor")) {
              Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/menor.jpg?alt=media&token=00530df1-63c5-4a32-88d2-19a479108460").into(myViewHolder.circleImageView);
-          //  myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.menor));
+             //  myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.menor));
 
-            // myViewHolder.circleImageView.setImageURI(load.("");
-        }}
+             // myViewHolder.circleImageView.setImageURI(load.("");
+         }
+     }
 
 
-        myViewHolder.button.setOnClickListener(new View.OnClickListener() {
+     myViewHolder.button.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             String url = posto2.getLink();
+
+             Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+
+             context.startActivity(i);
+         }
+     });
+
+     myViewHolder.add.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent intent = new Intent(context, contribuirActivity.class);
+             intent.putExtra("nome", posto2.getNome());
+             intent.putExtra("gas", posto2.getGas().toString());
+             context.startActivity(intent);
+         }
+     });
+
+     myViewHolder.addCompartilharGas.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent it = new Intent(Intent.ACTION_SEND);
+             it.setType("text/plain");
+             String Texto = "O preço do Gás(GNV) no " + posto2.getNome().toString() + " está R$" + posto2.getGas().toString() + " " + posto2.getData();
+             it.putExtra(Intent.EXTRA_SUBJECT, Texto);
+             it.putExtra(Intent.EXTRA_TEXT, "Compartilhe o Aplicativo Gasosa! \n\n" + "https://play.google.com/store/apps/details?id=com.gasosa.uefs" + "\n\n" + Texto + "\n\n" + " Você pode se dirigir ao posto clicando no link: " + posto2.getLink());
+
+             context.startActivity(Intent.createChooser(it, "Compartilhar preços de combustível!"));
+         }
+     });
+        /*if(i>2){
+        Collections.sort(listaDistancia, new Comparator<PostoGasDistancia>() {
             @Override
-            public void onClick(View v) {
-                String url = posto.getLink();
+            public int compare(PostoGasDistancia  p1, PostoGasDistancia  p2)
+            {
 
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-
-                context.startActivity(i);
+                return p1.getDistancia().compareToIgnoreCase(p2.getDistancia());
             }
-        });
+        });}*/
 
-        myViewHolder.add.setOnClickListener(new View.OnClickListener() {
+ }else {
+     myViewHolder.nome.setText(posto.getNome());
+     myViewHolder.gas.setText("R$ " + posto.getGas().toString());
+     myViewHolder.bairro.setText(posto.getBairro());
+     DateFormat formatUS = new SimpleDateFormat("yyyy-mm-dd");
+     Date date = null;
+     try {
+         date = formatUS.parse(posto.getData().toString());
+     } catch (ParseException e) {
+         e.printStackTrace();
+     }
+     DateFormat formatBR = new SimpleDateFormat("dd-mm-yyyy");
+     String dateFormated = formatBR.format(date);
+     myViewHolder.data.setText("Atualizado:" + dateFormated);
+     myViewHolder.distan.setText("Gps(off)");
+     if (posto.getLogo() != null) {
+         if (posto.getLogo().equals("ipiranga")) {
+             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
+             // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ipiranga));
+
+             // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+         }
+         if (posto.getLogo().equals("perfil")) {
+             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/perfil.png?alt=media&token=954762d2-3401-472d-8404-a0cf3178c5e7").into(myViewHolder.circleImageView);
+             //myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.perfil));
+
+         }
+         if (posto.getLogo().equals("petro")) {
+             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/petro.png?alt=media&token=3f182855-49ea-4a09-8b63-839fc973ebf6").into(myViewHolder.circleImageView);
+             //  myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.petro));
+
+             //  myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+         }
+         if (posto.getLogo().equals("shell")) {
+             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/shell.png?alt=media&token=3eff6798-d51f-4113-b323-890c73120caa").into(myViewHolder.circleImageView);
+             // myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.shell));
+
+             // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
+         }
+         if (posto.getLogo().equals("menor")) {
+             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/menor.jpg?alt=media&token=00530df1-63c5-4a32-88d2-19a479108460").into(myViewHolder.circleImageView);
+             //  myViewHolder.circleImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.menor));
+
+             // myViewHolder.circleImageView.setImageURI(load.("");
+         }
+     }
+
+
+     myViewHolder.button.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             String url = posto.getLink();
+
+             Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+
+             context.startActivity(i);
+         }
+     });
+
+     myViewHolder.add.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent intent = new Intent(context, contribuirActivity.class);
+             intent.putExtra("nome", posto.getNome());
+             intent.putExtra("gas", posto.getGas().toString());
+             context.startActivity(intent);
+         }
+     });
+
+     myViewHolder.addCompartilharGas.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent it = new Intent(Intent.ACTION_SEND);
+             it.setType("text/plain");
+             String Texto = "O preço do Gás(GNV) no " + posto.getNome().toString() + " está R$" + posto.getGas().toString() + " " + posto.getData();
+             it.putExtra(Intent.EXTRA_SUBJECT, Texto);
+             it.putExtra(Intent.EXTRA_TEXT, "Compartilhe o Aplicativo Gasosa! \n\n" + "https://play.google.com/store/apps/details?id=com.gasosa.uefs" + "\n\n" + Texto + "\n\n" + " Você pode se dirigir ao posto clicando no link: " + posto.getLink());
+
+             context.startActivity(Intent.createChooser(it, "Compartilhar preços de combustível!"));
+         }
+     });
+        /*if(i>2){
+        Collections.sort(listaDistancia, new Comparator<PostoGasDistancia>() {
             @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(context, contribuirActivity.class);
-                intent.putExtra("nome",posto.getNome());
-                intent.putExtra("gas",posto.getGas().toString());
-                context.startActivity(intent);
-            }
-        });
+            public int compare(PostoGasDistancia  p1, PostoGasDistancia  p2)
+            {
 
-        myViewHolder.addCompartilharGas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Intent.ACTION_SEND);
-                it.setType("text/plain");
-                String Texto= "O preço do Gás(GNV) no "+posto.getNome().toString()+" está R$"+posto.getGas().toString()+ " "+ posto.getData() ;
-                it.putExtra(Intent.EXTRA_SUBJECT,Texto);
-                it.putExtra(Intent.EXTRA_TEXT,"Compartilhe o Aplicativo Gasosa! \n\n"+ "https://play.google.com/store/apps/details?id=com.gasosa.uefs"+"\n\n" +Texto + "\n\n"+" Você pode se dirigir ao posto clicando no link: " +posto.getLink() );
-
-                context.startActivity(Intent.createChooser(it,"Compartilhar preços de combustível!"));
+                return p1.getDistancia().compareToIgnoreCase(p2.getDistancia());
             }
-        });
+        });}*/
+
+
+ }
+
     }
 
-    private void getLocation(final PostoGas posto, final MyViewHolder my) {
+    private void getLocation(final PostoGas posto, final MyViewHolder my,final PostoGasDistancia ddd) {
 
         //System.out.println("ashduashduasdhausdha");
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -178,8 +304,31 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
 
                         String distanciaFormatada = Local.formatarDistancia(distancia);
 
-                        System.out.println("teste "+distancia + " " + distanciaFormatada);
+                       // System.out.println("teste "+distancia + " " + distanciaFormatada);
                         my.distan.setText(distanciaFormatada);
+
+
+
+                        int y=0;
+                        int posicao;
+
+                        ddd.setBairro(posto.getBairro());
+                        ddd.setNome(posto.getNome());
+                        ddd.setLogo(posto.getLogo());
+                        ddd.setData(posto.getData());
+                        ddd.setLink(posto.getLink());
+                        ddd.setGas(posto.getGas());
+
+
+                        ddd.setDistancia(distanciaFormatada);
+                        System.out.println(distanciaFormatada+"po");
+                        listaDistancia.add(ddd);
+
+
+
+
+
+
                         //myViewHolder..setText(posto.getBairro()+"\n"+agora);
                     }
 
@@ -188,7 +337,7 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                   //  Log.d("MapDemoActivity", "Error trying to get last GPS location");
-                    my.distan.setText("Ative seu Gps");
+                    my.distan.setText("Gps(off)");
                     e.printStackTrace();
 
 
@@ -208,7 +357,10 @@ public class gasAdapter extends  RecyclerView.Adapter<gasAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return listaPosto.size();
+        if(numero2==1){
+            return listaPostoD.size();
+        }else{
+        return listaPosto.size();}
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

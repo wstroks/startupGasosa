@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            filtro= new String[]{"Menor preço", "Por data de atualização dos preços"};
+            filtro= new String[]{"Menor preço","Por data de atualização dos preços"};
             final AlertDialog.Builder dialogfiltro = new AlertDialog.Builder(this);
             dialogfiltro.setTitle("Selecione uma das opções");
             dialogfiltro.setSingleChoiceItems(filtro, -1, new DialogInterface.OnClickListener() {

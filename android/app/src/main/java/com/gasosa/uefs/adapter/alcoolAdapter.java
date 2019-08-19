@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 
 import com.gasosa.uefs.R;
 import com.gasosa.uefs.acitivity.ContribuirGeralActivity;
+import com.gasosa.uefs.acitivity.informaPosto;
 import com.gasosa.uefs.helper.Local;
 import com.gasosa.uefs.model.Posto;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -66,7 +68,7 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
         myViewHolder.nome.setText(posto.getNome());
         myViewHolder.alcool.setText("R$ "+posto.getAlcool().toString());
         myViewHolder.bairro.setText(posto.getBairro());
-        myViewHolder.distan.setText("Gps(off)");
+        //myViewHolder.distan.setText("Gps(off)");
         myViewHolder.data.setText("Atualizado:"+posto.getData());
         //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/gasolina-8cc75.appspot.com/o/ipiranga.jpg?alt=media&token=246775ef-0904-4806-92a2-4dd8e7133449").into(myViewHolder.circleImageView);
         // myViewHolder.circleImageView.setImageURI(Uri.parse(""));
@@ -100,6 +102,24 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
 
             // myViewHolder.circleImageView.setImageURI(load.("");
         }}
+
+
+            myViewHolder.alcoolcard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent= new Intent(context, informaPosto.class);
+                    intent.putExtra("nomeX",posto.getNome().toString());
+                    intent.putExtra("gasolina",posto.getGasolina().toString());
+                    intent.putExtra("gasolinaAd",posto.getGasolinaAd().toString());
+                    intent.putExtra("diesel",posto.getDiesel().toString());
+                    intent.putExtra("dieselAd",posto.getDieselAd().toString());
+                    intent.putExtra("alcool",posto.getAlcool().toString());
+                    context.startActivity(intent);
+
+
+            }});
+
 
         myViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +196,8 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
             @Override
             public void onFailure(@NonNull Exception e) {
                // Log.d("MapDemoActivity", "Error trying to get last GPS location");
+
+                my.distan.setText("Gps(off)");
                 e.printStackTrace();
 
             }
@@ -207,6 +229,7 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
         ImageView circleImageView;
         ImageButton addAlcool;
         ImageButton addCompartilharAlcool;
+        CardView alcoolcard;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -220,6 +243,7 @@ public class alcoolAdapter extends RecyclerView.Adapter<alcoolAdapter.MyViewHold
             circleImageView= itemView.findViewById(R.id.profile_alcool);
             addAlcool=itemView.findViewById(R.id.addAlcool);
             addCompartilharAlcool=itemView.findViewById(R.id.addCompartilharAlcool);
+            alcoolcard=itemView.findViewById(R.id.card_alcool);
 
 
 

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".acitivity.informaPosto">
+
+    <ImageView
+        android:id="@+id/imageInforma"
+        android:layout_width="0dp"
+        android:layout_height="208dp"
+        app:layout_constraintBottom_toTopOf="@+id/informaTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/informaTitulo"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:drawableLeft="@drawable/ic_access_time_black_24dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8D8989"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/lojaCoveniencia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageInforma" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_informa"
+        android:layout_width="112dp"
+        android:layout_height="87dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+
+        app:civ_border_color="#ffffff"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <TextView
+        android:id="@+id/lojaCoveniencia"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:drawableLeft="@drawable/ic_free_breakfast_black_24dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#673AB7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Troca_oleo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informaTitulo" />
+
+    <TextView
+        android:id="@+id/Troca_oleo"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:drawableLeft="@drawable/ic_directions_car_black_24dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#673AB7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Borracharia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lojaCoveniencia" />
+
+    <TextView
+        android:id="@+id/Borracharia"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:drawableLeft="@drawable/ic_build_blackxx_24dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#673AB7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Troca_oleo" />
+
+</android.support.constraint.ConstraintLayout>

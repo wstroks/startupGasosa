@@ -19,9 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acitivity.ContribuirGeralActivity"
-            android:screenOrientation="portrait"
+        <activity android:name=".acitivity.informaPosto"  android:screenOrientation="portrait"
             android:theme="@style/AppThemeAi"/>
+        <activity
+            android:name=".acitivity.ContribuirGeralActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAi" />
         <activity
             android:name=".acitivity.contribuirActivity"
             android:screenOrientation="portrait"
@@ -84,13 +87,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".acitivity.MainActivity"
             android:screenOrientation="portrait" />
-
-
-
         <activity
             android:name=".acitivity.CadastroActivity"
             android:screenOrientation="portrait" />
@@ -100,7 +99,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.
@@ -121,9 +119,8 @@
 
         <receiver
             android:name=".update.onUpgradeReceiver"
-            android:exported="true"
-            android:enabled="true">
-
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>

@@ -74,7 +74,7 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
             }else{
             myViewHolder.alcool.setText("R$ " + posto.getDieselAd().toString());}
             myViewHolder.bairro.setText(posto.getBairro());
-            myViewHolder.distan.setText("Gps(off)");
+          //  myViewHolder.distan.setText("Gps(off)");
             myViewHolder.data.setText("Atualizado:" + posto.getData());
             if (posto.getLogo() != null) {
                 if (posto.getLogo().equals("ipiranga")) {
@@ -181,6 +181,8 @@ public class dieselAditivadoAdapter extends RecyclerView.Adapter<dieselAditivado
                 @Override
                 public void onFailure(@NonNull Exception e) {
                    // Log.d("MapDemoActivity", "Error trying to get last GPS location");
+
+                    my.distan.setText("Gps(off)");
                     e.printStackTrace();
                 }
             });}

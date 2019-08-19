@@ -71,7 +71,7 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
         final Posto posto = listaPosto.get(i);
         getLocation(posto,myViewHolder);
         myViewHolder.nome.setText(posto.getNome());
-        myViewHolder.distan.setText("Gps(off)");
+       // myViewHolder.distan.setText("Gps(off)");
 
 
         if(posto.getAlcool()==0){
@@ -227,6 +227,8 @@ public class buscarAdapter extends RecyclerView.Adapter<buscarAdapter.MyViewHold
                 @Override
                 public void onFailure(@NonNull Exception e) {
                   //  Log.d("MapDemoActivity", "Error trying to get last GPS location");
+
+                    my.distan.setText("Gps(off)");
                     e.printStackTrace();
 
                 }

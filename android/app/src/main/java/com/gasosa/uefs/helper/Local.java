@@ -30,8 +30,9 @@ public class Local {
 
         String distanciaFormatada;
         if( distancia < 1 ){
-            distancia = distancia * 1000;//em Metros
-            distanciaFormatada = Math.round( distancia ) + " M";
+           // distancia = distancia * 1000;//em Metros
+            DecimalFormat decimal = new DecimalFormat("0.000");
+            distanciaFormatada = ""+decimal.format( distancia ) + " M";
         }else {
             DecimalFormat decimal = new DecimalFormat("0.0");
             distanciaFormatada = decimal.format(distancia) + " KM";

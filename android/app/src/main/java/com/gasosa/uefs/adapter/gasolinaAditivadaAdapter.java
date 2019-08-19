@@ -66,7 +66,7 @@ public class gasolinaAditivadaAdapter extends RecyclerView.Adapter<gasolinaAditi
         getLocation(posto,myViewHolder);
         myViewHolder.nome.setText(posto.getNome());
         myViewHolder.alcool.setText("R$ "+posto.getGasolinaAd().toString());
-        myViewHolder.distan.setText("Gps(off)");
+
         myViewHolder.bairro.setText(posto.getBairro());
         myViewHolder.data.setText("Atualizado:"+posto.getData());
 
@@ -174,6 +174,8 @@ public class gasolinaAditivadaAdapter extends RecyclerView.Adapter<gasolinaAditi
                 @Override
                 public void onFailure(@NonNull Exception e) {
                   //  Log.d("MapDemoActivity", "Error trying to get last GPS location");
+
+                    my.distan.setText("Gps(off)");
                     e.printStackTrace();
                 }
             });}
