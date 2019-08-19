@@ -39,7 +39,7 @@ public class promoAdapter extends RecyclerView.Adapter<promoAdapter.MyViewHolder
         myViewHolder.titulo.setText(nt.getTitulo());
         myViewHolder.data.setText(nt.getData());
         myViewHolder.corpo.setText(nt.getCorpo());
-      
+
 
     }
 
