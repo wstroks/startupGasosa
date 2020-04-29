@@ -35,6 +35,7 @@ p {
   align-items: center;
   padding: 36px 15px;
   height: 100vh;
+  position: relative;
 }
 
 form {
