@@ -1,22 +1,10 @@
 import React from 'react';
 
-import Login from './pages/Login';
-import Cadastro from './pages/Cadastro';
-import AlcoolGasolina from './pages/AlcoolGasolina';
-import QuantoIreiGastar from './pages/QuantoIreiGastar';
-import MediaPorKm from './pages/MediaPorKm';
-import ContribuirPreco from './pages/ContribuirPreco';
+import Routes from './routes';
 
-function App () {
+const App = () => {
   return (
-    <>
-      <Login />
-      <Cadastro />
-      <QuantoIreiGastar />
-      <AlcoolGasolina />
-      <MediaPorKm />
-      <ContribuirPreco />
-    </>
+    <Routes />
   );
 }
 

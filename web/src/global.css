@@ -87,6 +87,7 @@ form a {
   color: #b7c0ee;
   font-weight: bold;
   margin-top: 10px;
+  text-decoration: none;
 }
 
 form a:hover {
