@@ -51,10 +51,10 @@ form input {
   border: 1px solid #b7c0ee;
   border-radius: 4px;
   margin-bottom: 15px;
-  height: 40px;
-  padding: 10px;
+  height: 36px;
+  padding: 5px 10px;
   color: #b7c0ee;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 form input::placeholder {
@@ -62,16 +62,15 @@ form input::placeholder {
 }
 
 form button {
-  height: 40px;
-  padding: 10px;
+  height: 36px;
+  padding: 5px 10px;
   border-radius: 4px;
   outline: 0;
   background: transparent;
   border: 1px solid #b7c0ee;
   color: #b7c0ee;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  margin-bottom: 15px;
 }
 
 form button:hover {
@@ -81,12 +80,13 @@ form button:hover {
 }
 
 form a {
-  height: 40px;
-  padding: 10px;
-  font-size: 16px;
+  height: 36px;
+  padding: 5px 10px;
+  font-size: 14px;
   text-align: center;
   color: #b7c0ee;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 form a:hover {
