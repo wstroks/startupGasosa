@@ -1,23 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from '../../components/Header';
 
 import './styles.css';
 
 export default function MediaPorKm () {
+    const [kmPercorridos, setKmPercorridos] = useState();
+    const [qtdLitros, setQtdLitros] = useState();
+
+    const [kmPorLitro, setKmPorLitro] = useState();
+
+    function handleCalculate (e) {
+        e.preventDefault();
+
+        setKmPorLitro((kmPercorridos / qtdLitros).toFixed(2));
+
+    }
+
     return (
         <div className="box">
             <Header />
-            <form action={() => { }}>
-                <input type="text" name="kmPercorridos" id="kmPercorridos" placeholder="Percorreu quantos Km?" required />
-                <input type="text" name="qtdLitros" id="qtdLitros" placeholder="Abasteceu quantos litros?" required />
+            <form onSubmit={handleCalculate}>
+                <input
+                    type="text"
+                    value={kmPercorridos}
+                    onChange={e => setKmPercorridos(e.target.value)}
+                    placeholder="Percorreu quantos Km?"
+                    required
+                />
+
+                <input
+                    type="text"
+                    value={qtdLitros}
+                    onChange={e => setQtdLitros(e.target.value)}
+                    placeholder="Abasteceu quantos litros?"
+                    required
+                />
+
                 <button type="submit">Calcular</button>
             </form>
 
             <div className="resultado">
                 <span>Resultado</span>
                 <p>
-                    Foram percorridos x Km/litro
+                    Foram percorridos {kmPorLitro} Km/litro
                 </p>
             </div>
         </div>
