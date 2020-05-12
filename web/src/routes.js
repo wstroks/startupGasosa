@@ -9,6 +9,8 @@ import QuantoIreiGastar from './pages/QuantoIreiGastar';
 import MediaPorKm from './pages/MediaPorKm';
 import ContribuirPreco from './pages/ContribuirPreco';
 import Home from './pages/Home';
+import Sobre from './pages/Sobre';
+import Sugestoes from './pages/Sugestoes';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -32,6 +34,8 @@ const Routes = () => (
             <PrivateRoute path="/quanto-irei-gastar" component={QuantoIreiGastar} />
             <PrivateRoute path="/media-por-km" component={MediaPorKm} />
             <PrivateRoute path="/contribuir-preco" component={ContribuirPreco} />
+            <PrivateRoute path="/sobre" component={Sobre} />
+            <PrivateRoute path="/sugestoes" component={Sugestoes} />
         </Switch>
     </BrowserRouter>
 );

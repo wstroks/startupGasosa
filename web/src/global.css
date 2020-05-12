@@ -14,7 +14,7 @@ body {
   margin: 0 auto;
   font-family: "Oxygen", sans-serif;
   background: linear-gradient(135deg, #330c2f, #7067cf);
-  color: #ffffff;
+  color: #b7c0ee;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -26,6 +26,7 @@ h5,
 h6,
 p {
   margin: 0;
+  font-weight: normal;
 }
 
 .box {
@@ -59,6 +60,16 @@ form input {
 
 form input::placeholder {
   color: #b7c0ee;
+}
+
+form textarea {
+  background: transparent;
+  border: 1px solid #b7c0ee;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  padding: 10px;
+  color: #b7c0ee;
+  font-size: 14px;
 }
 
 form button {
