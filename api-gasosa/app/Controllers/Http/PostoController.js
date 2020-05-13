@@ -182,18 +182,18 @@ class PostoController {
 
         setTimeout(function () {
             page1.click('#updateResults');
-            
-            
+
+
         }, 42000);
 
         setTimeout(function () {
             page1.click('#updateResults');
-            
-            
+
+
         }, 44000);
         setTimeout(function () {
             page1.click('#updateResults');
-            
+
             page1.click('body > div.ctrl-top > a');
         }, 46000);
 
@@ -213,56 +213,57 @@ class PostoController {
                 */
                 let array1 = [];
 
-               
+
                 for (var i = 2; i < 102; i++) {
-                   // console.log(i + "vai");
+                    // console.log(i + "vai");
                     let p = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2").innerText;
                     //var url=null;
                     //if(!document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div.btn-group > div")){
                     //url = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div.btn-group>div");
                     //console.log(url); }
-                   // console.log(p + "akii");
+                    // console.log(p + "akii");
 
                     //console.log(JSON.stringify(agora[7]));
 
 
-                    
+
                     let nome = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(1) > strong").innerText;
-                    
+
                     let preco = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(2)").innerText;
                     let status = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(3)").innerText;
-                   
-                    
+
+
                     let posto = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(4)").innerText;
                     let endereco = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(5)").innerText;
                     //let contato = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(7)").innerText;
-                    var test=preco.split(" ");
-                    if(test[0]=="De"){
+                    var test = preco.split(" ");
+                    if (test[0] == "De") {
                         preco = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(3)").innerText;
                         status = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(4)").innerText;
-                       
-                        
+
+
                         posto = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(5)").innerText;
                         endereco = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div:nth-child(6)").innerText;
                     }
-                    var x=nome+"\n"+preco+"\n"+status+"\n"+endereco+"\n"+posto+"\n"+endereco+"\n"+"null"+"\n"+"null";
+                    var x = nome + "\n" + preco + "\n" + status + "\n" + posto + "\n" + endereco + "\n" + "null" + "\n" + "null";
                     array1.push(x);
-                    
+                    //var find = Posto.query().where('endereco', '=', endereco).first();
+                    //console.log("vaai"+find);
                     /* var url = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div.btn-group > div > a").html;
                      var kk= url.split('/');
                      var y= kk;
                      var loca=y[(x.length-1)].split(',');*/
                     // var agora = p.split('\n');
 
-                   /* array1.push({
-                        "combustivel": nome,
-                        "preco": preco,
-                        "atualizacao": status,
-                        "posto": posto,
-                        "endereco": endereco,
-                        "contato": contato
-
-                    });*/
+                    /* array1.push({
+                         "combustivel": nome,
+                         "preco": preco,
+                         "atualizacao": status,
+                         "posto": posto,
+                         "endereco": endereco,
+                         "contato": contato
+ 
+                     });*/
                 }
                 /*const devtoListTrimmed = array1.filter(n => n != undefined)
                 fs.writeFile("etanol1.json",
@@ -290,15 +291,15 @@ class PostoController {
             // browser.close();
 
 
-                       
+
             data.then(t => {
 
-                console.log("1"+t.length);
+                console.log("1" + t.length);
                 var datas = [];
                 for (var i = 0; i < t.length; i++) {
                     //console.log(t[i]);
                     var agora = t[i].split('\n');
-                    
+
                     console.log(JSON.stringify(agora[7]));
                     datas.push({
                         combustivel: agora[0],
@@ -311,8 +312,10 @@ class PostoController {
 
                     });
 
+                    // var find =  Posto.query().where('endereco', '=', agora[4]).first();
+                    // console.log("achei "+find.endereco);
                 }
-               // var fs = require('fs');
+                // var fs = require('fs');
                 const devtoListTrimmed = datas.filter(n => 1 != undefined)
                 fs.writeFile("diesel1.json",
                     JSON.stringify(devtoListTrimmed, null, 4),
@@ -494,18 +497,18 @@ class PostoController {
 
         setTimeout(function () {
             page1.click('#updateResults');
-            
-            
+
+
         }, 42000);
 
         setTimeout(function () {
             page1.click('#updateResults');
-            
-            
+
+
         }, 44000);
         setTimeout(function () {
             page1.click('#updateResults');
-            
+
             page1.click('body > div.ctrl-top > a');
         }, 46000);
 
@@ -525,15 +528,15 @@ class PostoController {
                 */
                 let array1 = [];
 
-               
+
                 for (var i = 2; i < 96; i++) {
-                   // console.log(i + "vai");
+                    // console.log(i + "vai");
                     let p = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2").innerText;
                     //var url=null;
                     //if(!document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div.btn-group > div")){
                     //url = document.querySelector("#nav-lista > div:nth-child(" + i + ") > div.flex-item2 > div.btn-group>div");
                     //console.log(url); }
-                   // console.log(p + "akii");
+                    // console.log(p + "akii");
 
                     //console.log(JSON.stringify(agora[7]));
 
@@ -551,15 +554,15 @@ class PostoController {
                      var loca=y[(x.length-1)].split(',');*/
                     // var agora = p.split('\n');
 
-                   /* array1.push({
-                        "combustivel": nome,
-                        "preco": preco,
-                        "atualizacao": status,
-                        "posto": posto,
-                        "endereco": endereco,
-                        "contato": contato
-
-                    });*/
+                    /* array1.push({
+                         "combustivel": nome,
+                         "preco": preco,
+                         "atualizacao": status,
+                         "posto": posto,
+                         "endereco": endereco,
+                         "contato": contato
+ 
+                     });*/
                 }
                 /*const devtoListTrimmed = array1.filter(n => n != undefined)
                 fs.writeFile("etanol1.json",
@@ -587,10 +590,10 @@ class PostoController {
             // browser.close();
 
 
-                       
+
             data.then(t => {
 
-                console.log("1"+t.length);
+                console.log("1" + t.length);
                 var datas = [];
                 for (var i = 0; i < t.length; i++) {
                     //console.log(t[i]);
@@ -608,7 +611,7 @@ class PostoController {
                     });
 
                 }
-               // var fs = require('fs');
+                // var fs = require('fs');
                 const devtoListTrimmed = datas.filter(n => 1 != undefined)
                 fs.writeFile("etanol1.json",
                     JSON.stringify(devtoListTrimmed, null, 4),
@@ -785,18 +788,18 @@ class PostoController {
 
         setTimeout(function () {
             page1.click('#updateResults');
-            
-            
+
+
         }, 42000);
 
         setTimeout(function () {
             page1.click('#updateResults');
-            
-            
+
+
         }, 44000);
         setTimeout(function () {
             page1.click('#updateResults');
-            
+
             page1.click('body > div.ctrl-top > a');
         }, 46000);
 
@@ -877,7 +880,7 @@ class PostoController {
 
                     });
 
-                    
+
 
                 }
                 var fs = require('fs');
@@ -1113,6 +1116,26 @@ class PostoController {
      * @param {View} ctx.view
      */
     async edit({ params, request, response, view }) {
+        const data = request.all();
+        const posto = await Posto.query().where('id', params.id).first();
+
+        if (!posto) {
+            return response.status(404).send({ message: "Nenhum registro encontrado!" });
+
+        }else{
+
+        posto.nome = data.nome;
+        posto.endereco = data.endereco;
+        posto.contato = data.contato;
+        posto.status = data.status;
+        posto.cidade = data.cidade;
+        posto.latitude = data.latitude;
+        posto.longitude = data.longitude;
+        posto.url = data.url;
+        posto.bandeira = data.bandeira;
+        posto.save();}
+
+        return posto;
     }
 
     /**
@@ -1185,19 +1208,19 @@ class PostoController {
                  });*/
 
                 // var combustivel1 = await Combustivel.query().where('posto_id', find.id).where('tipo', '=', data[i].combustivel).first();
-                 if (combustivel1) {
-                     combustivel1.valor = data[i].preco;
-                     combustivel1.save();
-                 } else {
+                if (combustivel1) {
+                    combustivel1.valor = data[i].preco;
+                    combustivel1.save();
+                } else {
                     dadosCombustivel.push({
                         'valor': data[i].preco,
                         'tipo': data[i].combustivel,
                         'posto_id': posto.id
-    
+
                     });
- 
-                     var combustivel = await Combustivel.create(...dadosCombustivel);
-                 }
+
+                    var combustivel = await Combustivel.create(...dadosCombustivel);
+                }
                 // var combustivel = await Combustivel.create(...dadosCombustivel);
             }
 

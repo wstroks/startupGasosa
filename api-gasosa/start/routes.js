@@ -31,4 +31,6 @@ Route.group(() => {
   Route.get("gasolina", "PostoController.app");
   Route.get("etanol", "PostoController.etanol");
   Route.get("diesel", "PostoController.diesel");
+
+  Route.post(":id", "PostoController.edit");
 }).prefix('postos')
