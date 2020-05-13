@@ -19,3 +19,16 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
+
+
+
+
+Route.group(() => {
+  Route.post('create','PostoController.create');
+  Route.post('create/etanol','PostoController.createEtanol');
+  Route.put('update','PostoController.update');
+  Route.get('','PostoController.index');
+  Route.get("gasolina", "PostoController.app");
+  Route.get("etanol", "PostoController.etanol");
+  Route.get("diesel", "PostoController.diesel");
+}).prefix('postos')
