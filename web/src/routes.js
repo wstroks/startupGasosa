@@ -1,9 +1,6 @@
 import React from 'react';
-import { isAuthenticated } from './auth';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Login from './pages/Login';
-import Cadastro from './pages/Cadastro';
 import AlcoolGasolina from './pages/AlcoolGasolina';
 import QuantoIreiGastar from './pages/QuantoIreiGastar';
 import MediaPorKm from './pages/MediaPorKm';
@@ -13,31 +10,17 @@ import Sobre from './pages/Sobre';
 import Sugestoes from './pages/Sugestoes';
 import Posto from './pages/Posto';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={props => (
-            isAuthenticated() ? (
-                <Component {...props} />
-            ) : (
-                    <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-                )
-        )} />
-)
-
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/registro" component={Cadastro} />
-            <PrivateRoute path="/home" component={Home} />
-            <PrivateRoute path="/alcool-gasolina" component={AlcoolGasolina} />
-            <PrivateRoute path="/quanto-irei-gastar" component={QuantoIreiGastar} />
-            <PrivateRoute path="/media-por-km" component={MediaPorKm} />
-            <PrivateRoute path="/contribuir-preco" component={ContribuirPreco} />
-            <PrivateRoute path="/sobre" component={Sobre} />
-            <PrivateRoute path="/sugestoes" component={Sugestoes} />
-            <PrivateRoute path="/postos/:id" component={Posto} />
+            <Route exact path="/" component={Home} />
+            <Route path="/postos/:id" component={Posto} />
+            <Route path="/alcool-gasolina" component={AlcoolGasolina} />
+            <Route path="/quanto-irei-gastar" component={QuantoIreiGastar} />
+            <Route path="/media-por-km" component={MediaPorKm} />
+            <Route path="/contribuir-preco" component={ContribuirPreco} />
+            <Route path="/sobre" component={Sobre} />
+            <Route path="/sugestoes" component={Sugestoes} />
         </Switch>
     </BrowserRouter>
 );
