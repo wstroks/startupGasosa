@@ -11,6 +11,7 @@ import ContribuirPreco from './pages/ContribuirPreco';
 import Home from './pages/Home';
 import Sobre from './pages/Sobre';
 import Sugestoes from './pages/Sugestoes';
+import Posto from './pages/Posto';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -36,6 +37,7 @@ const Routes = () => (
             <PrivateRoute path="/contribuir-preco" component={ContribuirPreco} />
             <PrivateRoute path="/sobre" component={Sobre} />
             <PrivateRoute path="/sugestoes" component={Sugestoes} />
+            <PrivateRoute path="/postos/:id" component={Posto} />
         </Switch>
     </BrowserRouter>
 );

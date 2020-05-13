@@ -7,14 +7,14 @@
     position: relative;
 }
 
-div.postos {
+.box-home div.postos {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 15px;
     width: 100%;
 }
 
-div.posto {
+.box-home div.posto {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -25,65 +25,73 @@ div.posto {
     border-radius: 4px;
 }
 
-div.posto .bandeira img {
+.box-home div.posto .bandeira img {
     width: 32px;
     height: auto;
     object-fit: contain;
     border-radius: 50%;
 }
 
-div.posto h3 {
+.box-home div.posto h3 {
     font-size: 16px;
     font-weight: bold;
 }
 
-div.posto .endereco {
+.box-home div.posto .endereco {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
 }
 
-div.posto .endereco span {
+.box-home div.posto .endereco span {
     font-size: 14px;
     text-align: center;
     max-width: 70%;
 }
 
-div.posto .endereco span + span {
+.box-home div.posto .endereco span + span {
     margin-left: 10px;
 }
 
-div.posto ul.combustiveis {
+.box-home div.posto ul.combustiveis {
     list-style: none;
     margin: 0;
 }
 
-div.posto ul.combustiveis li {
+.box-home div.posto ul.combustiveis li {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
 }
 
-div.posto ul.combustiveis li + li {
+.box-home div.posto ul.combustiveis li span {
+    max-width: 80%;
+}
+
+.box-home div.posto ul.combustiveis li + li {
     margin-top: 5px;
 }
 
-div.posto .linha {
+.box-home div.posto .linha {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
 
-div.posto .linha span {
-    width: 25px;
-    height: 25px;
-    background: #7b287d;
-    color: #f9f9f9;
+.box-home div.posto .linha a {
+    color: #7b287d;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.box-home div.posto .linha a:hover {
+    background: #7b287d;
+    color: #f9f9f9;
+    transition: 0.3s;
 }
