@@ -162,9 +162,12 @@ export default function Home () {
 
     useEffect(() => {
         setPostos([posto1, posto2, posto3]);
-        // getPostos();
         handleDistance();
     }, [posto1, posto2, posto3]);
+
+    // useEffect(() => {
+    //     getPostos();
+    // }, []);
 
     function handleDistance () {
         setDistancia(0);
@@ -181,14 +184,12 @@ export default function Home () {
                             </div>
 
                             <h3>{posto.nome}</h3>
-
-                            <Link to={`/postos/${posto.id}`}><FiPlusCircle size={24} /></Link>
                         </div>
 
                         <div className="endereco">
                             <span><FiMapPin size={16} /></span>
                             <span>{posto.endereco}</span>
-                            <span>{distancia} Km</span>
+                            {/* <span>{distancia} Km</span> */}
                         </div>
 
                         <ul className="combustiveis">
@@ -196,6 +197,10 @@ export default function Home () {
                                 <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
                             ))}
                         </ul>
+
+                        <div className="links">
+                            <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                        </div>
                     </div>
                 ))}
             </div>
