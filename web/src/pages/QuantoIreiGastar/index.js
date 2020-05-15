@@ -5,11 +5,11 @@ import Header from '../../components/Header';
 import './styles.css';
 
 export default function QuantoIreiGastar () {
-    const [valorLitro, setValorLitro] = useState();
-    const [kmPercorrido, setKmPercorrido] = useState();
-    const [kmPorLitro, setKmPorLitro] = useState();
+    const [valorLitro, setValorLitro] = useState('');
+    const [kmPercorrido, setKmPercorrido] = useState('');
+    const [kmPorLitro, setKmPorLitro] = useState('');
 
-    const [valor, setValor] = useState();
+    const [valor, setValor] = useState('');
 
     function handleCalculate (e) {
         e.preventDefault();

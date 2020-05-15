@@ -5,10 +5,10 @@ import Header from '../../components/Header';
 import './styles.css';
 
 export default function MediaPorKm () {
-    const [kmPercorridos, setKmPercorridos] = useState();
-    const [qtdLitros, setQtdLitros] = useState();
+    const [kmPercorridos, setKmPercorridos] = useState('');
+    const [qtdLitros, setQtdLitros] = useState('');
 
-    const [kmPorLitro, setKmPorLitro] = useState();
+    const [kmPorLitro, setKmPorLitro] = useState('');
 
     function handleCalculate (e) {
         e.preventDefault();

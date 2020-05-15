@@ -18,7 +18,7 @@ import api from '../../services/api';
 
 export default function Home () {
     const [postos, setPostos] = useState([]);
-    const [distancia, setDistancia] = useState();
+    const [distancia, setDistancia] = useState('');
 
     async function getPostos () {
         try {

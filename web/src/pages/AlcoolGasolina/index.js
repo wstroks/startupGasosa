@@ -5,15 +5,15 @@ import Header from '../../components/Header';
 import './styles.css';
 
 export default function AlcoolGasolina () {
-    const [valorLitroAlcool, setValorLitroAlcool] = useState();
-    const [valorLitroGasolina, setvalorLitroGasolina] = useState();
+    const [valorLitroAlcool, setValorLitroAlcool] = useState('');
+    const [valorLitroGasolina, setvalorLitroGasolina] = useState('');
 
-    const [combustivel, setCombustivel] = useState();
+    const [combustivel, setCombustivel] = useState('');
 
     function handleCalculate (e) {
         e.preventDefault();
 
-        (valorLitroAlcool / valorLitroGasolina < .7 ? setCombustivel('Álcool') : setCombustivel('Gasolina'));
+        (parseFloat(valorLitroAlcool) / parseFloat(valorLitroGasolina) < .7 ? setCombustivel('Álcool') : setCombustivel('Gasolina'));
     }
 
     return (
