@@ -1,11 +1,15 @@
 import React from 'react';
 
+import Header from '../../components/Header';
+
 import './styles.css';
+
 import gasosa from '../../assets/img/gasosa.jpg';
 
 export default function Sobre () {
     return (
         <div className="box">
+            <Header />
             <div className="top">
                 <img src={gasosa} alt="" />
                 <span>Gasosa!</span>

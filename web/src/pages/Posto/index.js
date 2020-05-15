@@ -16,53 +16,14 @@ import api from '../../services/api';
 
 export default class Posto extends Component {
     state = {
-        posto: {
-            id: 1,
-            nome: "POSTO SENADOR",
-            endereco: "RUA SENADOR QUINTINO 1125 OLHOS D ÁGUA 44003541, FEIRA DE SANTANA",
-            contato: "7532433792",
-            status: "há 6 hora(s), 9 minuto(s) e 29 segundo(s)",
-            cidade: "Feira de Santana",
-            latitude: null,
-            longitude: null,
-            url: null,
-            bandeira: null,
-            created_at: "2020-05-13 19:27:20",
-            updated_at: "2020-05-13 19:27:20",
-            combustiveis: [
-                {
-                    id: 1,
-                    posto_id: 1,
-                    tipo: "GASOLINA C COMUM (B:3)",
-                    valor: "R$ 3,49",
-                    created_at: "2020-05-13 19:27:20",
-                    updated_at: "2020-05-13 19:27:20"
-                },
-                {
-                    id: 149,
-                    posto_id: 1,
-                    tipo: "ETANOL HIDRATADO COMUM (B:10)",
-                    valor: "R$ 2,74",
-                    created_at: "2020-05-13 19:27:39",
-                    updated_at: "2020-05-13 19:27:39"
-                },
-                {
-                    id: 208,
-                    posto_id: 1,
-                    tipo: "OLEO DIESEL B S10 COMUM (B:6)",
-                    valor: "R$ 2,56",
-                    created_at: "2020-05-13 19:27:52",
-                    updated_at: "2020-05-13 19:27:52"
-                }
-            ]
-        },
+        posto: {},
         distancia: 0,
     }
 
     async componentDidMount () {
         const { id } = this.props.match.params;
 
-        const response = await api.get(`/postos/${id}`);
+        const response = await api.get(`postos/${id}`);
 
         this.setState({ posto: response.data });
     }

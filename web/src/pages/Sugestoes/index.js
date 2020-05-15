@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Header from '../../components/Header';
+
 import './styles.css';
 
 import api from '../../services/api';
@@ -17,11 +19,11 @@ export default function Sugestoes () {
         } catch (error) {
             alert("Erro ao enviar as sugestões");
         }
-
     }
 
     return (
         <div className="box">
+            <Header />
             <h4 className="titulo">
                 Seu feedback é fundamental para a melhoria do "Gasosa!"
             </h4>
@@ -34,7 +36,7 @@ export default function Sugestoes () {
                     required
                 >
                 </textarea>
-                
+
                 <button type="submit">Enviar</button>
             </form>
         </div>
