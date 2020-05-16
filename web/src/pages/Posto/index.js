@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Card } from 'react-bootstrap';
 
 import {
-    FiPlusCircle,
+    FiCornerUpRight,
     FiMapPin,
+    FiShare2,
 } from "react-icons/fi";
 
 import shell from '../../assets/img/shell.png';
 import menorPreco from '../../assets/img/menor-preco.png';
 import petrobras from '../../assets/img/petrobras.png';
+
+import Header from '../../components/Header';
 
 import './styles.css';
 
@@ -43,27 +47,30 @@ export default class Posto extends Component {
 
         return (
             <div className="box-posto">
-                <div className="posto">
-                    <div className="linha">
-                        <div className="bandeira">
-                            <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
-                        </div>
+                <Header />
 
+                <Card>
+                    <Card.Header>
+                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
                         <h3>{posto.nome}</h3>
-                    </div>
+                    </Card.Header>
+                    <Card.Body>
+                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
 
-                    <div className="endereco">
-                        <span><FiMapPin size={16} /></span>
-                        <span>{posto.endereco}</span>
-                        <span>{distancia} Km</span>
-                    </div>
+                        <ul className="combustiveis">
+                            {combustiveisArray.map(combustivel => (
+                                <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                            ))}
+                        </ul>
 
-                    <ul className="combustiveis">
-                        {combustiveisArray.map(combustivel => (
-                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                        ))}
-                    </ul>
-                </div>
+                        <h5>Situado a {distancia} Km do seu local</h5>
+
+                        <div className="acoes">
+                            <button><FiCornerUpRight /> <span>Ver no mapa</span></button>
+                            <button><FiShare2 /> <span>Compartilhar</span></button>
+                        </div>
+                    </Card.Body>
+                </Card>
             </div>
         );
     }

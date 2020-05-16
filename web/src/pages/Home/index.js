@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 
 import {
-    FiPlusCircle,
+    FiCornerUpRight,
     FiMapPin,
+    FiShare2,
 } from "react-icons/fi";
 
 import shell from '../../assets/img/shell.png';
@@ -42,22 +44,15 @@ export default function Home () {
     return (
         <div className="box-home">
             <Header />
-            <div className="postos">
-                {postos.map(posto => (
-                    <div className="posto" key={posto.id}>
-                        <div className="linha">
-                            <div className="bandeira">
-                                <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
-                            </div>
 
-                            <h3>{posto.nome}</h3>
-                        </div>
-
-                        <div className="endereco">
-                            <span><FiMapPin size={16} /></span>
-                            <span>{posto.endereco}</span>
-                            {/* <span>{distancia} Km</span> */}
-                        </div>
+            {postos.map(posto => (
+                <Card key={posto.id}>
+                    <Card.Header>
+                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                        <h3>{posto.nome}</h3>
+                    </Card.Header>
+                    <Card.Body>
+                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
 
                         <ul className="combustiveis">
                             {posto.combustiveis.map(combustivel => (
@@ -68,9 +63,9 @@ export default function Home () {
                         <div className="links">
                             <Link to={`/postos/${posto.id}`}>Acessar</Link>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    </Card.Body>
+                </Card>
+            ))}
         </div>
     );
 }

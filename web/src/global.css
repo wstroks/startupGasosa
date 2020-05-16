@@ -13,7 +13,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   font-family: "Oxygen", sans-serif;
-  background: linear-gradient(135deg, #330c2f, #7067cf);
+  background: linear-gradient(90deg, #330c2f, #7067cf);
   color: #b7c0ee;
   -webkit-font-smoothing: antialiased;
 }

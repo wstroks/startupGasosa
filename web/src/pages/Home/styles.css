@@ -5,84 +5,86 @@
     align-items: center;
     padding: 36px 15px;
     padding-top: 50px;
+    overflow-y: auto;
     position: relative;
 }
 
-.box-home div.postos {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 15px;
-    width: 100%;
-    margin-top: 15px;
-}
-
-.box-home div.posto {
+.box-home .card {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    /* flex: 1; */
     width: 100%;
-    background: #f9f9f9;
-    color: #7b287d;
-    padding: 10px;
+    border: 0;
     border-radius: 4px;
+    margin-top: 25px;
+    background: transparent;
 }
 
-.box-home div.posto .bandeira {
-    margin-right: 15px;
-}
-
-.box-home div.posto .bandeira img {
-    width: 28px;
-    height: auto;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-.box-home div.posto h3 {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.box-home div.posto .endereco {
+.box-home .card .card-header {
+    background: #7b287d;
+    padding: 15px 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.box-home div.posto .endereco span {
-    font-size: 13px;
+.box-home .card .card-header img {
+    width: 28px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.box-home .card .card-header h3 {
+    color: #f9f9f9;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
 }
 
-.box-home div.posto .endereco span + span {
+.box-home .card .card-body {
+    background: #f9f9f9;
+    padding: 15px 10px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border: 0;
+}
+
+.box-home .card .card-body h4 {
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    color: #7b287d;
+}
+
+.box-home .card .card-body ul.combustiveis {
+    list-style: none;
+    margin: 0;
+    margin: 15px 0;
+}
+
+.box-home .card .card-body ul.combustiveis li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-home .card .card-body ul.combustiveis li + li {
+    padding-top: 5px;
+}
+
+.box-home .card .card-body ul.combustiveis li span {
+    font-size: 13px;
+    font-weight: bold;
+    color: #7b287d;
+}
+
+.box-home .card .card-body ul.combustiveis li span + span {
     margin-left: 10px;
 }
 
-.box-home div.posto ul.combustiveis {
-    list-style: none;
-    margin: 20px 0;
-}
-
-.box-home div.posto ul.combustiveis li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: bold;
-    padding: 5px 0;
-}
-
-.box-home div.posto ul.combustiveis li span {
-    max-width: 80%;
-}
-
-.box-home div.posto .linha {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-.box-home div.posto .links a {
+.box-home .card .card-body .links a {
     color: #7b287d;
     display: flex;
     align-items: center;
@@ -95,7 +97,7 @@
     font-weight: bold;
 }
 
-.box-home div.posto .links a:hover {
+.box-home .card .card-body .links a:hover {
     background: #7b287d;
     color: #f9f9f9;
     transition: 0.3s;
