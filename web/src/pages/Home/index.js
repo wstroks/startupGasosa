@@ -53,100 +53,124 @@ export default function Home () {
             <Tab.Container defaultActiveKey="gasolina">
                 <Tab.Content>
                     <Tab.Pane eventKey="gasolina">
-                        {postos.map(posto => (
-                            <Card key={posto.id}>
-                                <Card.Header>
-                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
-                                    <h3>{posto.nome}</h3>
-                                </Card.Header>
-                                <Card.Body>
-                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                        {postos.map(posto =>
+                            (posto.combustiveis.find(combustivel => (
+                                (combustivel.tipo.indexOf("GASOLINA") !== -1)
+                            )))
+                            &&
+                            (
+                                <Card key={posto.id}>
+                                    <Card.Header>
+                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <h3>{posto.nome}</h3>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
 
-                                    <ul className="combustiveis">
-                                        {posto.combustiveis.map(combustivel => (
-                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                        ))}
-                                    </ul>
+                                        <ul className="combustiveis">
+                                            {posto.combustiveis.map(combustivel =>
+                                                (combustivel.tipo.indexOf("GASOLINA") !== -1) && (
+                                                    <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                                ))}
+                                        </ul>
 
-                                    <div className="links">
-                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        ))}
+                                        <div className="links">
+                                            <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+                            ))}
                     </Tab.Pane>
 
                     <Tab.Pane eventKey="alcool">
-                        {postos.map(posto => (
-                            <Card key={posto.id}>
-                                <Card.Header>
-                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
-                                    <h3>{posto.nome}</h3>
-                                </Card.Header>
-                                <Card.Body>
-                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                        {postos.map(posto =>
+                            (posto.combustiveis.find(combustivel => (
+                                (combustivel.tipo.indexOf("ETANOL") !== -1)
+                            )))
+                            &&
+                            (
+                                <Card key={posto.id}>
+                                    <Card.Header>
+                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <h3>{posto.nome}</h3>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
 
-                                    <ul className="combustiveis">
-                                        {posto.combustiveis.map(combustivel => (
-                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                        ))}
-                                    </ul>
+                                        <ul className="combustiveis">
+                                            {posto.combustiveis.map(combustivel =>
+                                                (combustivel.tipo.indexOf("ETANOL") !== -1) && (
+                                                    <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                                ))}
+                                        </ul>
 
-                                    <div className="links">
-                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        ))}
+                                        <div className="links">
+                                            <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+                            ))}
                     </Tab.Pane>
 
                     <Tab.Pane eventKey="diesel">
-                        {postos.map(posto => (
-                            <Card key={posto.id}>
-                                <Card.Header>
-                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
-                                    <h3>{posto.nome}</h3>
-                                </Card.Header>
-                                <Card.Body>
-                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                        {postos.map(posto =>
+                            (posto.combustiveis.find(combustivel => (
+                                (combustivel.tipo.indexOf("DIESEL") !== -1)
+                            )))
+                            &&
+                            (
+                                <Card key={posto.id}>
+                                    <Card.Header>
+                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <h3>{posto.nome}</h3>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
 
-                                    <ul className="combustiveis">
-                                        {posto.combustiveis.map(combustivel => (
-                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                        ))}
-                                    </ul>
+                                        <ul className="combustiveis">
+                                            {posto.combustiveis.map(combustivel =>
+                                                (combustivel.tipo.indexOf("DIESEL") !== -1) && (
+                                                    <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                                ))}
+                                        </ul>
 
-                                    <div className="links">
-                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        ))}
+                                        <div className="links">
+                                            <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+                            ))}
                     </Tab.Pane>
 
-                    <Tab.Pane eventKey="etanol">
-                        {postos.map(posto => (
-                            <Card key={posto.id}>
-                                <Card.Header>
-                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
-                                    <h3>{posto.nome}</h3>
-                                </Card.Header>
-                                <Card.Body>
-                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                    {/* <Tab.Pane eventKey="gas">
+                        {postos.map(posto =>
+                            (posto.combustiveis.find(combustivel => (
+                                (combustivel.tipo.indexOf("GNV") !== -1)
+                            )))
+                            &&
+                            (
+                                <Card key={posto.id}>
+                                    <Card.Header>
+                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <h3>{posto.nome}</h3>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
 
-                                    <ul className="combustiveis">
-                                        {posto.combustiveis.map(combustivel => (
-                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                        ))}
-                                    </ul>
+                                        <ul className="combustiveis">
+                                            {posto.combustiveis.map(combustivel =>
+                                                (combustivel.tipo.indexOf("GNV") !== -1) && (
+                                                    <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                                ))}
+                                        </ul>
 
-                                    <div className="links">
-                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        ))}
-                    </Tab.Pane>
+                                        <div className="links">
+                                            <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+                            ))}
+                    </Tab.Pane> */}
 
                     <Tab.Pane eventKey="menu">
                         <ul className="menu-opcoes">
@@ -165,21 +189,25 @@ export default function Home () {
                             <span>Gasolina</span>
                         </Nav.Link>
                     </Nav.Item>
+
                     <Nav.Item>
                         <Nav.Link eventKey="alcool">
                             <span>Álcool</span>
                         </Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey='etanol'>
-                            <span>Etanol</span>
-                        </Nav.Link>
-                    </Nav.Item>
+                    
                     <Nav.Item>
                         <Nav.Link eventKey="diesel">
                             <span>Diesel</span>
                         </Nav.Link>
                     </Nav.Item>
+                    
+                    {/* <Nav.Item>
+                        <Nav.Link eventKey='gas'>
+                            <span>Gás (Gnv)</span>
+                        </Nav.Link>
+                    </Nav.Item> */}
+                    
                     <Nav.Item>
                         <Nav.Link eventKey="menu">
                             <span>Menu</span>
