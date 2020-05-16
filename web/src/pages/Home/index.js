@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
 
 import {
-    FiCornerUpRight,
+    Card,
+    Tab,
+    Nav,
+    NavItem,
+    NavLink
+} from 'react-bootstrap';
+
+import {
     FiMapPin,
-    FiShare2,
 } from "react-icons/fi";
 
 import shell from '../../assets/img/shell.png';
@@ -45,27 +50,143 @@ export default function Home () {
         <div className="box-home">
             <Header />
 
-            {postos.map(posto => (
-                <Card key={posto.id}>
-                    <Card.Header>
-                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
-                        <h3>{posto.nome}</h3>
-                    </Card.Header>
-                    <Card.Body>
-                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+            <Tab.Container defaultActiveKey="gasolina">
+                <Tab.Content>
+                    <Tab.Pane eventKey="gasolina">
+                        {postos.map(posto => (
+                            <Card key={posto.id}>
+                                <Card.Header>
+                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                    <h3>{posto.nome}</h3>
+                                </Card.Header>
+                                <Card.Body>
+                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
 
-                        <ul className="combustiveis">
-                            {posto.combustiveis.map(combustivel => (
-                                <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                            ))}
+                                    <ul className="combustiveis">
+                                        {posto.combustiveis.map(combustivel => (
+                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="links">
+                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Tab.Pane>
+
+                    <Tab.Pane eventKey="alcool">
+                        {postos.map(posto => (
+                            <Card key={posto.id}>
+                                <Card.Header>
+                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                    <h3>{posto.nome}</h3>
+                                </Card.Header>
+                                <Card.Body>
+                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+
+                                    <ul className="combustiveis">
+                                        {posto.combustiveis.map(combustivel => (
+                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="links">
+                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Tab.Pane>
+
+                    <Tab.Pane eventKey="diesel">
+                        {postos.map(posto => (
+                            <Card key={posto.id}>
+                                <Card.Header>
+                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                    <h3>{posto.nome}</h3>
+                                </Card.Header>
+                                <Card.Body>
+                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+
+                                    <ul className="combustiveis">
+                                        {posto.combustiveis.map(combustivel => (
+                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="links">
+                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Tab.Pane>
+
+                    <Tab.Pane eventKey="etanol">
+                        {postos.map(posto => (
+                            <Card key={posto.id}>
+                                <Card.Header>
+                                    <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                    <h3>{posto.nome}</h3>
+                                </Card.Header>
+                                <Card.Body>
+                                    <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+
+                                    <ul className="combustiveis">
+                                        {posto.combustiveis.map(combustivel => (
+                                            <li key={combustivel.id}><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="links">
+                                        <Link to={`/postos/${posto.id}`}>Acessar</Link>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Tab.Pane>
+
+                    <Tab.Pane eventKey="menu">
+                        <ul className="menu-opcoes">
+                            <li onClick={() => { }}>Álcool x Gasolina</li>
+                            <li onClick={() => { }}>Média por Km percorrido</li>
+                            <li onClick={() => { }}>Quanto irei gastar?</li>
+                            <li onClick={() => { }}>Sobre o aplicativo</li>
+                            <li onClick={() => { }}>Sugestões, Bugs e Comentários</li>
                         </ul>
+                    </Tab.Pane>
+                </Tab.Content>
 
-                        <div className="links">
-                            <Link to={`/postos/${posto.id}`}>Acessar</Link>
-                        </div>
-                    </Card.Body>
-                </Card>
-            ))}
+                <Nav variant="pills">
+                    <Nav.Item>
+                        <Nav.Link eventKey="gasolina">
+                            <span>Gasolina</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="alcool">
+                            <span>Álcool</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey='etanol'>
+                            <span>Etanol</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="diesel">
+                            <span>Diesel</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="menu">
+                            <span>Menu</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </Tab.Container>
         </div>
     );
 }
