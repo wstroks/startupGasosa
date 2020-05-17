@@ -121,7 +121,7 @@
 
 .box-home .nav.nav-pills .nav-item {
     width: 150px;
-    max-width: 25%;
+    max-width: 20%;
 }
 
 .box-home .nav.nav-pills .nav-item .nav-link {
@@ -130,19 +130,18 @@
     align-items: center;
     text-align: center;
     height: 50px;
+    width: 100%;
     font-size: 13px;
     font-weight: bold;
     padding: 10px;
     border-radius: 0;
     background: transparent;
     color: #330c2f;
-    border-top: 2px solid #f9f9f9;
-    border-bottom: 2px solid #f9f9f9;
     text-decoration: none;
 }
 
 .box-home .nav.nav-pills .nav-item .nav-link.active {
-    border-bottom: 2px solid #330c2f;
+    background: #f0f0f0;
     transition: 0.3s;
 }
 
