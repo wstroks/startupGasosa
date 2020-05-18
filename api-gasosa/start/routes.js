@@ -17,11 +17,8 @@
 const Route = use('Route')
 
 Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
+  return { "bot": 'gasosa online' }
 })
-
-
-
 
 Route.group(() => {
   Route.post('create','PostoController.create');

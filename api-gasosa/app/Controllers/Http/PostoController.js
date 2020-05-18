@@ -21,10 +21,12 @@ class PostoController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async index({ request, response, view }) {
-        const posto = await Posto.query().with('combustiveis').fetch();
-        var array = [];
-        console.log(JSON.stringify(posto))
+    async index({ request, params, response, view }) {
+        var posto = await Posto.query().with('combustiveis').fetch();
+        
+        
+        // var array = [];
+        // console.log(JSON.stringify(posto))
 
         // var combustivel = await Combustivel.query().where('posto_id', '=', element.id).fetch()
 
@@ -44,8 +46,8 @@ class PostoController {
           });*/
 
 
-
-        return posto;
+        
+        return  response.status(200).json(posto);
     }
     async diesel() {
 
@@ -1122,18 +1124,19 @@ class PostoController {
         if (!posto) {
             return response.status(404).send({ message: "Nenhum registro encontrado!" });
 
-        }else{
+        } else {
 
-        posto.nome = data.nome;
-        posto.endereco = data.endereco;
-        posto.contato = data.contato;
-        posto.status = data.status;
-        posto.cidade = data.cidade;
-        posto.latitude = data.latitude;
-        posto.longitude = data.longitude;
-        posto.url = data.url;
-        posto.bandeira = data.bandeira;
-        posto.save();}
+            posto.nome = data.nome;
+            posto.endereco = data.endereco;
+            posto.contato = data.contato;
+            posto.status = data.status;
+            posto.cidade = data.cidade;
+            posto.latitude = data.latitude;
+            posto.longitude = data.longitude;
+            posto.url = data.url;
+            posto.bandeira = data.bandeira;
+            posto.save();
+        }
 
         return posto;
     }
