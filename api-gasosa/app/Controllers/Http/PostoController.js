@@ -17,199 +17,8 @@ class PostoController {
 
 
     async starts({ response }) {
-        const fetch = require("node-fetch");
-        var url="https://api-gasosa.herokuapp.com/";
-        var url1="https://api-gasosa.herokuapp.com/postos/etanol";
-        var url2="https://api-gasosa.herokuapp.com/postos/diesel";
-        var url3="https://api-gasosa.herokuapp.com/postos/gasolina";
-        var url4="https://api-gasosa.herokuapp.com/postos/gnv";
-        var url5="https://api-gasosa.herokuapp.com/postos/json";
-
-        const wakeUpDyno = (url, interval = 25, callback) => {
-            const milliseconds = interval * 60000;
-            setTimeout(() => {
-
-                try {
-                    console.log(`setTimeout called.`);
-                    // HTTP GET request to the dyno's url
-                    fetch(url).then(() => console.log(`Fetching ${url}.`));
-                }
-                catch (err) { // catch fetch errors
-                    console.log(`Error fetching ${url}: ${err.message} 
-            Will try again in ${interval} minutes...`);
-                }
-                finally {
-
-                    try {
-                        callback(); // execute callback, if passed
-                    }
-                    catch (e) { // catch callback error
-                        callback ? console.log("Callback failed: ", e.message) : null;
-                    }
-                    finally {
-                        // do it all again
-                        return wakeUpDyno(url, interval, callback);
-                    }
-
-                }
-
-            }, milliseconds);
-        };
-
-        const wakeUpDynoalcool = (url1, interval = 25, callback) => {
-            const milliseconds = 36100000;
-            setTimeout(() => {
-
-                try {
-                    console.log(`setTimeout called.`);
-                    // HTTP GET request to the dyno's url
-                    fetch(url1).then(() => console.log(`Fetching ${url1}.`));
-                }
-                catch (err) { // catch fetch errors
-                    console.log(`Error fetching ${url1}: ${err.message} 
-            Will try again in ${interval} minutes...`);
-                }
-                finally {
-
-                    try {
-                        callback(); // execute callback, if passed
-                    }
-                    catch (e) { // catch callback error
-                        callback ? console.log("Callback failed: ", e.message) : null;
-                    }
-                    finally {
-                        // do it all again
-                        return wakeUpDyno(url1, interval, callback);
-                    }
-
-                }
-
-            }, milliseconds);
-        };
-
-        const wakeUpDynodiesel = (url2, interval = 25, callback) => {
-            const milliseconds = 36200000;
-            setTimeout(() => {
-
-                try {
-                    console.log(`setTimeout called.`);
-                    // HTTP GET request to the dyno's url
-                    fetch(url2).then(() => console.log(`Fetching ${url2}.`));
-                }
-                catch (err) { // catch fetch errors
-                    console.log(`Error fetching ${url2}: ${err.message} 
-            Will try again in ${interval} minutes...`);
-                }
-                finally {
-
-                    try {
-                        callback(); // execute callback, if passed
-                    }
-                    catch (e) { // catch callback error
-                        callback ? console.log("Callback failed: ", e.message) : null;
-                    }
-                    finally {
-                        // do it all again
-                        return wakeUpDyno(url2, interval, callback);
-                    }
-
-                }
-
-            }, milliseconds);
-        };
-        const wakeUpDynogasolina = (url3, interval = 25, callback) => {
-            const milliseconds = 36300000;
-            setTimeout(() => {
-
-                try {
-                    console.log(`setTimeout called.`);
-                    // HTTP GET request to the dyno's url
-                    fetch(url3).then(() => console.log(`Fetching ${url3}.`));
-                }
-                catch (err) { // catch fetch errors
-                    console.log(`Error fetching ${url3}: ${err.message} 
-            Will try again in ${interval} minutes...`);
-                }
-                finally {
-
-                    try {
-                        callback(); // execute callback, if passed
-                    }
-                    catch (e) { // catch callback error
-                        callback ? console.log("Callback failed: ", e.message) : null;
-                    }
-                    finally {
-                        // do it all again
-                        return wakeUpDyno(url3, interval, callback);
-                    }
-
-                }
-
-            }, milliseconds);
-        };
-
-        const wakeUpDynognv = (url4, interval = 25, callback) => {
-            const milliseconds = 36500000;
-            setTimeout(() => {
-
-                try {
-                    console.log(`setTimeout called.`);
-                    // HTTP GET request to the dyno's url
-                    fetch(url4).then(() => console.log(`Fetching ${url4}.`));
-                }
-                catch (err) { // catch fetch errors
-                    console.log(`Error fetching ${url}: ${err.message} 
-            Will try again in ${interval} minutes...`);
-                }
-                finally {
-
-                    try {
-                        callback(); // execute callback, if passed
-                    }
-                    catch (e) { // catch callback error
-                        callback ? console.log("Callback failed: ", e.message) : null;
-                    }
-                    finally {
-                        // do it all again
-                        return wakeUpDyno(url4, interval, callback);
-                    }
-
-                }
-
-            }, milliseconds);
-        };
-
-        const updateaqu = (url5, interval = 25, callback) => {
-            const milliseconds = 36700000;
-            setTimeout(() => {
-
-                try {
-                    console.log(`setTimeout called.`);
-                    // HTTP GET request to the dyno's url
-                    fetch(url5).then(() => console.log(`Fetching ${url5}.`));
-                }
-                catch (err) { // catch fetch errors
-                    console.log(`Error fetching ${url5}: ${err.message} 
-            Will try again in ${interval} minutes...`);
-                }
-                finally {
-
-                    try {
-                        callback(); // execute callback, if passed
-                    }
-                    catch (e) { // catch callback error
-                        callback ? console.log("Callback failed: ", e.message) : null;
-                    }
-                    finally {
-                        // do it all again
-                        return wakeUpDyno(url5, interval, callback);
-                    }
-
-                }
-
-            }, milliseconds);
-        };
-        return response.status(200).json({"gasosa":"Bot Online"});
+        
+        return response.status(200).json({ "gasosa": "Bot Online" });
     }
     /**
      * Show a list of all postos.
@@ -222,7 +31,7 @@ class PostoController {
      */
     async index({ request, params, response, view }) {
         try {
-            var posto = await Posto.query().with('combustiveis', (builder) => {builder.orderBy("valor", "ASC")}).fetch();
+            var posto = await Posto.query().with('combustiveis', (builder) => { builder.orderBy("valor", "ASC") }).fetch();
 
 
             // var array = [];
@@ -260,7 +69,7 @@ class PostoController {
         var fs = require('fs');
         const browser = await puppeteer.launch({
             headless: true,
-            args: ['--no-sandbox']
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
         const page1 = await browser.newPage();
@@ -584,7 +393,7 @@ class PostoController {
 
             // console.log("foi2"+dataseet);
             console.log("foi");
-
+            //browser.close();
             // console.log(data);
         }, 70000);
 
@@ -596,7 +405,7 @@ class PostoController {
         var fs = require('fs');
         const browser = await puppeteer.launch({
             headless: true,
-            args: ['--no-sandbox']
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
         const page1 = await browser.newPage();
@@ -910,7 +719,7 @@ class PostoController {
 
             // console.log("foi2"+dataseet);
             console.log("foi");
-
+           // browser.close();
             // console.log(data);
         }, 70000);
 
@@ -922,7 +731,7 @@ class PostoController {
         var fs = require('fs');
         const browser = await puppeteer.launch({
             headless: true,
-            args: ['--no-sandbox']
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
         const page1 = await browser.newPage();
@@ -1240,6 +1049,7 @@ class PostoController {
 
             // console.log("foi2"+dataseet);
             console.log("foi");
+           // browser.close();
 
             // console.log(data);
         }, 70000);
@@ -1252,9 +1062,10 @@ class PostoController {
     }
     async app() {
         var dataseet = [];
+        var fs = require('fs');
         const browser = await puppeteer.launch({
             headless: true,
-            args: ['--no-sandbox']
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
         const page1 = await browser.newPage();
@@ -1495,7 +1306,7 @@ class PostoController {
                 for (var i = 0; i < t.length; i++) {
                     //console.log(t[i]);
                     var agora = t[i].split('\n');
-                    console.log(JSON.stringify(agora[7]));
+                    console.log(agora);
                     datas.push({
                         combustivel: agora[0],
                         preco: agora[1],
@@ -1510,9 +1321,9 @@ class PostoController {
 
 
                 }
-                var fs = require('fs');
-                const devtoListTrimmed = datas.filter(n => 1 != undefined)
-                fs.writeFile("gasolinafsa.json",
+                
+                const devtoListTrimmed = datas.filter(n => n != undefined)
+                fs.writeFile("gfsa.json",
                     JSON.stringify(devtoListTrimmed, null, 4),
                     (err) => console.log('File successfully written!'))
                 //return JSON.parse(datas);
@@ -1533,6 +1344,7 @@ class PostoController {
             // console.log("foi" + JSON.stringify(data));
 
             // console.log(data);
+            //browser.close();
         }, 70000);
     }
 
@@ -1548,14 +1360,15 @@ class PostoController {
 
     async jsonvisualizar({ request, response, view }) {
         try {
-            var array = ['../../../dieselfsa.json', '../../../gasolinafsa.json', '../../../gnvfsa.json', '../../../etanolfsa.json']
+            var array = ['../../../dieselfsa.json', '../../../gfsa.json', '../../../gnvfsa.json', '../../../etanolfsa.json']
             //var mydata = JSON.parse(json);
             var dataseet = [];
             for (var y = 0; y < array.length; y++) {
                 console.log(array[y]);
                 var data = require(array[y]);
+                console.log()
                 for (var i = 0; i < Object.keys(data).length; i++) {
-                    dataseet.push(data);
+                    dataseet.push(data[i]);
 
                 }
             }
@@ -1569,7 +1382,7 @@ class PostoController {
     }
     async jsonadd({ request, response, view }) {
         try {
-            var array = ['../../../dieselfsa.json', '../../../gasolinafsa.json', '../../../gnvfsa.json', '../../../etanolfsa.json']
+            var array = ['../../../dieselfsa.json', '../../../gfsa.json', '../../../gnvfsa.json', '../../../etanolfsa.json']
             //var mydata = JSON.parse(json);
             for (var y = 0; y < array.length; y++) {
                 console.log(array[y]);
@@ -1629,7 +1442,7 @@ class PostoController {
                             combustivel1.save();
                             var historico = await Historico.create(...dadosCombustivel);
                         } else {
-                           
+
                             var combustivel = await Combustivel.create(...dadosCombustivel);
                             var historico = await Historico.create(...dadosCombustivel);
                         }
