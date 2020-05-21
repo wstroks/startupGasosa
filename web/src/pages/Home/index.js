@@ -16,13 +16,15 @@ import {
 import shell from '../../assets/img/shell.png';
 import menorPreco from '../../assets/img/menor-preco.png';
 import petrobras from '../../assets/img/petrobras.png';
+import ipiranga from '../../assets/img/ipiranga.jpg';
+import outros from '../../assets/img/outros.jpg';
 
 import Header from '../../components/Header';
-import AlcoolGasolina from '../../pages/AlcoolGasolina';
-import MediaPorKm from '../../pages/MediaPorKm';
-import QuantoIreiGastar from '../../pages/QuantoIreiGastar';
-import Sobre from '../../pages/Sobre';
-import Sugestoes from '../../pages/Sugestoes';
+import AlcoolGasolina from '../../components/AlcoolGasolina';
+import MediaPorKm from '../../components/MediaPorKm';
+import QuantoIreiGastar from '../../components/QuantoIreiGastar';
+import Sobre from '../../components/Sobre';
+import Sugestoes from '../../components/Sugestoes';
 
 
 import './styles.css';
@@ -114,6 +116,26 @@ export default function Home () {
     const [modalSobreShow, setModalSobreShow] = useState(false);
     const [modalSugestoesShow, setModalSugestoesShow] = useState(false);
 
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+
+                setLatitude(latitude);
+                setLongitude(longitude);
+            },
+            (err) => {
+                console.log(err);
+            },
+            {
+                timeout: 30000,
+            }
+        )
+    }, []);
+
     async function getPostos () {
         try {
             const response = await api.get('postos');
@@ -129,8 +151,16 @@ export default function Home () {
         getPostos();
     }, []);
 
-    function handleDistance () {
-        setDistancia(0);
+    function handleDistance (lat1, lon1, lat2, lon2) {
+        let R = 6371;
+        let dLat = (lat2 - lat1) * (Math.PI / 180);
+        let dLon = (lon2 - lon1) * (Math.PI / 180);
+
+        let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
+        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+        let d = R * c
+
+        return d;
     }
 
     return (
@@ -148,11 +178,19 @@ export default function Home () {
                             (
                                 <Card key={posto.id}>
                                     <Card.Header>
-                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <img
+                                            src={
+                                                (posto.bandeira === "shell" ? shell :
+                                                    (posto.bandeira === "menor") ? menorPreco :
+                                                        (posto.bandeira === "petrobras") ? petrobras :
+                                                            (posto.bandeira === "ipiranga") ? ipiranga : outros)
+                                            }
+                                            alt=""
+                                        />
                                         <h3>{posto.nome}</h3>
                                     </Card.Header>
                                     <Card.Body>
-                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                                        <h4><FiMapPin size={16} /> {posto.endereco} {posto.latitude !== null ? `, a ${handleDistance(latitude, longitude, posto.latitude, posto.longitude).toFixed(2)} Km` : ''}</h4>
 
                                         <ul className="combustiveis">
                                             {posto.combustiveis.map(combustivel =>
@@ -178,11 +216,19 @@ export default function Home () {
                             (
                                 <Card key={posto.id}>
                                     <Card.Header>
-                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <img
+                                            src={
+                                                (posto.bandeira === "shell" ? shell :
+                                                    (posto.bandeira === "menor") ? menorPreco :
+                                                        (posto.bandeira === "petrobras") ? petrobras :
+                                                            (posto.bandeira === "ipiranga") ? ipiranga : outros)
+                                            }
+                                            alt=""
+                                        />
                                         <h3>{posto.nome}</h3>
                                     </Card.Header>
                                     <Card.Body>
-                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                                        <h4><FiMapPin size={16} /> {posto.endereco} {posto.latitude !== null ? `, a ${handleDistance(latitude, longitude, posto.latitude, posto.longitude).toFixed(2)} Km` : ''}</h4>
 
                                         <ul className="combustiveis">
                                             {posto.combustiveis.map(combustivel =>
@@ -208,11 +254,19 @@ export default function Home () {
                             (
                                 <Card key={posto.id}>
                                     <Card.Header>
-                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <img
+                                            src={
+                                                (posto.bandeira === "shell" ? shell :
+                                                    (posto.bandeira === "menor") ? menorPreco :
+                                                        (posto.bandeira === "petrobras") ? petrobras :
+                                                            (posto.bandeira === "ipiranga") ? ipiranga : outros)
+                                            }
+                                            alt=""
+                                        />
                                         <h3>{posto.nome}</h3>
                                     </Card.Header>
                                     <Card.Body>
-                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                                        <h4><FiMapPin size={16} /> {posto.endereco} {posto.latitude !== null ? `, a ${handleDistance(latitude, longitude, posto.latitude, posto.longitude).toFixed(2)} Km` : ''}</h4>
 
                                         <ul className="combustiveis">
                                             {posto.combustiveis.map(combustivel =>
@@ -238,11 +292,19 @@ export default function Home () {
                             (
                                 <Card key={posto.id}>
                                     <Card.Header>
-                                        <img src={(posto.bandeira === "shell" ? shell : (posto.bandeira === "menor-preco") ? menorPreco : petrobras)} alt="" />
+                                        <img
+                                            src={
+                                                (posto.bandeira === "shell" ? shell :
+                                                    (posto.bandeira === "menor") ? menorPreco :
+                                                        (posto.bandeira === "petrobras") ? petrobras :
+                                                            (posto.bandeira === "ipiranga") ? ipiranga : outros)
+                                            }
+                                            alt=""
+                                        />
                                         <h3>{posto.nome}</h3>
                                     </Card.Header>
                                     <Card.Body>
-                                        <h4><FiMapPin size={16} /> {posto.endereco}</h4>
+                                        <h4><FiMapPin size={16} /> {posto.endereco} {posto.latitude !== null ? `, a ${handleDistance(latitude, longitude, posto.latitude, posto.longitude).toFixed(2)} Km` : ''}</h4>
 
                                         <ul className="combustiveis">
                                             {posto.combustiveis.map(combustivel =>
