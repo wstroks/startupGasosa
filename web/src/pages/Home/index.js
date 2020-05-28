@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import {
+    FacebookShareButton,
+    TelegramShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+} from "react-share";
+
+import {
+    FaWhatsapp,
+    FaFacebookF,
+    FaTelegramPlane,
+    FaTwitter,
+} from "react-icons/fa";
 
 import {
     Card,
     Tab,
     Nav,
     Modal,
+    Dropdown,
 } from 'react-bootstrap';
 
 import {
     FiMapPin,
     FiArrowLeft,
+    FiShare2,
+    FiCornerUpRight,
 } from "react-icons/fi";
 
 import shell from '../../assets/img/shell.png';
@@ -107,14 +123,13 @@ function ModalSugestoes (props) {
 }
 
 export default function Home () {
-    const [postos, setPostos] = useState([]);
     const [combustiveis, setCombustiveis] = useState([]);
     const [gasolinas, setGasolinas] = useState([]);
     const [etanols, setEtanols] = useState([]);
     const [gnvs, setGnvs] = useState([]);
     const [diesels, setDiesels] = useState([]);
 
-    const [distancia, setDistancia] = useState('');
+    let distancias = new Map();
 
     const [modalAlcoolGasolinaShow, setModalAlcoolGasolinaShow] = useState(false);
     const [modalMediaPorKmShow, setModalMediaPorKmShow] = useState(false);
@@ -140,22 +155,6 @@ export default function Home () {
                 timeout: 30000,
             }
         )
-    }, []);
-
-    async function getPostos () {
-        try {
-            const response = await api.get('postos');
-
-            setPostos(response.data);
-
-            console.log(response.data);
-        } catch (error) {
-            alert('Erro ao obter os dados');
-        }
-    }
-
-    useEffect(() => {
-        getPostos();
     }, []);
 
     async function getCombustiveis () {
@@ -191,283 +190,637 @@ export default function Home () {
     }
 
     return (
-        <div className="box-home">
+        <>
             <Header />
 
-            <Tab.Container defaultActiveKey="gasolina">
-                <Tab.Content>
-                    <Tab.Pane eventKey="gasolina">
-                        <Tab.Container defaultActiveKey="comum">
-                            <Nav className="tipo-gasolina" variant="pills">
-                                <Nav.Item>
-                                    <Nav.Link eventKey="comum">
-                                        <span>Comum</span>
-                                    </Nav.Link>
-                                </Nav.Item>
+            <div className="box-home">
+                <Tab.Container defaultActiveKey="gasolina">
+                    <Tab.Content>
+                        <Tab.Pane eventKey="gasolina">
+                            <Tab.Container defaultActiveKey="comum">
+                                <Nav className="tipo-gasolina" variant="pills">
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="comum">
+                                            <span>Comum</span>
+                                        </Nav.Link>
+                                    </Nav.Item>
 
-                                <Nav.Item>
-                                    <Nav.Link eventKey="aditivada">
-                                        <span>Aditivada</span>
-                                    </Nav.Link>
-                                </Nav.Item>
-                            </Nav>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="aditivada">
+                                            <span>Aditivada</span>
+                                        </Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
 
-                            <Tab.Content>
-                                <Tab.Pane eventKey="comum">
-                                    {combustiveis.map(combustivel =>
-                                        (combustivel.tipo.indexOf("GASOLINA COMUM") !== -1)
-                                        &&
-                                        (
-                                            <Card key={combustivel.id}>
-                                                <Card.Header>
-                                                    <img
-                                                        src={
-                                                            (combustivel.postos.bandeira === "shell" ? shell :
-                                                                (combustivel.postos.bandeira === "menor") ? menorPreco :
-                                                                    (combustivel.postos.bandeira === "petrobras") ? petrobras :
-                                                                        (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
-                                                        }
-                                                        alt=""
-                                                    />
-                                                    <h3>{combustivel.postos.nome}</h3>
-                                                </Card.Header>
-                                                <Card.Body>
-                                                    <h4><FiMapPin size={16} /> {combustivel.postos.endereco} {combustivel.postos.latitude !== null ? `, a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4>
+                                <Tab.Content>
+                                    <Tab.Pane eventKey="comum">
+                                        {combustiveis.map(combustivel =>
+                                            (combustivel.tipo.indexOf("GASOLINA COMUM") !== -1)
+                                            &&
+                                            combustiveis.map(combustivel => distancias.set(combustivel.id, parseFloat(handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude))))
+                                            &&
+                                            (
+                                                <Card key={combustivel.id}>
+                                                    <Card.Header>
+                                                        <img
+                                                            src={
+                                                                (combustivel.postos.bandeira === "shell" ? shell :
+                                                                    (combustivel.postos.bandeira === "menor") ? menorPreco :
+                                                                        (combustivel.postos.bandeira === "petrobras") ? petrobras :
+                                                                            (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
+                                                            }
+                                                            alt=""
+                                                        />
+                                                        <h3>{combustivel.postos.nome}</h3>
 
-                                                    <ul className="combustiveis">
-                                                        <li><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                                    </ul>
+                                                        <Dropdown
+                                                            key="left"
+                                                            id="dropdown-button-drop-left"
+                                                            drop="left"
+                                                        >
+                                                            <Dropdown.Toggle variant="success">
+                                                                <FiShare2 size={20} />
+                                                            </Dropdown.Toggle>
 
-                                                    <div className="links">
-                                                        <Link to={`/postos/${combustivel.postos.id}`}>Acessar</Link>
+                                                            <Dropdown.Menu>
+                                                                <Dropdown.Item>
+                                                                    <WhatsappShareButton
+                                                                        url={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaWhatsapp size={20} />
+                                                                        <span>whatsapp</span>
+                                                                    </WhatsappShareButton>
+                                                                </Dropdown.Item>
+
+                                                                <Dropdown.Item>
+                                                                    <FacebookShareButton
+                                                                        url="gasosaweb.herokuapp.com"
+                                                                        quote={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaFacebookF size={20} />
+                                                                        <span>facebook</span>
+                                                                    </FacebookShareButton>
+                                                                </Dropdown.Item>
+
+                                                                <Dropdown.Item>
+                                                                    <TelegramShareButton
+                                                                        url={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaTelegramPlane size={20} />
+                                                                        <span>telegram</span>
+                                                                    </TelegramShareButton>
+                                                                </Dropdown.Item>
+
+                                                                <Dropdown.Item>
+                                                                    <TwitterShareButton
+                                                                        url="gasosaweb.herokuapp.com"
+                                                                        title={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaTwitter size={20} />
+                                                                        <span>twitter</span>
+                                                                    </TwitterShareButton>
+                                                                </Dropdown.Item>
+                                                            </Dropdown.Menu>
+                                                        </Dropdown>
+                                                    </Card.Header>
+
+                                                    <Card.Body>
+                                                        <h4><FiMapPin size={16} /> {combustivel.postos.endereco}</h4>
+
+                                                        <ul className="informacoes">
+                                                            <li>
+                                                                <div className="combustiveis">
+                                                                    <h3>{combustivel.valor}</h3>
+                                                                </div>
+                                                            </li>
+
+                                                            <li>
+                                                                {/* <h4>{combustivel.postos.latitude !== null ? `a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4> */}
+                                                                <h4>{combustivel.postos.latitude !== null ? `a ${distancias.get(combustivel.id).toFixed(2)} Km` : ''}</h4>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href={combustivel.postos.url} target="_blank"><FiCornerUpRight size={15} /> <span>Ver no mapa</span></a>
+                                                            </li>
+                                                        </ul>
+
+                                                        <h6>Atualizado em: {combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}</h6>
+                                                    </Card.Body>
+                                                </Card>
+                                            ))}
+                                    </Tab.Pane>
+
+                                    <Tab.Pane eventKey="aditivada">
+                                        {combustiveis.map(combustivel =>
+                                            (combustivel.tipo.indexOf("GASOLINA ADITIVADA") !== -1)
+                                            &&
+                                            (
+                                                <Card key={combustivel.id}>
+                                                    <Card.Header>
+                                                        <img
+                                                            src={
+                                                                (combustivel.postos.bandeira === "shell" ? shell :
+                                                                    (combustivel.postos.bandeira === "menor") ? menorPreco :
+                                                                        (combustivel.postos.bandeira === "petrobras") ? petrobras :
+                                                                            (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
+                                                            }
+                                                            alt=""
+                                                        />
+                                                        <h3>{combustivel.postos.nome}</h3>
+
+                                                        <Dropdown
+                                                            key="left"
+                                                            id="dropdown-button-drop-left"
+                                                            drop="left"
+                                                        >
+                                                            <Dropdown.Toggle variant="success">
+                                                                <FiShare2 size={20} />
+                                                            </Dropdown.Toggle>
+
+                                                            <Dropdown.Menu>
+                                                                <Dropdown.Item>
+                                                                    <WhatsappShareButton
+                                                                        url={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaWhatsapp size={20} />
+                                                                        <span>whatsapp</span>
+                                                                    </WhatsappShareButton>
+                                                                </Dropdown.Item>
+
+                                                                <Dropdown.Item>
+                                                                    <FacebookShareButton
+                                                                        url="gasosaweb.herokuapp.com"
+                                                                        quote={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaFacebookF size={20} />
+                                                                        <span>facebook</span>
+                                                                    </FacebookShareButton>
+                                                                </Dropdown.Item>
+
+                                                                <Dropdown.Item>
+                                                                    <TelegramShareButton
+                                                                        url={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaTelegramPlane size={20} />
+                                                                        <span>telegram</span>
+                                                                    </TelegramShareButton>
+                                                                </Dropdown.Item>
+
+                                                                <Dropdown.Item>
+                                                                    <TwitterShareButton
+                                                                        url="gasosaweb.herokuapp.com"
+                                                                        title={
+                                                                            `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                                        }
+                                                                    >
+                                                                        <FaTwitter size={20} />
+                                                                        <span>twitter</span>
+                                                                    </TwitterShareButton>
+                                                                </Dropdown.Item>
+                                                            </Dropdown.Menu>
+                                                        </Dropdown>
+                                                    </Card.Header>
+
+                                                    <Card.Body>
+                                                        <h4><FiMapPin size={16} /> {combustivel.postos.endereco}</h4>
+
+                                                        <ul className="informacoes">
+                                                            <li>
+                                                                <div className="combustiveis">
+                                                                    <h3>{combustivel.valor}</h3>
+                                                                </div>
+                                                            </li>
+
+                                                            <li>
+                                                                {/* <h4>{combustivel.postos.latitude !== null ? `a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4> */}
+                                                                <h4>{combustivel.postos.latitude !== null ? `a ${distancias.get(combustivel.id).toFixed(2)} Km` : ''}</h4>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href={combustivel.postos.url} target="_blank"><FiCornerUpRight size={15} /> <span>Ver no mapa</span></a>
+                                                            </li>
+                                                        </ul>
+
+                                                        <h6>Atualizado em: {combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}</h6>
+                                                    </Card.Body>
+                                                </Card>
+                                            ))}
+                                    </Tab.Pane>
+                                </Tab.Content>
+                            </Tab.Container>
+                        </Tab.Pane>
+
+                        <Tab.Pane eventKey="alcool">
+                            {combustiveis.map(combustivel =>
+                                (combustivel.tipo.indexOf("ETANOL") !== -1)
+                                &&
+                                (
+                                    <Card key={combustivel.id}>
+                                        <Card.Header>
+                                            <img
+                                                src={
+                                                    (combustivel.postos.bandeira === "shell" ? shell :
+                                                        (combustivel.postos.bandeira === "menor") ? menorPreco :
+                                                            (combustivel.postos.bandeira === "petrobras") ? petrobras :
+                                                                (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
+                                                }
+                                                alt=""
+                                            />
+                                            <h3>{combustivel.postos.nome}</h3>
+
+                                            <Dropdown
+                                                key="left"
+                                                id="dropdown-button-drop-left"
+                                                drop="left"
+                                            >
+                                                <Dropdown.Toggle variant="success">
+                                                    <FiShare2 size={20} />
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item>
+                                                        <WhatsappShareButton
+                                                            url={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaWhatsapp size={20} />
+                                                            <span>whatsapp</span>
+                                                        </WhatsappShareButton>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item>
+                                                        <FacebookShareButton
+                                                            url="gasosaweb.herokuapp.com"
+                                                            quote={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaFacebookF size={20} />
+                                                            <span>facebook</span>
+                                                        </FacebookShareButton>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item>
+                                                        <TelegramShareButton
+                                                            url={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaTelegramPlane size={20} />
+                                                            <span>telegram</span>
+                                                        </TelegramShareButton>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item>
+                                                        <TwitterShareButton
+                                                            url="gasosaweb.herokuapp.com"
+                                                            title={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaTwitter size={20} />
+                                                            <span>twitter</span>
+                                                        </TwitterShareButton>
+                                                    </Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </Card.Header>
+
+                                        <Card.Body>
+                                            <h4><FiMapPin size={16} /> {combustivel.postos.endereco}</h4>
+
+                                            <ul className="informacoes">
+                                                <li>
+                                                    <div className="combustiveis">
+                                                        <h3>{combustivel.valor}</h3>
                                                     </div>
-                                                </Card.Body>
-                                            </Card>
-                                        ))}
-                                </Tab.Pane>
+                                                </li>
 
-                                <Tab.Pane eventKey="aditivada">
-                                    {combustiveis.map(combustivel =>
-                                        (combustivel.tipo.indexOf("GASOLINA ADITIVADA") !== -1)
-                                        &&
-                                        (
-                                            <Card key={combustivel.id}>
-                                                <Card.Header>
-                                                    <img
-                                                        src={
-                                                            (combustivel.postos.bandeira === "shell" ? shell :
-                                                                (combustivel.postos.bandeira === "menor") ? menorPreco :
-                                                                    (combustivel.postos.bandeira === "petrobras") ? petrobras :
-                                                                        (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
-                                                        }
-                                                        alt=""
-                                                    />
-                                                    <h3>{combustivel.postos.nome}</h3>
-                                                </Card.Header>
-                                                <Card.Body>
-                                                    <h4><FiMapPin size={16} /> {combustivel.postos.endereco} {combustivel.postos.latitude !== null ? `, a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4>
+                                                <li>
+                                                    {/* <h4>{combustivel.postos.latitude !== null ? `a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4> */}
+                                                    <h4>{combustivel.postos.latitude !== null ? `a ${distancias.get(combustivel.id).toFixed(2)} Km` : ''}</h4>
+                                                </li>
 
-                                                    <ul className="combustiveis">
-                                                        <li><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                                    </ul>
+                                                <li>
+                                                    <a href={combustivel.postos.url} target="_blank"><FiCornerUpRight size={15} /> <span>Ver no mapa</span></a>
+                                                </li>
+                                            </ul>
 
-                                                    <div className="links">
-                                                        <Link to={`/postos/${combustivel.postos.id}`}>Acessar</Link>
+                                            <h6>Atualizado em: {combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}</h6>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                        </Tab.Pane>
+
+                        <Tab.Pane eventKey="diesel">
+                            {combustiveis.map(combustivel =>
+                                (combustivel.tipo.indexOf("DIESEL") !== -1)
+                                &&
+                                (
+                                    <Card key={combustivel.id}>
+                                        <Card.Header>
+                                            <img
+                                                src={
+                                                    (combustivel.postos.bandeira === "shell" ? shell :
+                                                        (combustivel.postos.bandeira === "menor") ? menorPreco :
+                                                            (combustivel.postos.bandeira === "petrobras") ? petrobras :
+                                                                (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
+                                                }
+                                                alt=""
+                                            />
+                                            <h3>{combustivel.postos.nome}</h3>
+
+                                            <Dropdown
+                                                key="left"
+                                                id="dropdown-button-drop-left"
+                                                drop="left"
+                                            >
+                                                <Dropdown.Toggle variant="success">
+                                                    <FiShare2 size={20} />
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item>
+                                                        <WhatsappShareButton
+                                                            url={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaWhatsapp size={20} />
+                                                            <span>whatsapp</span>
+                                                        </WhatsappShareButton>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item>
+                                                        <FacebookShareButton
+                                                            url="gasosaweb.herokuapp.com"
+                                                            quote={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaFacebookF size={20} />
+                                                            <span>facebook</span>
+                                                        </FacebookShareButton>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item>
+                                                        <TelegramShareButton
+                                                            url={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaTelegramPlane size={20} />
+                                                            <span>telegram</span>
+                                                        </TelegramShareButton>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item>
+                                                        <TwitterShareButton
+                                                            url="gasosaweb.herokuapp.com"
+                                                            title={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaTwitter size={20} />
+                                                            <span>twitter</span>
+                                                        </TwitterShareButton>
+                                                    </Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </Card.Header>
+
+                                        <Card.Body>
+                                            <h4><FiMapPin size={16} /> {combustivel.postos.endereco}</h4>
+
+                                            <ul className="informacoes">
+                                                <li>
+                                                    <div className="combustiveis">
+                                                        <h3>{combustivel.valor}</h3>
                                                     </div>
-                                                </Card.Body>
-                                            </Card>
-                                        ))}
-                                </Tab.Pane>
-                            </Tab.Content>
-                        </Tab.Container>
-                    </Tab.Pane>
+                                                </li>
 
-                    <Tab.Pane eventKey="alcool">
-                        {combustiveis.map(combustivel =>
-                            (combustivel.tipo.indexOf("ETANOL") !== -1)
-                            &&
-                            (
-                                <Card key={combustivel.id}>
-                                    <Card.Header>
-                                        <img
-                                            src={
-                                                (combustivel.postos.bandeira === "shell" ? shell :
-                                                    (combustivel.postos.bandeira === "menor") ? menorPreco :
-                                                        (combustivel.postos.bandeira === "petrobras") ? petrobras :
-                                                            (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
-                                            }
-                                            alt=""
-                                        />
-                                        <h3>{combustivel.postos.nome}</h3>
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <h4><FiMapPin size={16} /> {combustivel.postos.endereco} {combustivel.postos.latitude !== null ? `, a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4>
+                                                <li>
+                                                    {/* <h4>{combustivel.postos.latitude !== null ? `a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4> */}
+                                                    <h4>{combustivel.postos.latitude !== null ? `a ${distancias.get(combustivel.id).toFixed(2)} Km` : ''}</h4>
+                                                </li>
 
-                                        <ul className="combustiveis">
-                                            <li><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                        </ul>
+                                                <li>
+                                                    <a href={combustivel.postos.url} target="_blank"><FiCornerUpRight size={15} /> <span>Ver no mapa</span></a>
+                                                </li>
+                                            </ul>
 
-                                        <div className="links">
-                                            <Link to={`/postos/${combustivel.postos.id}`}>Acessar</Link>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            ))}
-                    </Tab.Pane>
+                                            <h6>Atualizado em: {combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}</h6>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                        </Tab.Pane>
 
-                    <Tab.Pane eventKey="diesel">
-                        {combustiveis.map(combustivel =>
-                            (combustivel.tipo.indexOf("DIESEL") !== -1)
-                            &&
-                            (
-                                <Card key={combustivel.id}>
-                                    <Card.Header>
-                                        <img
-                                            src={
-                                                (combustivel.postos.bandeira === "shell" ? shell :
-                                                    (combustivel.postos.bandeira === "menor") ? menorPreco :
-                                                        (combustivel.postos.bandeira === "petrobras") ? petrobras :
-                                                            (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
-                                            }
-                                            alt=""
-                                        />
-                                        <h3>{combustivel.postos.nome}</h3>
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <h4><FiMapPin size={16} /> {combustivel.postos.endereco} {combustivel.postos.latitude !== null ? `, a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4>
+                        <Tab.Pane eventKey="gas">
+                            {combustiveis.map(combustivel =>
+                                (combustivel.tipo.indexOf("GNV") !== -1)
+                                &&
+                                (
+                                    <Card key={combustivel.id}>
+                                        <Card.Header>
+                                            <img
+                                                src={
+                                                    (combustivel.postos.bandeira === "shell" ? shell :
+                                                        (combustivel.postos.bandeira === "menor") ? menorPreco :
+                                                            (combustivel.postos.bandeira === "petrobras") ? petrobras :
+                                                                (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
+                                                }
+                                                alt=""
+                                            />
+                                            <h3>{combustivel.postos.nome}</h3>
 
-                                        <ul className="combustiveis">
-                                            <li><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                        </ul>
+                                            <Dropdown
+                                                key="left"
+                                                id="dropdown-button-drop-left"
+                                                drop="left"
+                                            >
+                                                <Dropdown.Toggle variant="success">
+                                                    <FiShare2 size={20} />
+                                                </Dropdown.Toggle>
 
-                                        <div className="links">
-                                            <Link to={`/postos/${combustivel.postos.id}`}>Acessar</Link>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            ))}
-                    </Tab.Pane>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item>
+                                                        <WhatsappShareButton
+                                                            url={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaWhatsapp size={20} />
+                                                            <span>whatsapp</span>
+                                                        </WhatsappShareButton>
+                                                    </Dropdown.Item>
 
-                    <Tab.Pane eventKey="gas">
-                        {combustiveis.map(combustivel =>
-                            (combustivel.tipo.indexOf("GNV") !== -1)
-                            &&
-                            (
-                                <Card key={combustivel.id}>
-                                    <Card.Header>
-                                        <img
-                                            src={
-                                                (combustivel.postos.bandeira === "shell" ? shell :
-                                                    (combustivel.postos.bandeira === "menor") ? menorPreco :
-                                                        (combustivel.postos.bandeira === "petrobras") ? petrobras :
-                                                            (combustivel.postos.bandeira === "ipiranga") ? ipiranga : outros)
-                                            }
-                                            alt=""
-                                        />
-                                        <h3>{combustivel.postos.nome}</h3>
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <h4><FiMapPin size={16} /> {combustivel.postos.endereco} {combustivel.postos.latitude !== null ? `, a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4>
+                                                    <Dropdown.Item>
+                                                        <FacebookShareButton
+                                                            url="gasosaweb.herokuapp.com"
+                                                            quote={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaFacebookF size={20} />
+                                                            <span>facebook</span>
+                                                        </FacebookShareButton>
+                                                    </Dropdown.Item>
 
-                                        <ul className="combustiveis">
-                                            <li><span>{combustivel.tipo}</span> <span>{combustivel.valor}</span></li>
-                                        </ul>
+                                                    <Dropdown.Item>
+                                                        <TelegramShareButton
+                                                            url={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaTelegramPlane size={20} />
+                                                            <span>telegram</span>
+                                                        </TelegramShareButton>
+                                                    </Dropdown.Item>
 
-                                        <div className="links">
-                                            <Link to={`/postos/${combustivel.postos.id}`}>Acessar</Link>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            ))}
-                    </Tab.Pane>
+                                                    <Dropdown.Item>
+                                                        <TwitterShareButton
+                                                            url="gasosaweb.herokuapp.com"
+                                                            title={
+                                                                `Compartilhe o Aplicativo Gasosa!\n\nhttps://gasosaweb.herokuapp.com/\n\n${combustivel.tipo} no ${combustivel.postos.nome} está ${combustivel.valor}, atualizado em ${combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}\n\nVocê pode se dirigir ao posto clicando no link: ${combustivel.postos.url}`
+                                                            }
+                                                        >
+                                                            <FaTwitter size={20} />
+                                                            <span>twitter</span>
+                                                        </TwitterShareButton>
+                                                    </Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </Card.Header>
 
-                    <Tab.Pane eventKey="menu">
-                        <ul className="menu-opcoes">
-                            <li onClick={() => setModalAlcoolGasolinaShow(true)}>Álcool x Gasolina</li>
-                            <ModalAlcoolGasolina animation={false} show={modalAlcoolGasolinaShow} onHide={() => setModalAlcoolGasolinaShow(false)} />
+                                        <Card.Body>
+                                            <h4><FiMapPin size={16} /> {combustivel.postos.endereco}</h4>
 
-                            <li onClick={() => setModalMediaPorKmShow(true)}>Média por Km percorrido</li>
-                            <ModalMediaPorKm animation={false} show={modalMediaPorKmShow} onHide={() => setModalMediaPorKmShow(false)} />
+                                            <ul className="informacoes">
+                                                <li>
+                                                    <div className="combustiveis">
+                                                        <h3>{combustivel.valor}</h3>
+                                                    </div>
+                                                </li>
 
-                            <li onClick={() => setModalQuantoIreiGastarShow(true)}>Quanto irei gastar?</li>
-                            <ModalQuantoIreiGastar animation={false} show={modalQuantoIreiGastarShow} onHide={() => setModalQuantoIreiGastarShow(false)} />
+                                                <li>
+                                                    {/* <h4>{combustivel.postos.latitude !== null ? `a ${handleDistance(latitude, longitude, combustivel.postos.latitude, combustivel.postos.longitude).toFixed(2)} Km` : ''}</h4> */}
+                                                    <h4>{combustivel.postos.latitude !== null ? `a ${distancias.get(combustivel.id).toFixed(2)} Km` : ''}</h4>
+                                                </li>
 
-                            <li onClick={() => setModalSobreShow(true)}>Sobre o aplicativo</li>
-                            <ModalSobre animation={false} show={modalSobreShow} onHide={() => setModalSobreShow(false)} />
+                                                <li>
+                                                    <a href={combustivel.postos.url} target="_blank"><FiCornerUpRight size={15} /> <span>Ver no mapa</span></a>
+                                                </li>
+                                            </ul>
 
-                            <li onClick={() => setModalSugestoesShow(true)}>Sugestões, Bugs e Comentários</li>
-                            <ModalSugestoes animation={false} show={modalSugestoesShow} onHide={() => setModalSugestoesShow(false)} />
-                        </ul>
-                    </Tab.Pane>
-                </Tab.Content>
+                                            <h6>Atualizado em: {combustivel.updated_at.substr(0, 10).split('-').reverse().join('/')}</h6>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                        </Tab.Pane>
 
-                <Nav variant="pills">
-                    <Nav.Item>
-                        <Nav.Link
-                            eventKey="gasolina"
-                            onClick={() => {
-                                setModalAlcoolGasolinaShow(false)
-                                setModalMediaPorKmShow(false)
-                                setModalQuantoIreiGastarShow(false)
-                                setModalSobreShow(false)
-                                setModalSugestoesShow(false)
-                            }}
-                        >
-                            <span>Gasolina</span>
-                        </Nav.Link>
-                    </Nav.Item>
+                        <Tab.Pane eventKey="menu">
+                            <ul className="menu-opcoes">
+                                <li onClick={() => setModalAlcoolGasolinaShow(true)}>Álcool x Gasolina</li>
+                                <ModalAlcoolGasolina animation={false} show={modalAlcoolGasolinaShow} onHide={() => setModalAlcoolGasolinaShow(false)} />
 
-                    <Nav.Item>
-                        <Nav.Link
-                            eventKey="alcool"
-                            onClick={() => {
-                                setModalAlcoolGasolinaShow(false)
-                                setModalMediaPorKmShow(false)
-                                setModalQuantoIreiGastarShow(false)
-                                setModalSobreShow(false)
-                                setModalSugestoesShow(false)
-                            }}
-                        >
-                            <span>Álcool</span>
-                        </Nav.Link>
-                    </Nav.Item>
+                                <li onClick={() => setModalMediaPorKmShow(true)}>Média por Km percorrido</li>
+                                <ModalMediaPorKm animation={false} show={modalMediaPorKmShow} onHide={() => setModalMediaPorKmShow(false)} />
 
-                    <Nav.Item>
-                        <Nav.Link
-                            eventKey="diesel" onClick={() => {
-                                setModalAlcoolGasolinaShow(false)
-                                setModalMediaPorKmShow(false)
-                                setModalQuantoIreiGastarShow(false)
-                                setModalSobreShow(false)
-                                setModalSugestoesShow(false)
-                            }}
-                        >
-                            <span>Diesel</span>
-                        </Nav.Link>
-                    </Nav.Item>
+                                <li onClick={() => setModalQuantoIreiGastarShow(true)}>Quanto irei gastar?</li>
+                                <ModalQuantoIreiGastar animation={false} show={modalQuantoIreiGastarShow} onHide={() => setModalQuantoIreiGastarShow(false)} />
 
-                    <Nav.Item>
-                        <Nav.Link
-                            eventKey='gas'
-                            onClick={() => {
-                                setModalAlcoolGasolinaShow(false)
-                                setModalMediaPorKmShow(false)
-                                setModalQuantoIreiGastarShow(false)
-                                setModalSobreShow(false)
-                                setModalSugestoesShow(false)
-                            }}
-                        >
-                            <span>Gnv</span>
-                        </Nav.Link>
-                    </Nav.Item>
+                                <li onClick={() => setModalSobreShow(true)}>Sobre o aplicativo</li>
+                                <ModalSobre animation={false} show={modalSobreShow} onHide={() => setModalSobreShow(false)} />
 
-                    <Nav.Item>
-                        <Nav.Link eventKey="menu">
-                            <span>Menu</span>
-                        </Nav.Link>
-                    </Nav.Item>
-                </Nav>
-            </Tab.Container>
-        </div>
+                                <li onClick={() => setModalSugestoesShow(true)}>Sugestões, Bugs e Comentários</li>
+                                <ModalSugestoes animation={false} show={modalSugestoesShow} onHide={() => setModalSugestoesShow(false)} />
+                            </ul>
+                        </Tab.Pane>
+                    </Tab.Content>
+
+                    <Nav variant="pills">
+                        <Nav.Item>
+                            <Nav.Link
+                                eventKey="gasolina"
+                                onClick={() => {
+                                    setModalAlcoolGasolinaShow(false)
+                                    setModalMediaPorKmShow(false)
+                                    setModalQuantoIreiGastarShow(false)
+                                    setModalSobreShow(false)
+                                    setModalSugestoesShow(false)
+                                }}
+                            >
+                                <span>Gasolina</span>
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link
+                                eventKey="alcool"
+                                onClick={() => {
+                                    setModalAlcoolGasolinaShow(false)
+                                    setModalMediaPorKmShow(false)
+                                    setModalQuantoIreiGastarShow(false)
+                                    setModalSobreShow(false)
+                                    setModalSugestoesShow(false)
+                                }}
+                            >
+                                <span>Álcool</span>
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link
+                                eventKey="diesel" onClick={() => {
+                                    setModalAlcoolGasolinaShow(false)
+                                    setModalMediaPorKmShow(false)
+                                    setModalQuantoIreiGastarShow(false)
+                                    setModalSobreShow(false)
+                                    setModalSugestoesShow(false)
+                                }}
+                            >
+                                <span>Diesel</span>
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link
+                                eventKey='gas'
+                                onClick={() => {
+                                    setModalAlcoolGasolinaShow(false)
+                                    setModalMediaPorKmShow(false)
+                                    setModalQuantoIreiGastarShow(false)
+                                    setModalSobreShow(false)
+                                    setModalSugestoesShow(false)
+                                }}
+                            >
+                                <span>Gnv</span>
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link eventKey="menu">
+                                <span>Menu</span>
+                            </Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                </Tab.Container>
+            </div >
+        </>
     );
 }
