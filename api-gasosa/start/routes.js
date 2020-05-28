@@ -20,6 +20,7 @@ Route.get('/','PostoController.starts')
 
 Route.group(() => {
   Route.get('','HistoricoController.index');
+  Route.get('grafico','HistoricoController.historico');
 }).prefix('historicos');
 
 Route.group(() => {
@@ -39,10 +40,20 @@ Route.group(() => {
   Route.get('arquivos','PostoController.jsonvisualizar');
   Route.put('update','PostoController.update');
   Route.get('','PostoController.index');
-  Route.get("gasolina", "PostoController.app");
+  Route.get('paginacao','PostoController.paginacao');
+  
+  Route.get("gasolina", "PostoController.gasolina");
   Route.get("etanol", "PostoController.etanol");
   Route.get("diesel", "PostoController.diesel");
+  //Route.get("testdiesel", "PostoController.test");
+  //Route.get("testdiesel1", "PostoController.test1");
   Route.get("gnv", "PostoController.gnv");
+
+  Route.get("gnvssa", "PostoController.gnvssa");
+  Route.get("gasolinassa", "PostoController.gasolinassa");
+  Route.get("etanolssa", "PostoController.etanolssa");
+  Route.get("dieselssa", "PostoController.dieselssa");
+
   Route.post(":id", "PostoController.edit");
   Route.get(":id", "PostoController.show");
 }).prefix('postos')
