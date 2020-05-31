@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "mobile",
+    "name": "Gasosa",
     "slug": "mobile",
     "platforms": [
       "ios",
@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#7b287d"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
