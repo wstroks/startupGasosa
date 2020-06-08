@@ -8,12 +8,12 @@ export default StyleSheet.create({
 
     list:{    
         paddingHorizontal: 10,
-        paddingVertical: 15,
+        paddingTop: 25,
     },
 
     combustivelContainer: {
         backgroundColor: "#f9f9f9",
-        marginTop: 20,
+        marginBottom: 20,
         borderRadius: 4,
     },
 
@@ -29,9 +29,16 @@ export default StyleSheet.create({
     },
 
     bandeira: {
-        width: 30,
-        height: 30,
+        width: 24,
+        height: 24,
         borderRadius: 50,
+    },
+
+    nome: {
+        color: "#f9f9f9",
+        fontSize: 14,
+        fontWeight: "bold",
+        textAlign: "center",
     },
 
     body: {

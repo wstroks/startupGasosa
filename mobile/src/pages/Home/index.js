@@ -3,15 +3,15 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
 
-import api from '../../services/api';
-
-import styles from './styles';
-
 import shell from '../../assets/img/shell.png';
 import menorPreco from '../../assets/img/menor-preco.png';
 import petrobras from '../../assets/img/petrobras.png';
 import ipiranga from '../../assets/img/ipiranga.jpg';
 import outros from '../../assets/img/outros.jpg';
+
+import api from '../../services/api';
+
+import styles from './styles';
 
 export default function Home () {
     const navigation = useNavigation();
@@ -89,7 +89,7 @@ export default function Home () {
                     }
                 />
 
-                <Text>{item.postos.nome}</Text>
+                <Text style={styles.nome}>{item.postos.nome}</Text>
 
                 <Feather name='share-2' size={20} color='#f9f9f9' />
             </View>
@@ -131,7 +131,7 @@ export default function Home () {
                 data={combustiveis}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
-                onEndReachedThreshold={0.3}
+                // onEndReachedThreshold={0.3}
             />
         </View>
     );
