@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Feather } from '@expo/vector-icons';
+import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 
 import shell from '../../assets/img/shell.png';
 import menorPreco from '../../assets/img/menor-preco.png';
@@ -56,6 +56,17 @@ export default function Posto () {
 
     return (
         <View style={styles.container}>
+            <TouchableOpacity
+                style={styles.back}
+                onPress={() => handleNavigateBack}
+            >
+                <Feather
+                    name="arrow-left"
+                    size={20}
+                    color={"#b7c0ee"}
+                />
+            </TouchableOpacity>
+
             <View style={styles.postoContainer}>
                 <View style={styles.header}>
                     <Image
@@ -71,12 +82,12 @@ export default function Posto () {
                 </View>
 
                 <View style={styles.body}>
-                    <Text style={styles.endereco}>
-                        <Feather name="map-pin" size={16} />
-                        {posto.endereco}
-                    </Text>
+                    <View style={styles.viewEndereco}>
+                        <Feather name="map-pin" size={16} color={"#7b287d"} />
+                        <Text style={styles.endereco}>{posto.endereco}</Text>
+                    </View>
 
-                    <Text>{posto.latitude !== null ? `Situado a ${handleDistance(latitude, longitude, posto.latitude, posto.longitude).toFixed(2)} Km do seu local` : ''}</Text>
+                    <Text style={styles.distancia}>{posto.latitude !== null ? `Situado a ${handleDistance(latitude, longitude, posto.latitude, posto.longitude).toFixed(2)} Km do seu local` : ''}</Text>
 
                     <TouchableOpacity
                         style={styles.verNoMapa}
@@ -86,13 +97,45 @@ export default function Posto () {
                         <Text style={styles.textButton}>Ver no mapa</Text>
                     </TouchableOpacity>
 
-                    <View style={styles.combustiveis}>
+                    <View>
                         {posto.combustiveis.map(combustivel => (
                             <View style={styles.combustivel} key={combustivel.id}>
-                                <Text>{combustivel.tipo}</Text>
-                                <Text>{combustivel.valor}</Text>
+                                <Text style={styles.nomeCombustivel}>{combustivel.tipo}</Text>
+                                <Text style={styles.valorCombustivel}>{combustivel.valor}</Text>
                             </View>
                         ))}
+                    </View>
+
+                    <Text style={styles.compartilhar}>Compartilhar via</Text>
+
+                    <View style={styles.socialMedia}>
+                        <TouchableOpacity
+                            style={styles.media}
+                            onPress={() => { }}
+                        >
+                            <FontAwesome5 name="whatsapp" size={16} color={"#f9f9f9"} />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.media}
+                            onPress={() => { }}
+                        >
+                            <FontAwesome5 name="facebook-f" size={16} color={"#f9f9f9"} />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.media}
+                            onPress={() => { }}
+                        >
+                            <FontAwesome5 name="telegram-plane" size={16} color={"#f9f9f9"} />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.media}
+                            onPress={() => { }}
+                        >
+                            <FontAwesome5 name="twitter" size={16} color={"#f9f9f9"} />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>

@@ -56,10 +56,10 @@ export default function Postos () {
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.endereco}>
-                    <Feather name="map-pin" size={16} />
-                    {item.endereco}
-                </Text>
+                <View style={styles.viewEndereco}>
+                    <Feather name="map-pin" size={16} color={"#7b287d"} />
+                    <Text style={styles.endereco}>{item.endereco}</Text>
+                </View>
 
                 <TouchableOpacity
                     style={styles.acessoButton}

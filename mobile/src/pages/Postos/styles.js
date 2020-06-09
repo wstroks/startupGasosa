@@ -74,14 +74,21 @@ export default StyleSheet.create({
         borderTopRightRadius: 0,
     },
 
+    viewEndereco: {
+        flexDirection: "row",
+        justifyContent: "center",
+        marginBottom: 10,
+    },
+
     endereco: {
         fontSize: 13,
         fontWeight: "bold",
-        textAlign: "center",
         color: "#7b287d",
-        marginBottom: 15,
+        textAlign: "center",
+        maxWidth: "80%",
+        marginLeft: 5,
     },
-
+    
     acessoButton: {
         alignItems: "center",
         justifyContent: "center",
