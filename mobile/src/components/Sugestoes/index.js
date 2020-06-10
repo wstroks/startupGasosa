@@ -1,45 +1,43 @@
 import React, { useState } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import styles from './styles';
 
-// import api from '../../services/api';
+import api from '../../services/api';
 
 export default function Sugestoes () {
-    // const [sugestoes, setSugestoes] = useState('');
+    const [sugestoes, setSugestoes] = useState('');
 
-    // async function handleSugestoes (e) {
-    //     e.preventDefault();
-
-    //     try {
-    //         await api.post('/comentarios', {
-    //             descricao: sugestoes,
-    //         });
-    //     } catch (error) {
-    //         alert("Erro ao enviar as sugestões");
-    //     }
-    //     setSugestoes('');
-    // }
+    async function handleSugestoes () {
+        try {
+            await api.post('/comentarios', {
+                descricao: sugestoes,
+            });
+        } catch (error) {
+            alert("Erro ao enviar as sugestões");
+        }
+        setSugestoes('');
+    }
 
     return (
-        <View />
-        // <>
-        //     <h4 className="titulo">
-        //         Seu feedback é fundamental para a melhoria do "Gasosa!"
-        //     </h4>
+        <View style={styles.container}>
+            <Text style={styles.span}>Seu feedback é fundamental para a melhoria do "Gasosa!"</Text>
 
-        //     <form onSubmit={handleSugestoes}>
-        //         <textarea
-        //             value={sugestoes}
-        //             onChange={e => setSugestoes(e.target.value)}
-        //             rows="8"
-        //             required
-        //         >
-        //         </textarea>
+            <TextInput
+                style={styles.input}
+                multiline={true}
+                numberOfLines={10}
+                value={sugestoes}
+                onChangeText={value => setSugestoes(value)}
+            />
 
-        //         <button type="submit">Enviar</button>
-        //     </form>
-        // </>
+            <RectButton
+                style={styles.button}
+                onPress={() => handleSugestoes}
+            >
+                <Text style={styles.textButton}>Enviar</Text>
+            </RectButton>
+        </View>
     )
 };

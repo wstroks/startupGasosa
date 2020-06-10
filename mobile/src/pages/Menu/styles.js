@@ -12,8 +12,10 @@ export default StyleSheet.create({
 
     itemButton: {
         width: "100%",
+        height: 36,
+        justifyContent: "center",
         borderRadius: 4,
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "#b7c0ee",
         paddingHorizontal: 15,
         paddingVertical: 7,
         margin: 5,
@@ -22,6 +24,6 @@ export default StyleSheet.create({
     textButton: {
         fontSize: 13,
         textAlign: "center",
-        color: "#51397f",
+        color: "#330c2f",
     },
 });

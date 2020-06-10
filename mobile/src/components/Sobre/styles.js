@@ -1,37 +1,18 @@
-// .top {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     width: 100%;
-// }
-
-// .top span {
-//     font-size: 20px;
-//     font-weight: bold;
-//     color: #b7c0ee;
-//     margin-bottom: 5px;
-// }
-
-// .sobre {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     flex: 1;
-// }
-
-// .sobre p {
-//     text-align: left;
-//     color: #b7c0ee;
-//     font-size: 13px;
-//     line-height: 1.4;
-// }
-
-// .sobre p + p {
-//     margin-top: 5px;
-// }
-
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+    container: {
+        paddingVertical: 15,
+        paddingHorizontal: 10,
+        backgroundColor: "#51397f",
 
+        flex: 1,
+        justifyContent: "center",
+    },
+
+    text: {
+        color: "#b7c0ee",
+        fontSize: 14,
+        lineHeight: 20,
+    },
 });

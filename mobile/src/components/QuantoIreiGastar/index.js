@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import styles from './styles';
@@ -16,36 +16,41 @@ export default function QuantoIreiGastar () {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <TextInput
+                style={styles.input}
                 value={valorLitro}
                 placeholder="Valor do litro do combustível"
+                placeholderTextColor="#b7c0ee"
                 onChangeText={value => setValorLitro(value)}
             />
 
             <TextInput
-                // style={styles.input}
+                style={styles.input}
                 value={kmPercorrido}
                 placeholder="Distância do trajeto (em Km)"
+                placeholderTextColor="#b7c0ee"
                 onChangeText={value => setKmPercorrido(value)}
             />
 
             <TextInput
-                // style={styles.input}
+                style={styles.input}
                 value={kmPorLitro}
                 placeholder="Quilometragem média por litro"
+                placeholderTextColor="#b7c0ee"
                 onChangeText={value => setKmPorLitro(value)}
             />
 
             <RectButton
+                style={styles.button}
                 onPress={() => handleCalculate}
             >
-                <Text>Calcular</Text>
+                <Text style={styles.textButton}>Calcular</Text>
             </RectButton>
 
-            <View>
-                <Text>Resultado</Text>
-                <Text>Você irá gastar R${valor}</Text>
+            <View style={styles.resultado}>
+                <Text style={styles.span}>Resultado</Text>
+                <Text style={styles.p}>Você irá gastar R${valor}</Text>
             </View>
         </View>
     );
