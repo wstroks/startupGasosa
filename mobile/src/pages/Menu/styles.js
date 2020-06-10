@@ -15,7 +15,8 @@ export default StyleSheet.create({
         height: 36,
         justifyContent: "center",
         borderRadius: 4,
-        backgroundColor: "#b7c0ee",
+        borderWidth: 1,
+        borderColor: "#b7c0ee",
         paddingHorizontal: 15,
         paddingVertical: 7,
         margin: 5,
@@ -24,6 +25,6 @@ export default StyleSheet.create({
     textButton: {
         fontSize: 13,
         textAlign: "center",
-        color: "#330c2f",
+        color: "#b7c0ee",
     },
 });

@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Feather } from '@expo/vector-icons';
@@ -16,40 +15,45 @@ import styles from './styles';
 function OpcoesScreen ({ navigation }) {
     return (
         <View style={styles.menuContainer}>
-            <RectButton
+            <TouchableOpacity
+                activeOpacity={0.7}
                 style={styles.itemButton}
                 onPress={() => navigation.navigate('ModalAlcoolGasolina')}
             >
                 <Text style={styles.textButton}>Álcool x Gasolina</Text>
-            </RectButton>
+            </TouchableOpacity>
 
-            <RectButton
+            <TouchableOpacity
+                activeOpacity={0.7}
                 style={styles.itemButton}
                 onPress={() => navigation.navigate('ModalMediaPorKm')}
             >
                 <Text style={styles.textButton}>Média por Km percorrido</Text>
-            </RectButton>
+            </TouchableOpacity>
 
-            <RectButton
+            <TouchableOpacity
+                activeOpacity={0.7}
                 style={styles.itemButton}
                 onPress={() => navigation.navigate('ModalQuantoIreiGastar')}
             >
                 <Text style={styles.textButton}>Quanto irei gastar?</Text>
-            </RectButton>
+            </TouchableOpacity>
 
-            <RectButton
+            <TouchableOpacity
+                activeOpacity={0.7}
                 style={styles.itemButton}
                 onPress={() => navigation.navigate('ModalSobre')}
             >
                 <Text style={styles.textButton}>Sobre o aplicativo</Text>
-            </RectButton>
+            </TouchableOpacity>
 
-            <RectButton
+            <TouchableOpacity
+                activeOpacity={0.7}
                 style={styles.itemButton}
                 onPress={() => navigation.navigate('ModalSugestoes')}
             >
                 <Text style={styles.textButton}>Sugestões, Bugs e Comentários</Text>
-            </RectButton>
+            </TouchableOpacity>
         </View>
     );
 }
