@@ -62,7 +62,6 @@ export default StyleSheet.create({
     nome: {
         color: "#f9f9f9",
         fontSize: 14,
-        fontWeight: "bold",
         textAlign: "center",
     },
 
@@ -82,18 +81,16 @@ export default StyleSheet.create({
 
     endereco: {
         fontSize: 13,
-        fontWeight: "bold",
         color: "#7b287d",
         textAlign: "center",
         maxWidth: "80%",
         marginLeft: 5,
     },
-    
+
     acessoButton: {
         alignItems: "center",
         justifyContent: "center",
         paddingHorizontal: 10,
-        paddingVertical: 1,
         borderWidth: 1,
         borderColor: "#7b287d",
         borderRadius: 4,
@@ -101,7 +98,7 @@ export default StyleSheet.create({
 
     textButton: {
         fontSize: 12,
-        fontWeight: "bold",
         color: "#7b287d",
+        paddingBottom: 2,
     },
 });

@@ -6,7 +6,7 @@ export default StyleSheet.create({
         backgroundColor: "#51397f",
     },
 
-    list:{    
+    list: {
         paddingHorizontal: 10,
         paddingTop: 25,
     },
@@ -37,7 +37,6 @@ export default StyleSheet.create({
     nome: {
         color: "#f9f9f9",
         fontSize: 14,
-        fontWeight: "bold",
         textAlign: "center",
     },
 
@@ -47,5 +46,57 @@ export default StyleSheet.create({
         borderRadius: 4,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
+    },
+
+    viewEndereco: {
+        flexDirection: "row",
+        justifyContent: "center",
+        marginBottom: 10,
+    },
+
+    endereco: {
+        fontSize: 13,
+        color: "#7b287d",
+        textAlign: "center",
+        maxWidth: "80%",
+        marginLeft: 5,
+    },
+
+    informacoes: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: 15,
+    },
+
+    valor: {
+        fontSize: 20,
+        color: "#7b287d",
+    },
+
+    distancia: {
+        fontSize: 13,
+        color: "#7b287d",
+    },
+
+    mapButton: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingVertical: 4,
+        paddingHorizontal: 5,
+        borderRadius: 4,
+        backgroundColor: "#7067cf",
+    },
+
+    textButton: {
+        color: "#f9f9f9",
+        fontSize: 13,
+        marginLeft: 3,
+    },
+    
+    atualizacao: {
+        textAlign: "center",
+        fontSize: 12,
+        color: "#7b287d",
     },
 });

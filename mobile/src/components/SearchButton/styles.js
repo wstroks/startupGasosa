@@ -7,7 +7,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         paddingHorizontal: 5,
         paddingVertical: 1,
-        borderColor: "#7b287d",
+        borderColor: "#330c2f",
         borderWidth: 1,
         borderRadius: 4,
         width: 72,
@@ -15,7 +15,7 @@ export default StyleSheet.create({
     },
 
     textButton: {
-        color: "#7b287d",
+        color: "#330c2f",
         fontSize: 13,
     },
 });

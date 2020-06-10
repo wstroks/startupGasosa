@@ -41,8 +41,7 @@ export default StyleSheet.create({
 
     nome: {
         color: "#f9f9f9",
-        fontSize: 15,
-        fontWeight: "bold",
+        fontSize: 14,
         textAlign: "center",
     },
 
@@ -62,7 +61,6 @@ export default StyleSheet.create({
 
     endereco: {
         fontSize: 13,
-        fontWeight: "bold",
         color: "#7b287d",
         textAlign: "center",
         maxWidth: "80%",
@@ -71,7 +69,6 @@ export default StyleSheet.create({
 
     distancia: {
         fontSize: 13,
-        fontWeight: "bold",
         textAlign: "center",
         color: "#7b287d",
         marginBottom: 10,
@@ -99,25 +96,21 @@ export default StyleSheet.create({
     nomeCombustivel: {
         fontSize: 12,
         color: "#7b287d",
-        fontWeight: "bold",
     },
 
     valorCombustivel: {
         fontSize: 12,
         color: "#7b287d",
-        fontWeight: "bold",
     },
 
     textButton: {
         fontSize: 12,
-        fontWeight: "bold",
         color: "#f9f9f9",
         marginLeft: 5,
     },
 
     compartilhar: {
         fontSize: 12,
-        fontWeight: "bold",
         color: "#7b287d",
         textAlign: "center",
         marginVertical: 10,

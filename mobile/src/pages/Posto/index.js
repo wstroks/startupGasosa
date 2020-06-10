@@ -57,6 +57,7 @@ export default function Posto () {
     return (
         <View style={styles.container}>
             <TouchableOpacity
+                activeOpacity={0.7}
                 style={styles.back}
                 onPress={() => handleNavigateBack}
             >
@@ -90,6 +91,7 @@ export default function Posto () {
                     <Text style={styles.distancia}>{posto.latitude !== null ? `Situado a ${handleDistance(latitude, longitude, posto.latitude, posto.longitude).toFixed(2)} Km do seu local` : ''}</Text>
 
                     <TouchableOpacity
+                        activeOpacity={0.7}
                         style={styles.verNoMapa}
                         onPress={() => { }}
                     >
@@ -110,6 +112,7 @@ export default function Posto () {
 
                     <View style={styles.socialMedia}>
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             style={styles.media}
                             onPress={() => { }}
                         >
@@ -117,6 +120,7 @@ export default function Posto () {
                         </TouchableOpacity>
 
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             style={styles.media}
                             onPress={() => { }}
                         >
@@ -124,6 +128,7 @@ export default function Posto () {
                         </TouchableOpacity>
 
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             style={styles.media}
                             onPress={() => { }}
                         >
@@ -131,6 +136,7 @@ export default function Posto () {
                         </TouchableOpacity>
 
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             style={styles.media}
                             onPress={() => { }}
                         >

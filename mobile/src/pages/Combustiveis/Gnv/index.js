@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { View, FlatList, Image, Text } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import shell from '../../../assets/img/shell.png';
 import menorPreco from '../../../assets/img/menor-preco.png';
@@ -76,54 +77,55 @@ export default function Gnv () {
         return d;
     }
 
-    const renderItem = ({ item }) => (item.tipo.indexOf("GNV") !== -1) &&
-        (
-            <View style={styles.combustivelContainer}>
-                <View style={styles.header}>
-                    <Image
-                        style={styles.bandeira}
-                        source={
-                            (item.postos.bandeira === "shell" ? shell :
-                                (item.postos.bandeira === "menor") ? menorPreco :
-                                    (item.postos.bandeira === "petrobras") ? petrobras :
-                                        (item.postos.bandeira === "ipiranga") ? ipiranga : outros)
-                        }
-                    />
+    const renderItem = ({ item }) => (item.tipo.indexOf("GNV") !== -1) && (
+        <View style={styles.combustivelContainer}>
+            <View style={styles.header}>
+                <Image
+                    style={styles.bandeira}
+                    source={
+                        (item.postos.bandeira === "shell" ? shell :
+                            (item.postos.bandeira === "menor") ? menorPreco :
+                                (item.postos.bandeira === "petrobras") ? petrobras :
+                                    (item.postos.bandeira === "ipiranga") ? ipiranga : outros)
+                    }
+                />
 
-                    <Text style={styles.nome}>{item.postos.nome}</Text>
+                <Text style={styles.nome}>{item.postos.nome}</Text>
 
-                    <Feather name='share-2' size={20} color='#f9f9f9' />
-                </View>
-
-                <View style={styles.body}>
-                    <View>
-                        <Feather name="map-pin" size={20} color="#7B287D" />
-                        <Text>{item.postos.endereco}</Text>
-                    </View>
-
-                    <View>
-                        <Text>
-                            {item.valor}
-                        </Text>
-
-                        <Text>
-                            {item.postos.latitude !== null ? `a ${handleDistance(latitude, longitude, item.postos.latitude, item.postos.longitude).toFixed(2)} Km` : ''}
-                        </Text>
-
-                        <View>
-                            <Feather name="corner-up-right" size={20} color="#f9f9f9" />
-                            <Text>Ver no mapa</Text>
-                        </View>
-                    </View>
-
-                    <View>
-                        <Text>
-                            Atualizado em: {item.updated_at.substr(0, 10).split('-').reverse().join('/')}
-                        </Text>
-                    </View>
-                </View>
+                <Feather name='share-2' size={20} color='#f9f9f9' />
             </View>
-        );
+
+            <View style={styles.body}>
+                <View style={styles.viewEndereco}>
+                    <Feather name="map-pin" size={16} color={"#7b287d"} />
+                    <Text style={styles.endereco}>{item.postos.endereco}</Text>
+                </View>
+
+                <View style={styles.informacoes}>
+                    <Text style={styles.valor}>
+                        {item.valor}
+                    </Text>
+
+                    <Text style={styles.distancia}>
+                        {item.postos.latitude !== null ? `a ${handleDistance(latitude, longitude, item.postos.latitude, item.postos.longitude).toFixed(2)} Km` : ''}
+                    </Text>
+
+                    <RectButton
+                        style={styles.mapButton}
+                        onPress={() => { }}
+                    >
+                        <Feather name="corner-up-right" size={14} color="#f9f9f9" />
+                        <Text style={styles.textButton}>Ver no mapa</Text>
+                    </RectButton>
+                </View>
+
+
+                <Text style={styles.atualizacao}>
+                    Atualizado em: {item.updated_at.substr(0, 10).split('-').reverse().join('/')}
+                </Text>
+            </View>
+        </View>
+    );
 
     return (
         <View style={styles.container}>

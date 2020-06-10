@@ -14,10 +14,11 @@ export default function SearchButton () {
 
     return (
         <TouchableOpacity
+            activeOpacity={0.7}
             style={styles.searchButton}
             onPress={() => navigateToPostos()}
         >
-            <Feather name='search' size={13} color='#7b287d' />
+            <Feather name='search' size={13} color='#330c2f' />
             <Text style={styles.textButton}>Postos</Text>
         </TouchableOpacity>
     );

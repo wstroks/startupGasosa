@@ -16,10 +16,10 @@ export default function Routes () {
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{
-                title: 'Gasosa',
+                title: 'Gasosa!',
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
-                    color: '#7b287d',
+                    color: '#330c2f',
                 },
                 headerStyle: {
                     backgroundColor: '#f9f9f9',

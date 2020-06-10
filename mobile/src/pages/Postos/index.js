@@ -62,6 +62,7 @@ export default function Postos () {
                 </View>
 
                 <TouchableOpacity
+                    activeOpacity={0.7}
                     style={styles.acessoButton}
                     onPress={() => navigateToPosto(item)}
                 >
