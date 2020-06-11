@@ -51,7 +51,7 @@ export default function Gasolina () {
 
   async function getCombustiveis () {
     try {
-      const response = await api.get('combustiveis');
+      const response = await api.get('combustiveis/gcomum');
 
       setCombustiveis(response.data);
 
@@ -77,7 +77,7 @@ export default function Gasolina () {
     return d;
   }
 
-  const renderItem = ({ item }) => (item.tipo.indexOf("GASOLINA") !== -1) && (
+  const renderItem = ({ item }) => (
     <View style={styles.combustivelContainer}>
       <View style={styles.header}>
         <Image

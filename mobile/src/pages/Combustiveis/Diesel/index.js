@@ -51,7 +51,7 @@ export default function Diesel () {
 
     async function getCombustiveis () {
         try {
-            const response = await api.get('combustiveis');
+            const response = await api.get('combustiveis/diesel');
 
             setCombustiveis(response.data);
 
@@ -77,7 +77,7 @@ export default function Diesel () {
         return d;
     }
 
-    const renderItem = ({ item }) => (item.tipo.indexOf("DIESEL") !== -1) && (
+    const renderItem = ({ item }) => (
         <View style={styles.combustivelContainer}>
             <View style={styles.header}>
                 <Image
