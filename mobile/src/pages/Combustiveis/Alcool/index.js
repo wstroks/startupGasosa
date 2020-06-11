@@ -49,16 +49,34 @@ export default function Alcool () {
         )
     }, []);
 
-    async function getCombustiveis () {
-        try {
-            const response = await api.get('combustiveis/etanol');
+    const [page, setPage] = useState(1);
+    const [pageUtltima, setPageUltima] = useState(0);
 
-            setCombustiveis(response.data);
+    async function getCombustiveis (page = 1) {
+        try {
+            const response = await api.get('combustiveis/etanol', {
+                params: {
+                    page,
+                }
+            });
+
+            setCombustiveis([...combustiveis, ...response.data.data]);
+
+            setPage(response.data.page);
+            setPageUltima(response.data.lastPage);
 
             console.log(response.data);
         } catch (error) {
             alert('Erro ao obter os dados');
         }
+    }
+
+    function getMaisCombustiveis () {
+        if (page === pageUtltima) return;
+
+        const pageNumber = page + 1;
+
+        getCombustiveis(pageNumber);
     }
 
     useEffect(() => {
@@ -134,7 +152,8 @@ export default function Alcool () {
                 data={combustiveis}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
-            // onEndReachedThreshold={0.3}
+                onEndReached={getMaisCombustiveis}
+                onEndReachedThreshold={0.3}
             />
         </View>
     );

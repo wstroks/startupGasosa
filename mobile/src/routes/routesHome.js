@@ -15,7 +15,7 @@ export default function Tabs () {
         <Tab.Navigator
             tabBarOptions={{
                 style: {
-                    height: 54,
+                    // height: 54,
                 },
                 tabStyle: {
                     height: 54,
