@@ -4,18 +4,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-import Gasolina from '../pages/Combustiveis/Gasolina';
 import Alcool from '../pages/Combustiveis/Alcool';
 import Diesel from '../pages/Combustiveis/Diesel';
 import Gnv from '../pages/Combustiveis/Gnv';
 import Menu from '../pages/Menu';
+
+import RoutesGasolina from './routesGasolina';
 
 export default function Tabs () {
     return (
         <Tab.Navigator
             tabBarOptions={{
                 style: {
-                    // height: 54,
+                    height: 54,
                 },
                 tabStyle: {
                     height: 54,
@@ -30,7 +31,7 @@ export default function Tabs () {
         >
             <Tab.Screen
                 name="Gasolina"
-                component={Gasolina}
+                component={RoutesGasolina}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="gas-station" color={color} size={size} />

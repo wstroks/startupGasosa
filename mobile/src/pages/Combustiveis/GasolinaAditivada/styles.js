@@ -8,7 +8,7 @@ export default StyleSheet.create({
 
     list: {
         paddingHorizontal: 10,
-        paddingTop: 25,
+        paddingTop: 20,
     },
 
     combustivelContainer: {

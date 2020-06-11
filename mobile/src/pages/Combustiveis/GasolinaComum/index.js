@@ -14,7 +14,7 @@ import api from '../../../services/api';
 
 import styles from './styles';
 
-export default function Gasolina () {
+export default function GasolinaComum () {
   const navigation = useNavigation();
 
   function navigateToPosto () {
