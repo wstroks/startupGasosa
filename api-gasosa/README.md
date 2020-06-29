@@ -1,3 +1,10 @@
+<br>
+
+<h1 align='center'>
+      <img alt="Logo Gasosa" title="#logo" src="../web/git/logo.png" width="100px" />
+</h1>
+
+<br>
 <h2 title='#projeto'>
     Projeto
 </h2>
@@ -26,3 +33,16 @@ Foram utilizadas as seguintes bibliotecas:
 </h2>
 
 - Detalhes para [Api](https://documenter.getpostman.com/view/1402289/SzzheyS6?version=latest)
+
+<h2 title='#bibliotecas'>
+   Banco de dados
+</h2>
+
+<h1 align="center">
+    <img align="center" alt="Home Gasosa" title="#home" src="../imgs/banco_de_dados.png" width="75%" />
+</h1>
+
+- Histórico: é salvo todas as informações sobre os postos deixando um histórico detalhado dos preços.
+- Combustíveis: é atualizado o valor do combustível para ser visualizado. Exemplo ultimo preço da gasolina comum em determinado posto.
+- Posto: informações referente aos postos adicionados na aplicação.
+- Comentário: caso os usuários desejam fazer alguma sugestão, etc.
