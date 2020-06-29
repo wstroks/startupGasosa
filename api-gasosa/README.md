@@ -5,6 +5,11 @@
 </h1>
 
 <br>
+
+<h1 align="center">
+    <img align="center" alt="Home Gasosa" title="#home" src="../imgs/api.png" width="100%" />
+</h1>
+
 <h2 title='#projeto'>
     Projeto
 </h2>
