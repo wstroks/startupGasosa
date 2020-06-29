@@ -14,7 +14,7 @@
     Projeto
 </h2>
 
-Back-end para o Gasosa, um aplicativo para preços de combustíveis.
+Back-end para o Gasosa, um aplicativo para preços de combustíveis. Foi criado um Bot responsável por colher informações de determinadas cidades em horários programados.
 
 <h2 title='#tecnologias'>
     Tecnologias
