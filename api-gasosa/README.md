@@ -43,6 +43,6 @@ Foram utilizadas as seguintes bibliotecas:
 </h1>
 
 - Histórico: é salvo todas as informações sobre os postos deixando um histórico detalhado dos preços.
-- Combustíveis: é atualizado o valor do combustível para ser visualizado. Exemplo ultimo preço da gasolina comum em determinado posto.
-- Posto: informações referente aos postos adicionados na aplicação.
+- Combustíveis: é atualizado o valor do combustível para ser visualizado. Exemplo último preço da gasolina comum em determinado posto.
+- Posto: informações referentes aos postos adicionados na aplicação.
 - Comentário: caso os usuários desejam fazer alguma sugestão, etc.
