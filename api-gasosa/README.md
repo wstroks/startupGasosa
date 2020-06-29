@@ -1,28 +1,28 @@
-# Adonis API application
+<h2 title='#projeto'>
+    Projeto
+</h2>
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+Back-end para o Gasosa, um aplicativo para preços de combustíveis.
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+<h2 title='#tecnologias'>
+    Tecnologias
+</h2>
 
-## Setup
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-Use the adonis command to install the blueprint
+- AdonisJS
 
-```bash
-adonis new yardstick --api-only
-```
+<h2 title='#bibliotecas'>
+    Bibliotecas
+</h2>
 
-or manually clone the repo and then run `npm install`.
+Foram utilizadas as seguintes bibliotecas:
 
+- puppeteer
+- axios
 
-### Migrations
+<h2 title='#bibliotecas'>
+   Documentação 
+</h2>
 
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
+- Detalhes para [Api](https://documenter.getpostman.com/view/1402289/SzzheyS6?version=latest)
