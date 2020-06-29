@@ -1,10 +1,11 @@
 'use strict'
 
 const Task = use('Task')
+const fetch = require("node-fetch");
 
 class Gasolinassa extends Task {
   static get schedule () {
-    return '8 19 * / 2 * *'
+    return '35 10 * * *'
   }
 
   async handle () {

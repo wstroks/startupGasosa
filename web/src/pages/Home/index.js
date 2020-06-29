@@ -158,11 +158,11 @@ export default function Home () {
     async function getCombustiveis () {
         try {
             const response = await api.get('combustiveis');
-
+            
             setCombustiveis(response.data);
-
             console.log(response.data);
-        } catch (error) {
+            
+       } catch (error) {
             alert('Erro ao obter os dados');
         }
     }

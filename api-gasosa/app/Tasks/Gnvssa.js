@@ -1,10 +1,11 @@
 'use strict'
 
 const Task = use('Task')
+const fetch = require("node-fetch");
 
 class Gnvssa extends Task {
   static get schedule () {
-    return '25 19 * / 2 * *'
+    return '59 13 * * *'
   }
 
   async handle () {

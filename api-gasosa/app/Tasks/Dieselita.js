@@ -3,14 +3,14 @@
 const Task = use('Task')
 const fetch = require("node-fetch");
 
-class Dieselssa extends Task {
+class Dieselita extends Task {
   static get schedule () {
-    return '15 10 * * *'
+    return '35 5 * * *'
   }
 
   async handle () {
     try {
-      var url ="https://api-gasosa.herokuapp.com/postos/dieselssa";
+      var url ="https://api-gasosa.herokuapp.com/postos/dieselita";
 
         // HTTP GET request to the dyno's url
        fetch(url).then(() => console.log(`Diesel: ${url}`));
@@ -22,4 +22,4 @@ class Dieselssa extends Task {
   }
 }
 
-module.exports = Dieselssa
+module.exports = Dieselita
